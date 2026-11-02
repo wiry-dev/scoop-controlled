@@ -1,0 +1,43 @@
+{
+  "version": "6.0.6",
+  "description": "Disk space cleaner, privacy manager, and computer system optimizer.",
+  "homepage": "https://www.bleachbit.org/",
+  "license": "GPL-3.0-or-later",
+  "url": "https://download.bleachbit.org/BleachBit-6.0.6-portable.zip",
+  "hash": "285a53c01f95cf859250c1b612f27c2ff1247c5af53eb8e8c6744b374f1ed19e",
+  "extract_dir": "BleachBit-portable",
+  "bin": [
+    "bleachbit_console.exe",
+    [
+      "bleachbit_console.exe",
+      "bleachbit"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "bleachbit.exe",
+      "BleachBit"
+    ]
+  ],
+  "persist": [
+    "cleaners",
+    "BleachBit.ini"
+  ],
+  "checkver": {
+    "useragent": "Scoop",
+    "url": "https://www.bleachbit.org/download/windows",
+    "regex": "BleachBit ([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://download.bleachbit.org/BleachBit-$version-portable.zip"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\bleachbit.json",
+    "__sourceHash: 75ea4b192177655ae8cd8382f321da527528e8a4",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261018 08:35:19",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/bleachbit.json"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "version": "2.11.7",
+  "description": "Saves complete web pages as a single HTML file.",
+  "homepage": "https://github.com/Y2Z/monolith",
+  "license": "Unlicense",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/Y2Z/monolith/releases/download/v2.11.7/monolith-cli.exe",
+      "hash": "1ccaa35ce0b787ff29925c4cc8844a1bb49e1f850a587ceabbcab79e37bebc0b"
+    }
+  },
+  "bin": [
+    "monolith-cli.exe",
+    [
+      "monolith-cli.exe",
+      "monolith"
+    ]
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/Y2Z/monolith/releases/download/v$version/monolith-cli.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\monolith.json",
+    "__sourceHash: b2802e09004a8bf0f01364ce00adf531c8955eec",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261030 00:49:19",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/monolith.json"
+  ]
+}

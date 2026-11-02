@@ -1,0 +1,32 @@
+{
+  "version": "0.9.2",
+  "description": "Share and export your terminal as a animated SVG image.",
+  "homepage": "https://github.com/MrMarble/termsvg",
+  "license": "GPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/MrMarble/termsvg/releases/download/v0.9.2/termsvg-0.9.2-windows-amd64.zip",
+      "hash": "57aea9c570b7321e5b6cdae5f013647f56eced7539c2b3e32b21cda6a1e70149",
+      "extract_dir": "termsvg-0.9.2-windows-amd64"
+    }
+  },
+  "bin": "termsvg.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/MrMarble/termsvg/releases/download/v$version/termsvg-$version-windows-amd64.zip",
+        "extract_dir": "termsvg-$version-windows-amd64"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\termsvg.json",
+    "__sourceHash: df2973dbab0f9884a4572092a5951262f4d09a26",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/termsvg.json"
+  ]
+}

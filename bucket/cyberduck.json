@@ -1,0 +1,40 @@
+{
+  "version": "9.5.4.45528",
+  "description": "Libre file transfer client supporting multiple protocols.",
+  "homepage": "https://cyberduck.io",
+  "license": "Freeware",
+  "notes": "Additional third party connection profiles can be installed to and found in '%APPDATA%\\Cyberduck\\Profiles'.",
+  "architecture": {
+    "64bit": {
+      "url": "https://update.cyberduck.io/windows/Cyberduck-Installer-9.5.4.45528.msi",
+      "hash": "082ed656a00c81516a8b7d3651d32aee8afb8963f7dced9b753ed0db204a0607"
+    }
+  },
+  "extract_dir": "PFiles64\\Cyberduck",
+  "shortcuts": [
+    [
+      "Cyberduck.exe",
+      "Cyberduck"
+    ]
+  ],
+  "checkver": {
+    "url": "https://cyberduck.io/download/",
+    "regex": "Cyberduck-Installer-([\\d.]+)\\.exe"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://update.cyberduck.io/windows/Cyberduck-Installer-$version.msi"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\cyberduck.json",
+    "__sourceHash: 6f4258cfee3f8d30c52cdbb9d626c0658a24ff74",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260825 16:33:08",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/cyberduck.json"
+  ]
+}

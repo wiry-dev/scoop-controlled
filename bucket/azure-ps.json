@@ -1,0 +1,44 @@
+{
+  "version": "16.4.0.41245",
+  "description": "PowerShell cmdlets for developers and administrators to develop, deploy and manage Microsoft Azure applications.",
+  "homepage": "https://aka.ms/azpsdocs",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/Azure/azure-powershell/releases/download/v16.4.0-October2026/Az-Cmdlets-16.4.0.41245-x64.msi",
+      "hash": "1e9e8180cf2d64f3a1bde4bd6d378d2c8ef0ec0680e094dd2a5bc6a2b0884759"
+    },
+    "32bit": {
+      "url": "https://github.com/Azure/azure-powershell/releases/download/v16.4.0-October2026/Az-Cmdlets-16.4.0.41245-x86.msi",
+      "hash": "86bf249cc807b7026a79284472ca11a7c04efc168b6fe1ba351fb2d3bdf57f12"
+    }
+  },
+  "extract_dir": "WindowsPowerShell\\Modules",
+  "psmodule": {
+    "name": "AzureRM"
+  },
+  "checkver": {
+    "github": "https://api.github.com/repos/Azure/azure-powershell/releases",
+    "jsonpath": "$..browser_download_url",
+    "regex": "download/v(?<release>[^/]+)/Az-Cmdlets-([0-9.]+)-x64[.]msi"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/Azure/azure-powershell/releases/download/v$matchRelease/Az-Cmdlets-$version-x64.msi"
+      },
+      "32bit": {
+        "url": "https://github.com/Azure/azure-powershell/releases/download/v$matchRelease/Az-Cmdlets-$version-x86.msi"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\azure-ps.json",
+    "__sourceHash: 3adedb3f1de03dc15bb7785632b9e8a5972c993a",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261006 08:40:16",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/azure-ps.json"
+  ]
+}

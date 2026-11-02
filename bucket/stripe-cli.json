@@ -1,0 +1,42 @@
+{
+  "version": "1.21.5",
+  "description": "A command-line tool for Stripe.",
+  "homepage": "https://stripe.com/docs/stripe-cli",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/stripe/stripe-cli/releases/download/v1.21.5/stripe_1.21.5_windows_x86_64.zip",
+      "hash": "2856916dda1fbf752bf54d5d195d2f6de4d65cee516a52abace6278761a0e7b8"
+    },
+    "32bit": {
+      "url": "https://github.com/stripe/stripe-cli/releases/download/v1.21.5/stripe_1.21.5_windows_i386.zip",
+      "hash": "6afd0021e8a894aaa3fd3023ef86af1f19d189a6e05c089b5eca31dd23822394"
+    }
+  },
+  "bin": "stripe.exe",
+  "checkver": {
+    "github": "https://github.com/stripe/stripe-cli"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/stripe/stripe-cli/releases/download/v$version/stripe_$version_windows_x86_64.zip"
+      },
+      "32bit": {
+        "url": "https://github.com/stripe/stripe-cli/releases/download/v$version/stripe_$version_windows_i386.zip"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/stripe-windows-checksums.txt"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\stripe-cli.json",
+    "__sourceHash: 44ab6864af5500e95339a70a098f2fb2370a9644",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/stripe-cli.json"
+  ]
+}

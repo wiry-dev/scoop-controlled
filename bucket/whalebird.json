@@ -1,0 +1,52 @@
+{
+  "version": "6.1.5",
+  "description": "A Mastodon, Pleroma, and Misskey client for desktop application.",
+  "homepage": "https://whalebird.social/",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/h3poteto/whalebird-desktop/releases/download/v6.1.5/Whalebird-6.1.5-win-x64.exe#/dl.7z",
+      "hash": "888803a5a42d7a8271e5e27081bec2d574e2852ea70391ac112c226509efe92a",
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+    }
+  },
+  "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\", \"$dir\\resources\\app-update.*\"  -Force -Recurse | Out-Null",
+  "bin": [
+    [
+      "Whalebird.exe",
+      "Whalebird",
+      "--user-data-dir=\"$dir\\User Data\""
+    ]
+  ],
+  "shortcuts": [
+    [
+      "Whalebird.exe",
+      "Whalebird",
+      "--user-data-dir=\"$dir\\User Data\""
+    ]
+  ],
+  "persist": "User Data",
+  "checkver": {
+    "github": "https://github.com/h3poteto/whalebird-desktop/"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/h3poteto/whalebird-desktop/releases/download/v$version/Whalebird-$version-win-x64.exe#/dl.7z"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/latest.yml",
+      "regex": "sha512:\\s*$base64"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\whalebird.json",
+    "__sourceHash: f1ced1b8562c03bfef84c9cbdb9bb59cc034c19e",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/whalebird.json"
+  ]
+}

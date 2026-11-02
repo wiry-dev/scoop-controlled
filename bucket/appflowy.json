@@ -1,0 +1,38 @@
+{
+  "version": "0.14.11",
+  "description": "An open-source alternative to Notion. You are in charge of your data and customizations.",
+  "homepage": "https://www.appflowy.io/",
+  "license": "AGPL-3.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/AppFlowy-IO/AppFlowy/releases/download/0.14.11/AppFlowy-0.14.11-windows-x86_64.zip",
+      "hash": "bdd765213358d0c4fc609b3dca490f05c0105e76fff6dbf7a359459e5b352d9e"
+    }
+  },
+  "extract_dir": "AppFlowy",
+  "shortcuts": [
+    [
+      "AppFlowy.exe",
+      "AppFlowy"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/AppFlowy-IO/AppFlowy"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/AppFlowy-IO/AppFlowy/releases/download/$version/AppFlowy-$version-windows-x86_64.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\appflowy.json",
+    "__sourceHash: 39eaecce52a7988e34f1d20208bb1390ad79a141",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261026 01:05:08",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/appflowy.json"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": "2.24-103",
+  "description": "The Non-Sucking Service Manager.",
+  "homepage": "https://nssm.cc/",
+  "license": "Public Domain",
+  "url": "https://nssm.cc/ci/nssm-2.24-103-gdee49fc.zip",
+  "hash": "sha1:0722c8a775deb4a1460d1750088916f4f5951773",
+  "architecture": {
+    "64bit": {
+      "extract_dir": "nssm-2.24-103-gdee49fc\\win64"
+    },
+    "32bit": {
+      "extract_dir": "nssm-2.24-103-gdee49fc\\win32"
+    }
+  },
+  "bin": [
+    "nssm.exe",
+    [
+      "nssm.exe",
+      "service"
+    ]
+  ],
+  "checkver": {
+    "url": "https://nssm.cc/builds",
+    "regex": "nssm-([\\d.]+-\\d+)-(?<build>.*?).zip"
+  },
+  "autoupdate": {
+    "url": "https://nssm.cc/ci/nssm-$version-$matchBuild.zip",
+    "hash": {
+      "url": "https://nssm.cc/builds",
+      "regex": "$basename.*?$sha1"
+    },
+    "architecture": {
+      "64bit": {
+        "extract_dir": "nssm-$version-$matchBuild\\win64"
+      },
+      "32bit": {
+        "extract_dir": "nssm-$version-$matchBuild\\win32"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\nssm.json",
+    "__sourceHash: e18c7c496a56547fadd7be7aaca807772bbba4ff",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 190424 14:43:37",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/nssm.json"
+  ]
+}

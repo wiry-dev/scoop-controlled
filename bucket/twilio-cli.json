@@ -1,0 +1,59 @@
+{
+  "version": "7.2.0",
+  "description": "Twilio CLI. Unleash the power of Twilio from your command prompt.",
+  "homepage": "https://github.com/twilio/twilio-cli",
+  "license": "MIT",
+  "notes": [
+    "* Known issue:",
+    "  - Extration requires Developer mode to be enabled, or admin rights: https://github.com/ScoopInstaller/Main/issues/4975"
+  ],
+  "suggest": {
+    "Node.js": [
+      "main/nodejs",
+      "main/nodejs-lts"
+    ]
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://twilio-cli-prod.s3.amazonaws.com/twilio-v7.2.0/twilio-v7.2.0-win32-x64.tar.xz",
+      "hash": "313b99abd09e143f637c8a3c00363a5bdde2889520b1e007b62b3f07d299b07b"
+    },
+    "32bit": {
+      "url": "https://twilio-cli-prod.s3.amazonaws.com/twilio-v7.2.0/twilio-v7.2.0-win32-x86.tar.xz",
+      "hash": "c8ebf98012a33d9dd47bec8ff851a460e1cebdaf639e8e659321174dd7069dcf"
+    }
+  },
+  "extract_dir": "twilio",
+  "bin": "bin\\twilio.cmd",
+  "checkver": {
+    "url": "https://twilio-cli-prod.s3.amazonaws.com/version",
+    "jsonpath": "$.version"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://twilio-cli-prod.s3.amazonaws.com/twilio-v$version/twilio-v$version-win32-x64.tar.xz",
+        "hash": {
+          "url": "https://twilio-cli-prod.s3.amazonaws.com/win32-x64",
+          "jsonpath": "$.sha256xz"
+        }
+      },
+      "32bit": {
+        "url": "https://twilio-cli-prod.s3.amazonaws.com/twilio-v$version/twilio-v$version-win32-x86.tar.xz",
+        "hash": {
+          "url": "https://twilio-cli-prod.s3.amazonaws.com/win32-x86",
+          "jsonpath": "$.sha256xz"
+        }
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\twilio-cli.json",
+    "__sourceHash: caf35df1b7d299d5fd41e1ba1bd8402072f282b4",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261013 08:47:29",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/twilio-cli.json"
+  ]
+}

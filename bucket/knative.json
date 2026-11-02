@@ -1,0 +1,36 @@
+{
+  "homepage": "https://knative.dev",
+  "license": "Apache-2.0",
+  "description": "The Knative client kn is your door to the Knative world. It allows you to create Knative resources interactively from the command line or from within scripts.",
+  "version": "1.24.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/knative/client/releases/download/knative-v1.24.0/kn-windows-amd64.exe#/kn.exe",
+      "hash": "9dcaeec0a5c03e24594f144fb4925304c553f0da7cef93ad5a2f3b6ac20f0109"
+    }
+  },
+  "bin": "kn.exe",
+  "checkver": {
+    "github": "https://github.com/knative/client",
+    "regex": "knative-v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/knative/client/releases/download/knative-v$version/kn-windows-amd64.exe#/kn.exe"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/checksums.txt"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\knative.json",
+    "__sourceHash: e6412ad16be3113f38a592ae173947e49483a17c",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261027 20:06:58",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/knative.json"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "version": "1.5",
+  "description": "Executes a batch file without opening the command prompt window.",
+  "homepage": "https://github.com/stbrenner/SilentCMD",
+  "license": "MIT",
+  "url": "https://github.com/stbrenner/SilentCMD/releases/download/v1.5/SilentCMD-1.5.zip",
+  "hash": "a9c635d30a701c3d6975acfe03b0753cfe372381a4c9e6aa5a17e73b23b13647",
+  "bin": "SilentCMD.exe",
+  "persist": "SilentCMD.exe.config",
+  "checkver": "github",
+  "autoupdate": {
+    "url": "https://github.com/stbrenner/SilentCMD/releases/download/v$version/SilentCMD-$version.zip"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\silentcmd.json",
+    "__sourceHash: 2fbb99dfbc39a825d3c65e627dab0e97f5037482",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 260206 10:37:56",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/silentcmd.json"
+  ]
+}

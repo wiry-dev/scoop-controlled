@@ -1,0 +1,36 @@
+{
+  "version": "1.14",
+  "description": "Tool for testing removable media for bad or unstable sectors.",
+  "homepage": "https://www.vconsole.com/download",
+  "license": "Freeware",
+  "url": "https://www.vconsole.com/ckfinder/userfiles/images/files/Flash_Drive_Tester_v114.exe#/dl.7z",
+  "hash": "52296cf464bd1d9e96e12529a57e73593d370e07c7bdbd951e68a0bd37de622e",
+  "installer": {
+    "script": [
+      "Rename-Item \"$dir\\Flash Drive Tester.msi\" 'setup.msi'",
+      "Remove-Item \"$dir\\setup.exe\"",
+      "Start-Process msiexec -ArgumentList @('/i', \"`\"$dir\\setup.msi`\"\", '/qn', '/norestart', \"TARGETDIR=`\"$dir`\"\", \"INSTALLDIR=`\"$dir`\"\") -Wait -Verb RunAs | Out-Null",
+      "Remove-Item \"$([Environment]::GetFolderPath('Desktop'))\\Flash Drive Tester*.lnk\"",
+      "Remove-Item -Recurse \"$([Environment]::GetFolderPath('startmenu'))\\Programs\\Virtual Console\""
+    ]
+  },
+  "uninstaller": {
+    "script": "Start-Process msiexec -ArgumentList @('/x', \"`\"$dir\\setup.msi`\"\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null"
+  },
+  "bin": "FlashTester.exe",
+  "shortcuts": [
+    [
+      "FlashTester.exe",
+      "Flash Drive Tester"
+    ]
+  ],
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-nonportable\\bucket\\flash-drive-tester-np.json",
+    "__sourceHash: 33f858e717da835c54d192411b45c14c0fa62430",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 220824 14:51:50",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Nonportable/master/bucket/flash-drive-tester-np.json"
+  ]
+}

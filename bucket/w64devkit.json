@@ -1,0 +1,45 @@
+{
+  "version": "2.11.0",
+  "description": "Portable C and C++ Development Kit for x64 Windows",
+  "homepage": "https://github.com/skeeto/w64devkit",
+  "license": "Unlicense",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/skeeto/w64devkit/releases/download/v2.11.0/w64devkit-x64-2.11.0.7z.exe#/dl.7z",
+      "hash": "54c2bb9962e8a30c8270e34c5efc3d5fee579f53087fa7d435b95fbba2af7b2b"
+    },
+    "32bit": {
+      "url": "https://github.com/skeeto/w64devkit/releases/download/v2.11.0/w64devkit-x86-2.11.0.7z.exe#/dl.7z",
+      "hash": "f7e8c79eacc4cbdd718a4cbb6519f2f370311017dc08f7750abedb4340d1b65d"
+    }
+  },
+  "extract_dir": "w64devkit",
+  "bin": "w64devkit.exe",
+  "shortcuts": [
+    [
+      "w64devkit.exe",
+      "W64DevKit Command Prompt"
+    ]
+  ],
+  "env_add_path": "bin",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/skeeto/w64devkit/releases/download/v$version/w64devkit-x64-$version.7z.exe#/dl.7z"
+      },
+      "32bit": {
+        "url": "https://github.com/skeeto/w64devkit/releases/download/v$version/w64devkit-x86-$version.7z.exe#/dl.7z"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\w64devkit.json",
+    "__sourceHash: 72a279706fb6a1efe6210791b48f5e0fb2105f68",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261029 04:28:07",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/w64devkit.json"
+  ]
+}

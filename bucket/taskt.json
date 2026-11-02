@@ -1,0 +1,39 @@
+{
+  "version": "3.5.0.0",
+  "description": "A robotic process automation (rpa) client allows to build and design process automation without needing to write application code",
+  "homepage": "https://github.com/saucepleez/taskt",
+  "license": {
+    "identifier": "Apache-2.0",
+    "url": "https://github.com/saucepleez/taskt/blob/master/taskt/LICENSE"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/saucepleez/taskt/releases/download/v3.5.0.0/taskt.v3.5.0.0.zip",
+      "hash": "926018699aefc8ce09e6e9b49c3c6bd96801c9ee315fbc41f537a8a91b9f86bd"
+    }
+  },
+  "extract_dir": "Release",
+  "shortcuts": [
+    [
+      "taskt.exe",
+      "taskt"
+    ]
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/saucepleez/taskt/releases/download/v$version/taskt.$version.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\taskt.json",
+    "__sourceHash: f6213a82948d42869673775385e6ef18bee57ff1",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260526 09:49:37",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/taskt.json"
+  ]
+}

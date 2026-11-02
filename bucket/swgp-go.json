@@ -1,0 +1,37 @@
+{
+  "version": "1.5.0",
+  "description": "A simple WireGuard proxy with minimal overhead for WireGuard traffic.",
+  "homepage": "https://github.com/database64128/swgp-go",
+  "license": "AGPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/database64128/swgp-go/releases/download/v1.5.0/swgp-go-v1.5.0-windows-x86-64-v3.tar.zst",
+      "hash": "0f7dfb0cd714ce2208ed92551e5609a2bf33d07efc54407194f6b2b8395300a2"
+    },
+    "arm64": {
+      "url": "https://github.com/database64128/swgp-go/releases/download/v1.5.0/swgp-go-v1.5.0-windows-arm64.tar.zst",
+      "hash": "3b25de67a7178c04e70c1079fef524d85072fe8ade09224615961885a4534b07"
+    }
+  },
+  "bin": "swgp-go.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/database64128/swgp-go/releases/download/v$version/swgp-go-v$version-windows-x86-64-v3.tar.zst"
+      },
+      "arm64": {
+        "url": "https://github.com/database64128/swgp-go/releases/download/v$version/swgp-go-v$version-windows-arm64.tar.zst"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\swgp-go.json",
+    "__sourceHash: 058c0bdd60026b2306986427eadc4fc04fbfa3ff",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240128 09:29:22",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/swgp-go.json"
+  ]
+}

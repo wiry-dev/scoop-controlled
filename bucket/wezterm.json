@@ -1,0 +1,62 @@
+{
+  "version": "20240203-110809-5046fc22",
+  "description": "GPU-accelerated terminal emulator",
+  "homepage": "https://github.com/wez/wezterm",
+  "license": "Apache-2.0",
+  "notes": [
+    "Add Open with Wezterm as a context menu option by running:",
+    "reg import \"$dir\\install-context.reg\""
+  ],
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-windows-20240203-110809-5046fc22.zip",
+      "hash": "57e5d03b585303d81e8b8e96d1230362852eb39aca92b3b29c7a42cfb82f9ac4"
+    }
+  },
+  "extract_dir": "WezTerm-windows-20240203-110809-5046fc22",
+  "post_install": [
+    "$weztermPath = \"$dir\\wezterm-gui.exe\".Replace('\\', '\\\\')",
+    "'install-context', 'uninstall-context' | ForEach-Object {",
+    "    if (Test-Path \"$bucketsdir\\extras\\scripts\\$app\\$_.reg\") {",
+    "        $content = Get-Content \"$bucketsdir\\extras\\scripts\\$app\\$_.reg\"",
+    "        $content = $content.Replace('$weztermPath', $weztermPath)",
+    "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+    "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
+    "    }",
+    "}"
+  ],
+  "bin": [
+    "wezterm.exe",
+    "wezterm-gui.exe"
+  ],
+  "shortcuts": [
+    [
+      "wezterm-gui.exe",
+      "Wezterm"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/wez/wezterm",
+    "regex": "WezTerm-windows-([\\w-]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/wez/wezterm/releases/download/$version/WezTerm-windows-$version.zip"
+      }
+    },
+    "extract_dir": "WezTerm-windows-$version",
+    "hash": {
+      "url": "$url.sha256"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\wezterm.json",
+    "__sourceHash: 0a4a2345b139d9f0930741b10a9afad154bc3453",
+    "__sourceLastChangeFound: 260129 12:12:00",
+    "__sourceLastUpdated: 250920 16:57:43",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/wezterm.json"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "version": "10.63",
+  "description": "Video game library manager and launcher with support for 3rd party libraries like Steam, GOG, Origin, Battle.net, ...",
+  "homepage": "https://playnite.link",
+  "license": "MIT",
+  "url": "https://github.com/JosefNemec/Playnite/releases/download/10.63/10.63.7z",
+  "hash": "9af9a0db330c97879697beac9f819c16f9f544e712261a83fa4e62a8f9a2c787",
+  "pre_install": [
+    "Copy-Item \"$persist_dir\\config.json\" \"$dir\" -ErrorAction 'SilentlyContinue'",
+    "if (Test-Path \"$persist_dir\\Themes\") {",
+    "    # Only copy themes that does not exist in $dir",
+    "    # This avoids overwriting newer version of themes with the old ones",
+    "    Get-ChildItem \"$persist_dir\\Themes\\Desktop\" | ForEach-Object {",
+    "        if (!(Test-Path \"$dir\\Themes\\Desktop\\$($_.Name)\")) { Copy-Item \"$persist_dir\\Themes\\Desktop\\$($_.Name)\" \"$dir\\Themes\\Desktop\\\" -Recurse }",
+    "    }",
+    "    Get-ChildItem \"$persist_dir\\Themes\\Fullscreen\" | ForEach-Object {",
+    "        if (!(Test-Path \"$dir\\Themes\\Fullscreen\\$($_.Name)\")) { Copy-Item \"$persist_dir\\Themes\\Fullscreen\\$($_.Name)\" \"$dir\\Themes\\Fullscreen\\\" -Recurse }",
+    "    }",
+    "}"
+  ],
+  "pre_uninstall": [
+    "Stop-Process -Name 'Playnite.DesktopApp' -ErrorAction SilentlyContinue",
+    "Copy-Item \"$dir\\config.json\" \"$persist_dir\" -ErrorAction SilentlyContinue -Force",
+    "Copy-Item \"$dir\\themes\" \"$persist_dir\\\" -Recurse -Force -ErrorAction SilentlyContinue"
+  ],
+  "bin": [
+    [
+      "Playnite.DesktopApp.exe",
+      "Playnite"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "Playnite.DesktopApp.exe",
+      "Playnite"
+    ]
+  ],
+  "persist": [
+    "browsercache",
+    "cache",
+    "Extensions",
+    "ExtensionsData",
+    "ExtraMetadata",
+    "library",
+    "Themes"
+  ],
+  "checkver": {
+    "github": "https://api.github.com/repos/JosefNemec/Playnite/releases/latest",
+    "jsonpath": "$..assets[?(@.browser_download_url =~ /download\\/[\\d.]+\\/.*?\\.(?:7z|zip)/)].browser_download_url",
+    "regex": "download/(?<version>[\\d.]+)/(?<file>.*?\\.(?:7z|zip))"
+  },
+  "autoupdate": {
+    "url": "https://github.com/JosefNemec/Playnite/releases/download/$version/$matchFile"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\playnite.json",
+    "__sourceHash: 9d02dcd874dd3fbc546ecfce23f2695ea06e4f9b",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261019 20:32:11",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/playnite.json"
+  ]
+}

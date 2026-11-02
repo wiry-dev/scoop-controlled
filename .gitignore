@@ -1,0 +1,8 @@
+*.sublime-workspace
+*~
+._*
+page.html
+checkver-*.html
+
+# Temporary working folder of scripts/migrate-installers.sh (holds the filled-in Maven settings)
+local/

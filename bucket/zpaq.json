@@ -1,0 +1,32 @@
+{
+  "version": "7.15",
+  "description": "A free and open source incremental, journaling command-line archiver.",
+  "homepage": "http://mattmahoney.net/dc/zpaq.html",
+  "license": "Public Domain",
+  "architecture": {
+    "64bit": {
+      "pre_install": [
+        "Remove-Item -Force \"$dir\\zpaq.exe\"",
+        "Rename-Item -Path \"$dir\\zpaq64.exe\" -NewName 'zpaq.exe'"
+      ]
+    }
+  },
+  "url": "http://mattmahoney.net/dc/zpaq715.zip",
+  "hash": "e85ec2529eb0ba22ceaeabd461e55357ef099b80f61c14f377b429ea3d49d418",
+  "bin": "zpaq.exe",
+  "checkver": {
+    "regex": "zpaq v([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "http://mattmahoney.net/dc/zpaq$cleanVersion.zip"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\zpaq.json",
+    "__sourceHash: cb5473adb12327d6c3fd27232729f5bc7114f89c",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240315 17:58:59",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/zpaq.json"
+  ]
+}

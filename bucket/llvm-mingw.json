@@ -1,0 +1,41 @@
+{
+  "version": "20240917",
+  "description": "An LLVM/Clang/LLD based mingw-w64 toolchain",
+  "homepage": "https://github.com/mstorsjo/llvm-mingw",
+  "license": "ISC",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20240917/llvm-mingw-20240917-ucrt-x86_64.zip",
+      "hash": "7e11dfc9c576046dd2eb37187b6f2fd1ace8f2e2259ee6434174262d62ecaee2",
+      "extract_dir": "llvm-mingw-20240917-ucrt-x86_64"
+    },
+    "32bit": {
+      "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20240917/llvm-mingw-20240917-ucrt-i686.zip",
+      "hash": "ea45344a082098bb57623a6e1fa9b461a6c51e415770ea696d3527e0c0deb6ec",
+      "extract_dir": "llvm-mingw-20240917-ucrt-i686"
+    }
+  },
+  "env_add_path": "bin",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/$cleanVersion/llvm-mingw-$cleanVersion-ucrt-x86_64.zip",
+        "extract_dir": "llvm-mingw-$cleanVersion-ucrt-x86_64"
+      },
+      "32bit": {
+        "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/$cleanVersion/llvm-mingw-$cleanVersion-ucrt-i686.zip",
+        "extract_dir": "llvm-mingw-$cleanVersion-ucrt-i686"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\llvm-mingw.json",
+    "__sourceHash: 5771cfc3d729f914d94fc1ce418664b1bc3a8285",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/llvm-mingw.json"
+  ]
+}

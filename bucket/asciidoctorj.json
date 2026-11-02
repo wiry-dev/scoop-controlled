@@ -1,0 +1,33 @@
+{
+  "version": "3.0.1",
+  "description": "Asciidoctor integration & API for Java and other JVM languages",
+  "homepage": "https://asciidoctor.org/docs/asciidoctorj",
+  "license": "Apache-2.0",
+  "suggest": {
+    "JDK": "java/openjdk"
+  },
+  "url": "https://repo1.maven.org/maven2/org/asciidoctor/asciidoctorj/3.0.1/asciidoctorj-3.0.1-bin.zip",
+  "hash": "18b085b7f67a7f872abe00352be5caacd9b436400aec27f838c6380077cb88bf",
+  "extract_dir": "asciidoctorj-3.0.1",
+  "bin": "bin\\asciidoctorj.bat",
+  "checkver": {
+    "url": "https://repo1.maven.org/maven2/org/asciidoctor/asciidoctorj/maven-metadata.xml",
+    "xpath": "/metadata/versioning/latest"
+  },
+  "autoupdate": {
+    "url": "https://repo1.maven.org/maven2/org/asciidoctor/asciidoctorj/$version/asciidoctorj-$version-bin.zip",
+    "hash": {
+      "url": "$url.sha256"
+    },
+    "extract_dir": "asciidoctorj-$version"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\asciidoctorj.json",
+    "__sourceHash: 0317b0e3ab24d26b620a7eb6afd3e1c936045bed",
+    "__sourceLastChangeFound: 260128 15:47:47",
+    "__sourceLastUpdated: 251106 20:30:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/asciidoctorj.json"
+  ]
+}

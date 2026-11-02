@@ -1,0 +1,66 @@
+{
+  "version": "7.2.5.51704",
+  "description": "Video and audio conferencing, chat, and webinars",
+  "homepage": "https://zoom.us",
+  "license": {
+    "identifier": "Proprietary",
+    "url": "https://zoom.us/terms"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://cdn.zoom.us/prod/7.2.5.51704/x64/ZoomInstallerFull.exe#/dl.7z",
+      "hash": "ca35d25af457db1214bc5f6d4113a4fb0e02c71c76d47dda5d211ca694c397d3",
+      "pre_install": "Expand-7zipArchive \"$dir\\ZoomFull.cab\" -Removal"
+    },
+    "arm64": {
+      "url": "https://cdn.zoom.us/prod/7.2.5.51704/arm64/ZoomInstallerFull.exe#/dl.7z",
+      "hash": "c9dc2f5783957c523f4ae57564baa5d0f8262ee0d04588146e44f0ae040965e9",
+      "pre_install": "Expand-7zipArchive \"$dir\\ZoomFull.cab\" -Removal"
+    }
+  },
+  "post_install": [
+    "Expand-7zipArchive \"$dir\\win10rt.7z\" -Removal",
+    "Remove-Item \"$dir\\Install*\"",
+    "Write-Host \"Registering zoommtg:// protocol handler\"",
+    "$regpath = \"HKCU:\\SOFTWARE\\Classes\\zoommtg\"",
+    "New-Item -Path $regpath -Value \"Zoom (Application Name)\" -Force | Out-Null",
+    "New-ItemProperty -Path $regpath -Name \"URL Protocol\" -PropertyType String -Force | Out-Null",
+    "New-Item -Path \"$regpath\\shell\\open\\command\" -Value \"`\"$dir\\Zoom.exe`\" --url=`\"%1`\"\" -Force| Out-Null"
+  ],
+  "uninstaller": {
+    "script": [
+      "Write-Host \"Unregistering zoommtg:// protocol handler\"",
+      "Remove-Item \"HKCU:\\SOFTWARE\\Classes\\zoommtg\" -Recurse -Force"
+    ]
+  },
+  "bin": "Zoom.exe",
+  "shortcuts": [
+    [
+      "Zoom.exe",
+      "Zoom"
+    ]
+  ],
+  "checkver": {
+    "url": "https://www.zoom.us/rest/download?os=win",
+    "jsonpath": "$.result.downloadVO.zoomX64.version"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://cdn.zoom.us/prod/$version/x64/ZoomInstallerFull.exe#/dl.7z"
+      },
+      "arm64": {
+        "url": "https://cdn.zoom.us/prod/$version/arm64/ZoomInstallerFull.exe#/dl.7z"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\zoom.json",
+    "__sourceHash: fb27006a92e4458c2605226f9a69421b5ad5e4c7",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261031 08:24:39",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/zoom.json"
+  ]
+}

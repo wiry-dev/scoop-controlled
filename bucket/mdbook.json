@@ -1,0 +1,32 @@
+{
+  "version": "0.5.4",
+  "description": "Create a book from markdown files.",
+  "homepage": "https://rust-lang.github.io/mdBook/",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/rust-lang/mdBook/releases/download/v0.5.4/mdbook-v0.5.4-x86_64-pc-windows-msvc.zip",
+      "hash": "8a6b2421aa522de06d746871d2b8fff9c8d71773467e310a4516d2566e7f2de4"
+    }
+  },
+  "bin": "mdbook.exe",
+  "checkver": {
+    "github": "https://github.com/rust-lang/mdBook"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/rust-lang/mdBook/releases/download/v$version/mdbook-v$version-x86_64-pc-windows-msvc.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\mdbook.json",
+    "__sourceHash: 4ad8b83693e53c73579e72e770ae9a73bc28091d",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261009 19:45:57",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/mdbook.json"
+  ]
+}

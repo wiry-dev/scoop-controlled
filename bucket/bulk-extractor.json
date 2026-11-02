@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "description": "A high-performance digital forensics exploitation tool.",
+  "homepage": "https://github.com/simsong/bulk_extractor",
+  "license": {
+    "identifier": "MIT,CC0-1.0",
+    "url": "https://raw.githubusercontent.com/simsong/bulk_extractor/main/LICENSE.md"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://digitalcorpora.s3.amazonaws.com/downloads/bulk_extractor/bulk_extractor-2.0.0-windows.zip",
+      "hash": "58ece0b769bb0785e2e46c23e2bb5bae3e31cd885ba9f249a67f6acccc9c5978",
+      "extract_dir": "win64"
+    }
+  },
+  "pre_install": "Rename-Item \"$dir/bulk_extractor64.exe\" bulk_extractor.exe",
+  "bin": "bulk_extractor.exe",
+  "checkver": {
+    "url": "https://downloads.digitalcorpora.org/downloads/bulk_extractor",
+    "regex": "bulk_extractor-([\\d.]+)-windows\\.zip"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://digitalcorpora.s3.amazonaws.com/downloads/bulk_extractor/bulk_extractor-$version-windows.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\bulk-extractor.json",
+    "__sourceHash: 9f165cb555ad2fe0a1f2647eb8d7dcaa2ab43e86",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 231105 05:00:58",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/bulk-extractor.json"
+  ]
+}

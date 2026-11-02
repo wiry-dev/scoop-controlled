@@ -1,0 +1,53 @@
+{
+  "version": "591.0.0",
+  "description": "Command-line interface for Google Cloud Platform products and services.",
+  "homepage": "https://cloud.google.com/sdk/",
+  "license": "Proprietary",
+  "notes": "To initialize Cloud SDK, you will need to run: 'gcloud init'",
+  "depends": "7zip19.00-helper",
+  "architecture": {
+    "64bit": {
+      "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-591.0.0-windows-x86_64-bundled-python.zip#/dl.zip_",
+      "hash": "f011188d735a63ee5278ce41e6f1a9388dbd17232238be31a1c2cfc39933bada"
+    },
+    "32bit": {
+      "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-591.0.0-windows-x86-bundled-python.zip#/dl.zip_",
+      "hash": "974a7239deafd18d17529d4f060fff224552a6d43d0e038bd03c3a3992c349aa"
+    }
+  },
+  "pre_install": [
+    "Invoke-ExternalCommand 7z1900-helper -ArgumentList @('x', '-bso0', \"$dir\\dl.zip_\", \"-o$dir\") | Out-Null",
+    "Move-Item \"$dir\\google-cloud-sdk\\*\" \"$dir\\\" | Out-Null",
+    "Remove-Item \"$dir\\google-cloud-sdk\", \"$dir\\dl.zip_\" -Force -Recurse"
+  ],
+  "bin": [
+    "bin\\gcloud.cmd",
+    "bin\\gsutil.cmd",
+    "bin\\bq.cmd",
+    "bin\\docker-credential-gcloud.cmd",
+    "bin\\git-credential-gcloud.cmd"
+  ],
+  "checkver": {
+    "url": "https://cloud.google.com/sdk/docs/downloads-versioned-archives",
+    "regex": "google-cloud-sdk-([\\d.]+)-windows-x86_64-bundled"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-$version-windows-x86_64-bundled-python.zip#/dl.zip_"
+      },
+      "32bit": {
+        "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-$version-windows-x86-bundled-python.zip#/dl.zip_"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\gcloud.json",
+    "__sourceHash: 9663bf8d8c13b07a4220adf88b1714c8686bbe76",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261027 20:25:32",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/gcloud.json"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "version": "9.9.3",
+  "description": "A HDD/SSD utility software which supports a part of USB, RAID and NVMe",
+  "homepage": "https://crystalmark.info/en/software/crystaldiskinfo/",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "bin": [
+        [
+          "DiskInfo64.exe",
+          "DiskInfo"
+        ]
+      ],
+      "shortcuts": [
+        [
+          "DiskInfo64.exe",
+          "CrystalDiskInfo"
+        ]
+      ]
+    },
+    "32bit": {
+      "bin": [
+        [
+          "DiskInfo32.exe",
+          "DiskInfo"
+        ]
+      ],
+      "shortcuts": [
+        [
+          "DiskInfo32.exe",
+          "CrystalDiskInfo"
+        ]
+      ]
+    },
+    "arm64": {
+      "bin": [
+        [
+          "DiskInfoA64.exe",
+          "DiskInfo"
+        ]
+      ],
+      "shortcuts": [
+        [
+          "DiskInfoA64.exe",
+          "CrystalDiskInfo"
+        ]
+      ]
+    }
+  },
+  "url": "https://sourceforge.net/projects/crystaldiskinfo/files/9.9.3/CrystalDiskInfo9_9_3.zip",
+  "hash": "sha1:0077fe0b8f75a495543c2bea7e6d8d7f78122293",
+  "pre_install": [
+    "if (!(Test-Path \"$persist_dir\\DiskInfo.ini\")) { New-Item \"$dir\\DiskInfo.ini\" | Out-Null }",
+    "# Manually persist AMD RAID plugins (AMD_RC2t7x64.dll, AMD_RC2t7x86.dll)",
+    "if (Test-Path \"$persist_dir\\AMD_RC2t7*.dll\") { Copy-Item \"$persist_dir\\AMD_RC2t7*.dll\" \"$dir\\\" }"
+  ],
+  "persist": [
+    "Smart",
+    "DiskInfo.ini"
+  ],
+  "pre_uninstall": "if (Test-Path \"$dir\\AMD_RC2t7*.dll\") { Copy-Item \"$dir\\AMD_RC2t7*.dll\" \"$persist_dir\\\" }",
+  "checkver": {
+    "sourceforge": "crystaldiskinfo",
+    "regex": "((\\d+\\.)(\\d+\\.)(\\d+))/CrystalDiskInfo.*.zip"
+  },
+  "autoupdate": {
+    "url": "https://sourceforge.net/projects/crystaldiskinfo/files/$version/CrystalDiskInfo$underscoreVersion.zip"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\crystaldiskinfo.json",
+    "__sourceHash: e92e6ae51ffb7401df184228f9ecd22668d977a1",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261011 12:42:50",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/crystaldiskinfo.json"
+  ]
+}

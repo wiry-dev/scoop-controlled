@@ -1,0 +1,27 @@
+{
+  "version": "0.8.2782.39874",
+  "description": "Alternative launcher for Assetto Corsa named Content Manager, and some utils as well",
+  "homepage": "https://github.com/gro-ove/actools",
+  "license": "MS-PL",
+  "url": "https://github.com/gro-ove/actools/releases/download/v0.8.2782.39874/Content.Manager.zip",
+  "hash": "67998c57fc520946f4041152dc3a1f3d5558d4da8062630e9079e31061a21f68",
+  "shortcuts": [
+    [
+      "Content Manager.exe",
+      "Assetto Corsa Content Manager"
+    ]
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "url": "https://github.com/gro-ove/actools/releases/download/v$version/Content.Manager.zip"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-games\\bucket\\actools.json",
+    "__sourceHash: 0fd2d20c6132babc728e5384868eafe043063be2",
+    "__sourceLastChangeFound: 260129 12:12:00",
+    "__sourceLastUpdated: 251023 20:29:09",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/Calinou/scoop-games/master/bucket/actools.json"
+  ]
+}

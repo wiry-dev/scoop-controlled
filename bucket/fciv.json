@@ -1,0 +1,18 @@
+{
+  "version": "6.0.2800.1106",
+  "description": "A command-prompt utility that computes and verifies cryptographic hash values of files.",
+  "homepage": "https://support.microsoft.com/en-us/kb/841290",
+  "license": "Unknown",
+  "url": "https://raw.githubusercontent.com/ScoopInstaller/Binary/master/fciv/Windows-KB841290-x86-ENU.exe#/dl.7z",
+  "hash": "4b1feea09f35f30943220e8c493a7e590739607a2315559f26b84b3586a5dd54",
+  "bin": "fciv.exe",
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\fciv.json",
+    "__sourceHash: 7d20f48cc87d3a194ff7e4cb9fb85816babbcde3",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261009 17:29:20",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/fciv.json"
+  ]
+}

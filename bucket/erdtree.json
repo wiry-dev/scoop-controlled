@@ -1,0 +1,30 @@
+{
+  "version": "3.1.2",
+  "description": "A multi-threaded file-tree visualizer and disk usage analyzer.",
+  "homepage": "https://github.com/solidiquis/erdtree",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/solidiquis/erdtree/releases/download/v3.1.2/erd-v3.1.2-x86_64-pc-windows-msvc.exe#/erd.exe",
+      "hash": "df359e20e5a38384c27b98667d780c5bd5ab1ce4bac739a5fa9c5ed25511a0a1"
+    }
+  },
+  "bin": "erd.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/solidiquis/erdtree/releases/download/v$version/erd-v$version-x86_64-pc-windows-msvc.exe#/erd.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\erdtree.json",
+    "__sourceHash: 375701a03d28ba9ccb7e53a84420952cc2c26329",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 230702 08:26:57",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/erdtree.json"
+  ]
+}

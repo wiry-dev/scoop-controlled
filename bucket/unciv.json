@@ -1,0 +1,43 @@
+{
+  "version": "4.22.16",
+  "homepage": "https://github.com/yairm210/UnCiv",
+  "description": "Open source, mod-friendly Android + Desktop remake of Civ V, made with LibGDX",
+  "license": "MPL-2.0",
+  "suggest": {
+    "Java Runtime Environment": "java/temurin-jre"
+  },
+  "url": "https://github.com/yairm210/Unciv/releases/download/4.22.16/Unciv-Windows64.zip",
+  "hash": "c87e55a9742070b45f54ce6c47e99ec70906dabd8e7b45f5de5cf093446c1412",
+  "pre_install": [
+    "if (!(Test-Path \"$persist_dir\\GameSettings.json\")) {",
+    "New-Item \"$dir\\GameSettings.json\" -Value '{resolution:1200x800,windowState:{width:1920,height:1080},isFreshlyCreated:true,multiplayer:{userId:},version:1}' | Out-Null",
+    "}"
+  ],
+  "bin": "Unciv.exe",
+  "shortcuts": [
+    [
+      "Unciv.exe",
+      "Unciv - FOSS Civ V"
+    ]
+  ],
+  "persist": [
+    "GameSettings.json",
+    "SaveFiles"
+  ],
+  "checkver": {
+    "url": "https://api.github.com/repos/yairm210/UnCiv/releases",
+    "jsonpath": "$[?(@.prerelease == false && @.assets[?(@.name == 'Unciv-Windows64.zip')])].tag_name"
+  },
+  "autoupdate": {
+    "url": "https://github.com/yairm210/Unciv/releases/download/$version/Unciv-Windows64.zip"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-games\\bucket\\unciv.json",
+    "__sourceHash: 176e0219a2ee494c086fef3e0b8a9d41ea23b2fa",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261031 23:26:21",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/Calinou/scoop-games/master/bucket/unciv.json"
+  ]
+}

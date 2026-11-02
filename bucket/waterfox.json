@@ -1,0 +1,66 @@
+{
+  "version": "6.7.7",
+  "description": "The 100% fresh, free-range, ethical browser",
+  "homepage": "https://www.waterfox.net",
+  "license": "MPL-2.0",
+  "notes": [
+    "To set profile 'Scoop' as *DEFAULT*, or profiles/settings was lost after update:",
+    "  - Run 'Waterfox Profile Manager', choose 'Scoop' then click 'Start Waterfox'.",
+    "  - Visit 'about:profiles' page in Waterfox to check *DEFAULT* profile.",
+    "For details: https://support.mozilla.org/en-US/kb/profile-manager-create-remove-switch-firefox-profiles",
+    "For Waterfox Classic, please install 'waterfox-classic'."
+  ],
+  "architecture": {
+    "64bit": {
+      "url": "https://cdn1.waterfox.net/waterfox/releases/6.7.7/WINNT_x86_64/Waterfox%20Setup%206.7.7.exe#/dl.7z",
+      "hash": "sha512:388f2aa60e7ff2bb608699f75179deed65e7c61a54ef84d3bd69010e54a80dd5a2055f2b6de202ada1ebc2ba60d729725102f236739edb7908450b98abd8a540"
+    }
+  },
+  "extract_dir": "core",
+  "post_install": [
+    "waterfox -CreateProfile \"Scoop $persist_dir\\profile\"",
+    "$Addition = \"$persist_dir\\addition\"",
+    "if (Test-Path $Addition) {",
+    "  info 'Copying additional items...'",
+    "  Copy-Item -Path $Addition\\* -Destination $dir -Force -Recurse -ErrorAction SilentlyContinue",
+    "}"
+  ],
+  "bin": "waterfox.exe",
+  "shortcuts": [
+    [
+      "waterfox.exe",
+      "Waterfox"
+    ],
+    [
+      "waterfox.exe",
+      "Waterfox Profile Manager",
+      "-P"
+    ]
+  ],
+  "persist": [
+    "distribution",
+    "profile"
+  ],
+  "checkver": {
+    "github": "https://github.com/BrowserWorks/Waterfox"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://cdn1.waterfox.net/waterfox/releases/$version/WINNT_x86_64/Waterfox%20Setup%20$version.exe#/dl.7z",
+        "hash": {
+          "url": "$url.sha512"
+        }
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\waterfox.json",
+    "__sourceHash: 130fc6d5211b54fa5bb12dfba5b6de7b2f70ad04",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261027 12:45:16",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/waterfox.json"
+  ]
+}

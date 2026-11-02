@@ -1,0 +1,44 @@
+{
+  "version": "4.9.0",
+  "description": "Powerful markdown editor",
+  "homepage": "https://www.zettlr.com",
+  "license": "GPL-3.0-or-later",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/Zettlr/Zettlr/releases/download/v4.9.0/Zettlr-4.9.0-x64.exe#/dl.7z",
+      "hash": "ffccfcbdd71531fd7a6d4805ea9c199d75c2b4e023ee73df9b3bf6e20cdb5068",
+      "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
+      ]
+    }
+  },
+  "shortcuts": [
+    [
+      "Zettlr.exe",
+      "Zettlr"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/Zettlr/Zettlr"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/Zettlr/Zettlr/releases/download/v$version/Zettlr-$version-x64.exe#/dl.7z"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/SHA256SUMS.txt"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\zettlr.json",
+    "__sourceHash: b5f192b544b99b2ad8266096dd865db90d2727e0",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261025 08:35:04",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/zettlr.json"
+  ]
+}

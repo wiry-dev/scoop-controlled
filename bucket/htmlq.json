@@ -1,0 +1,30 @@
+{
+  "version": "0.4.0",
+  "description": "Like jq, but for HTML. (Uses CSS selectors to extract bits of content from HTML files)",
+  "homepage": "https://github.com/mgdm/htmlq",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-windows.zip",
+      "hash": "58b9bb55279da2a58acd1465e0448cc9556e280f8208f60a5f669b2bd4617005"
+    }
+  },
+  "bin": "htmlq.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/mgdm/htmlq/releases/download/v$version/htmlq-x86_64-windows.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\htmlq.json",
+    "__sourceHash: dc6ca8da579266c3cd2e06eeba4cdb7d07359d8e",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 220104 00:32:14",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/htmlq.json"
+  ]
+}

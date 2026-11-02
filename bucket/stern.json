@@ -1,0 +1,40 @@
+{
+  "version": "1.35.0",
+  "description": "Multi pod and container log tailing for Kubernetes",
+  "homepage": "https://github.com/stern/stern",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/stern/stern/releases/download/v1.35.0/stern_1.35.0_windows_amd64.tar.gz",
+      "hash": "86944902f0f6e0b97a5e487cd77a216c34795df45fc8d753f61b765689f6e24f"
+    },
+    "arm64": {
+      "url": "https://github.com/stern/stern/releases/download/v1.35.0/stern_1.35.0_windows_arm64.tar.gz",
+      "hash": "a3d0f45c533b460dc873e85e0a36b1cf783d64df893a7bcc07fc2a75c05e1b26"
+    }
+  },
+  "bin": "stern.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/stern/stern/releases/download/v$version/stern_$version_windows_amd64.tar.gz"
+      },
+      "arm64": {
+        "url": "https://github.com/stern/stern/releases/download/v$version/stern_$version_windows_arm64.tar.gz"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/checksums.txt"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\stern.json",
+    "__sourceHash: a83c2eb8cbfee1749b3f57dbf7302efe7fb7671d",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261022 16:35:00",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/stern.json"
+  ]
+}

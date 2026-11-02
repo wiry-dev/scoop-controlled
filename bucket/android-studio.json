@@ -1,0 +1,46 @@
+{
+  "version": "2025.2.3.9",
+  "description": "The official IDE for Android development, which includes everything you need to build Android apps.",
+  "homepage": "https://developer.android.com/studio",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://developer.android.com/studio/terms.html"
+  },
+  "suggest": {
+    "Android SDK": "main/android-clt"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2025.2.3.9/android-studio-2025.2.3.9-windows.zip",
+      "hash": "23b46808caaf81eac207d7c9a81d012b32788f65b51de43e061e27f08024960b",
+      "shortcuts": [
+        [
+          "bin\\studio64.exe",
+          "Android Studio"
+        ]
+      ]
+    }
+  },
+  "extract_dir": "android-studio",
+  "checkver": "android-studio-([\\d.]+)-windows\\.zip",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/$version/android-studio-$version-windows.zip",
+        "hash": {
+          "url": "https://developer.android.com/studio",
+          "regex": "(?sm)$basename.*?$sha256"
+        }
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\android-studio.json",
+    "__sourceHash: aba53f4dc0d6acaf7afedb2d84d35034537b065d",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261028 16:29:53",
+    "__sourceLicenceOpen: false",
+    "__sourceState: license-change-lock",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/android-studio.json"
+  ]
+}

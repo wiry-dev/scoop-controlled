@@ -1,0 +1,59 @@
+{
+  "version": "0.38.1",
+  "description": "Docker CLI plugin for extended build capabilities with BuildKit",
+  "homepage": "https://docs.docker.com/build/",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/docker/buildx/releases/download/v0.38.1/buildx-v0.38.1.windows-amd64.exe#/docker-buildx.exe",
+      "hash": "fd2e18501910dd535ea3aa7f69010b3cfdfba0f47aa27674124554386dfa26f3"
+    },
+    "arm64": {
+      "url": "https://github.com/docker/buildx/releases/download/v0.38.1/buildx-v0.38.1.windows-arm64.exe#/docker-buildx.exe",
+      "hash": "2d4e2e78d7ddf0ea6d63acde7e73599717e94e3f9417edd23d4ffeceef6777fc"
+    }
+  },
+  "bin": "docker-buildx.exe",
+  "post_install": [
+    "$docker_plugin_dir=(Join-Path $Env:USERPROFILE .docker/cli-plugins)",
+    "if ($global) {",
+    "  $docker_plugin_dir=(Join-Path $Env:ProgramData Docker/cli-plugins)",
+    "  echo \"INFO: docker-buildx will be installed to global directory $docker_plugin_dir\"",
+    "}",
+    "echo 'Installing docker-buildx as docker-cli plugin...'",
+    "New-Item -ItemType Directory -Force $docker_plugin_dir | Out-Null",
+    "Copy-Item (Join-Path $original_dir docker-buildx.exe) (Join-Path $docker_plugin_dir docker-buildx.exe)"
+  ],
+  "post_uninstall": [
+    "$docker_plugin_dir=(Join-Path $Env:USERPROFILE .docker/cli-plugins)",
+    "if ($global) {",
+    "  $docker_plugin_dir=(Join-Path $Env:ProgramData Docker/cli-plugins)",
+    "}",
+    "Remove-Item -Force (Join-Path $docker_plugin_dir docker-buildx.exe)"
+  ],
+  "checkver": {
+    "github": "https://github.com/docker/buildx"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/docker/buildx/releases/download/v$version/buildx-v$version.windows-amd64.exe#/docker-buildx.exe"
+      },
+      "arm64": {
+        "url": "https://github.com/docker/buildx/releases/download/v$version/buildx-v$version.windows-arm64.exe#/docker-buildx.exe"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/checksums-signed.txt"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\docker-buildx.json",
+    "__sourceHash: 098eb05ee09bc9fcf298a112e80ef780ab2c18a2",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261021 01:01:17",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/docker-buildx.json"
+  ]
+}

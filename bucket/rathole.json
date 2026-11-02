@@ -1,0 +1,30 @@
+{
+  "version": "0.5.0",
+  "description": "A lightweight and high-performance reverse proxy for NAT traversal, written in Rust. An alternative to frp and ngrok.",
+  "homepage": "https://github.com/rapiz1/rathole",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/rapiz1/rathole/releases/download/v0.5.0/rathole-x86_64-pc-windows-msvc.zip",
+      "hash": "2f3b4900a63d32a14e1578b2de68f78daad89b7c47b9388c26d922962faef430"
+    }
+  },
+  "bin": "rathole.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/rapiz1/rathole/releases/download/v$version/rathole-x86_64-pc-windows-msvc.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\rathole.json",
+    "__sourceHash: 123711e6d8bca1dbbe56223912f662c9a4610dee",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260622 08:35:44",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/rathole.json"
+  ]
+}

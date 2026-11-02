@@ -1,0 +1,41 @@
+{
+  "version": "2025-08-13T08-35-41Z",
+  "description": "A high performance, distributed object storage server, designed for large-scale data infrastructure. (client)",
+  "homepage": "https://min.io/",
+  "license": "Apache-2.0",
+  "suggest": {
+    "minio": "minio"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://dl.min.io/client/mc/release/windows-amd64/archive/mc.RELEASE.2025-08-13T08-35-41Z#/mc.exe",
+      "hash": "c8db13ebeda31497f354c0e950809db0ae9b2a2a69b8afee68c128c37300c157"
+    }
+  },
+  "bin": "mc.exe",
+  "checkver": {
+    "github": "https://github.com/minio/mc",
+    "regex": "releases/tag/RELEASE\\.([\\d-]+T[\\d-]+Z)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://dl.min.io/client/mc/release/windows-amd64/archive/mc.RELEASE.$version#/mc.exe"
+      }
+    },
+    "hash": {
+      "url": "$url.sha256sum"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\minio-client.json",
+    "__sourceComment: Changed to proprietary licence",
+    "__sourceHash: 9124d2510a9d832fca933f3f008d8c15f16d2d1d",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261015 18:27:47",
+    "__sourceLicenceOpen: true",
+    "__sourceNotes: ",
+    "__sourceState: frozen",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/minio-client.json"
+  ]
+}

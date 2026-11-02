@@ -1,0 +1,32 @@
+{
+  "version": "5.0.2",
+  "description": "Command-line tool that gives easy access to all of the capabilities of B2 Cloud Storage",
+  "homepage": "https://www.backblaze.com/b2/docs/quick_command_line.html",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/Backblaze/B2_Command_Line_Tool/releases/download/v5.0.2/b2-windows.exe#/b2.exe",
+      "hash": "d6e5b1c0918c2755fc8c14eb5b5aa698c36b43d3fdc18fca13ea163d829bbbbb"
+    }
+  },
+  "bin": "b2.exe",
+  "checkver": {
+    "github": "https://github.com/Backblaze/B2_Command_Line_Tool"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/Backblaze/B2_Command_Line_Tool/releases/download/v$version/b2-windows.exe#/b2.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\b2.json",
+    "__sourceHash: e13fbe6ad35dee5abce8aff08486201a58ee699a",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261023 12:41:01",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/b2.json"
+  ]
+}

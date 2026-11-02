@@ -1,0 +1,44 @@
+{
+  "version": "1.6.8",
+  "description": "A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed",
+  "homepage": "https://github.com/Vencord/Vesktop",
+  "license": "GPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/Vencord/Vesktop/releases/download/v1.6.8/Vesktop-1.6.8-win.zip",
+      "hash": "8ffa8d3778c287551ee0b302b3396acd2fac45931282071048bb881b67c88286"
+    },
+    "arm64": {
+      "url": "https://github.com/Vencord/Vesktop/releases/download/v1.6.8/Vesktop-1.6.8-arm64-win.zip",
+      "hash": "09a29c4872a3f92da056d85a71d91c66b9751e6dc519c734f970d79c12411a5e"
+    }
+  },
+  "bin": "Vesktop.exe",
+  "shortcuts": [
+    [
+      "Vesktop.exe",
+      "Vencord Desktop"
+    ]
+  ],
+  "persist": "Data",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/Vencord/Vesktop/releases/download/v$version/Vesktop-$version-win.zip"
+      },
+      "arm64": {
+        "url": "https://github.com/Vencord/Vesktop/releases/download/v$version/Vesktop-$version-arm64-win.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\vesktop.json",
+    "__sourceHash: 0a1b61a345cf23d9b128055cfe1d52f932b491fb",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261022 01:00:09",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/vesktop.json"
+  ]
+}

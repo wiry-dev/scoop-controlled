@@ -1,0 +1,43 @@
+{
+  "version": "0.7.2.5",
+  "description": "Secure, collaborative notebook.",
+  "homepage": "https://turtlapp.com/",
+  "license": "GPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/turtl/desktop/releases/download/v0.7.2.5/turtl-0.7.2.5-windows64.msi",
+      "hash": "d87fc0d89839ad73857ee15ee417d26ca9ba1c9d0cd15cc54d90cb1484a95fca"
+    }
+  },
+  "extract_dir": "PFiles\\Turtl",
+  "bin": "turtl.exe",
+  "shortcuts": [
+    [
+      "turtl.exe",
+      "Turtl"
+    ]
+  ],
+  "checkver": {
+    "url": "https://turtlapp.com/download/",
+    "regex": "/turtl-([\\d.]+)-windows64"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/turtl/desktop/releases/download/v$version/turtl-$version-windows64.msi"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/desktop.sha256sums"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\turtl.json",
+    "__sourceHash: 7c4803269dc6acd5053beeebea48a296fa57e77d",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 190807 09:15:05",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/turtl.json"
+  ]
+}

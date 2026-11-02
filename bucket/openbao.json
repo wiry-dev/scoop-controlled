@@ -1,0 +1,40 @@
+{
+  "version": "2.0.1",
+  "description": "An open source, community-driven fork of Vault managed by the Linux Foundation.",
+  "homepage": "https://openbao.org",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/openbao/openbao/releases/download/v2.0.1/bao_2.0.1_Windows_x86_64.zip",
+      "hash": "eaed81492b3b7bde490c857606e3951cc3481e246984e29d4a7178fccbe0f52a"
+    },
+    "arm64": {
+      "url": "https://github.com/openbao/openbao/releases/download/v2.0.1/bao_2.0.1_Windows_arm64.zip",
+      "hash": "e2e4aaf26815f1ce4a4a8dc1228eb305c4285fe9338e3e9a2a08066b5643701d"
+    }
+  },
+  "bin": "bao.exe",
+  "checkver": {
+    "url": "https://github.com/openbao/openbao/releases.atom",
+    "regex": "Repository/\\d+/v([\\d.]+.*?)<"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/openbao/openbao/releases/download/v$version/bao_$version_Windows_x86_64.zip"
+      },
+      "arm64": {
+        "url": "https://github.com/openbao/openbao/releases/download/v$version/bao_$version_Windows_arm64.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\openbao.json",
+    "__sourceHash: 83baeb52064744d1274337ea600a069af9bd6fbd",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/openbao.json"
+  ]
+}

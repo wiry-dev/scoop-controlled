@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "description": "Highly configurable prompt builder for Bash, ZSH and PowerShell written in Go.",
+  "homepage": "https://github.com/jtyr/gbt",
+  "license": "MIT",
+  "suggest": {
+    "NerdFont": "nerd-fonts/DejaVuSansMono-NF"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/jtyr/gbt/releases/download/v2.0.0/gbt-2.0.0-windows-amd64.zip",
+      "hash": "cb777db5299da8187f1e94cc5389c980e92f56c1030d6c850724410b87b983d9"
+    },
+    "32bit": {
+      "url": "https://github.com/jtyr/gbt/releases/download/v2.0.0/gbt-2.0.0-windows-386.zip",
+      "hash": "92d0ea961153e82fc63441f4bb9096c0512ac4d142cf81920c526c299b2da2c9"
+    }
+  },
+  "extract_dir": "gbt-2.0.0",
+  "bin": "gbt.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/jtyr/gbt/releases/download/v$version/gbt-$version-windows-amd64.zip"
+      },
+      "32bit": {
+        "url": "https://github.com/jtyr/gbt/releases/download/v$version/gbt-$version-windows-386.zip"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/gbt-$version-checksums-sha256.txt"
+    },
+    "extract_dir": "gbt-$version"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\gbt.json",
+    "__sourceHash: 587e4833d7446d56c002b6cf79a1c06ba521a0de",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 200914 06:25:13",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/gbt.json"
+  ]
+}

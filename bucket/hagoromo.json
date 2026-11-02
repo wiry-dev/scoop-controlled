@@ -1,0 +1,40 @@
+{
+  "version": "0.36.0",
+  "description": "A multi-column Bluesky client",
+  "homepage": "https://github.com/ioriayane/Hagoromo",
+  "license": "MIT",
+  "suggest": {
+    "vcredist-aio": "extras/vcredist-aio"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/ioriayane/Hagoromo/releases/download/v0.36.0/hagoromo_0.36.0_windows.zip",
+      "hash": "e72d346537d6eed94f9e2c8d0b1d03aa48f677b354cd7fd7fbab5e45ca650802",
+      "extract_dir": "hagoromo",
+      "pre_install": "Remove-Item \"$dir/vc_redist.x64.exe\""
+    }
+  },
+  "shortcuts": [
+    [
+      "Hagoromo.exe",
+      "Hagoromo"
+    ]
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/ioriayane/Hagoromo/releases/download/v$version/hagoromo_$version_windows.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\hagoromo.json",
+    "__sourceHash: 8890bdec2ccb8927a936204f7114f0a15b261076",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/hagoromo.json"
+  ]
+}

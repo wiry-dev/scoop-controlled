@@ -1,0 +1,95 @@
+{
+  "version": "1.25.2733.0",
+  "description": "The new Windows Terminal, and the original Windows console host - all in the same place!",
+  "homepage": "https://github.com/microsoft/terminal",
+  "license": "MIT",
+  "notes": "Add Windows Terminal as a context menu option by running `reg import \"$dir\\install-context.reg\"`",
+  "suggest": {
+    "vcredist": "extras/vcredist2022"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/microsoft/terminal/releases/download/v1.25.2733.0/Microsoft.WindowsTerminal_1.25.2733.0_x64.zip",
+      "hash": "bf3ef2012f6c44d8340a4c58125acc9498d19b580f9890dc043cdf831852e796"
+    },
+    "32bit": {
+      "url": "https://github.com/microsoft/terminal/releases/download/v1.25.2733.0/Microsoft.WindowsTerminal_1.25.2733.0_x86.zip",
+      "hash": "39ec034dae2b207f3325d7e630d9a46cff291b7f1e14c7c529448d88c1830ca2"
+    },
+    "arm64": {
+      "url": "https://github.com/microsoft/terminal/releases/download/v1.25.2733.0/Microsoft.WindowsTerminal_1.25.2733.0_arm64.zip",
+      "hash": "11b4fe264ecaa71b08cd84195536f68c669808155338e9f47f4da668b4cf0e26"
+    }
+  },
+  "extract_dir": "terminal-1.25.2733.0",
+  "pre_install": [
+    "# Remove this hint in 2023-12-01",
+    "$settings_path = \"$env:LOCALAPPDATA\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\"",
+    "if (!(Test-Path \"$persist_dir\\settings\") -and (Test-Path $settings_path)) {",
+    "  $current_setings = $dir.Replace($version, 'current') + \"\\settings\"",
+    "  warn \"Portable mode is enabled from version 1.17.11391.0, please migrate the settings manually:\"",
+    "  warn \"Original settings dir: `'$settings_path`'\"",
+    "  warn \"Portable settings dir: `'$current_setings`'\"",
+    "}"
+  ],
+  "installer": {
+    "script": [
+      "$winVer = [Environment]::OSVersion.Version",
+      "if (($winver.Major -lt '10') -or ($winVer.Build -lt 19041)) { warn 'At least Windows 10 20H1 (build 19041) is required.' }",
+      "if (!(Test-Path \"$persist_dir\\.portable\")) { Add-Content \"$dir\\.portable\" '' -Encoding Ascii }"
+    ]
+  },
+  "post_install": [
+    "'install-context', 'uninstall-context' | ForEach-Object {",
+    "    if (Test-Path \"$bucketsdir\\extras\\scripts\\windows-terminal\\$_.reg\") {",
+    "        $wtPath = \"$dir\\wt.exe\".Replace('\\', '\\\\')",
+    "        $content = (Get-Content \"$bucketsdir\\extras\\scripts\\windows-terminal\\$_.reg\").Replace('$wt', $wtPath)",
+    "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+    "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
+    "    }",
+    "}"
+  ],
+  "bin": [
+    "WindowsTerminal.exe",
+    "wt.exe"
+  ],
+  "shortcuts": [
+    [
+      "WindowsTerminal.exe",
+      "Windows Terminal"
+    ]
+  ],
+  "persist": [
+    ".portable",
+    "settings"
+  ],
+  "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_$version_x64.zip"
+      },
+      "32bit": {
+        "url": "https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_$version_x86.zip"
+      },
+      "arm64": {
+        "url": "https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_$version_arm64.zip"
+      }
+    },
+    "hash": {
+      "url": "https://github.com/microsoft/terminal/releases/tag/v$version",
+      "regex": "(?s)$basename.*?$sha256"
+    },
+    "extract_dir": "terminal-$version"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\windows-terminal.json",
+    "__sourceHash: 4c006bc2a462dbccd2aa71d1e811933482e4748f",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261002 20:31:29",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/windows-terminal.json"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "version": "1.0.1338+932252c8a1",
+  "description": "Microsoft Dev Tunnels provides developers secure tunnels to share local web services.",
+  "homepage": "https://aka.ms/devtunnels/docs",
+  "license": {
+    "identifier": "MIT",
+    "url": "https://aka.ms/devtunnels/tos"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://tunnelsassetsprod.blob.core.windows.net/cli/1.0.1338+932252c8a1/devtunnel.exe",
+      "hash": "cb2d8470a77930221f23415a57bc5d6901b89de6c091a3cfbc563e4bf0e7b4eb"
+    }
+  },
+  "bin": "devtunnel.exe",
+  "checkver": {
+    "url": "https://tunnelsassetsprod.blob.core.windows.net/cli/cli-version.json",
+    "jsonpath": "$.version"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://tunnelsassetsprod.blob.core.windows.net/cli/$version/devtunnel.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\devtunnel.json",
+    "__sourceHash: c55b6ed4e39ce1c91f6c95d6bf0907a3467da8d2",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/devtunnel.json"
+  ]
+}

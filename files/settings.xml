@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  Maven settings template used by scripts/migrate-installers.sh to upload installers to an artifact repository.
+  The @@NAME@@ tokens are replaced from the script's settings (environment variables or command-line options of the
+  same names); see scripts/installer-config.sh. No real hosts or credentials belong in this file.
+-->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <interactiveMode>false</interactiveMode>
+  <mirrors>
+    <mirror>
+      <id>mirror</id>
+      <name>Artifact Repository Mirror</name>
+      <url>@@REPO_MIRROR_URL@@</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+  <profiles>
+    <profile>
+      <id>repositories</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <!-- NOTE: These ARE required. Without these, the maven-dependency-plugin:copy goal will not go to the mirror to resolve dependencies, creating build-agent-state dependent builds -->
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+        <repository>
+            <id>@@REPO_ID@@</id>
+            <url>@@REPO_UPLOAD_URL@@/</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+      </repositories>
+
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+
+      <properties>
+        <base-repository>@@REPO_URL@@/repository/</base-repository>
+        <downloadSources>true</downloadSources>
+        <downloadJavadocs>true</downloadJavadocs>
+      </properties>
+    </profile>
+  </profiles>
+  <servers>
+    <server>
+      <id>@@REPO_ID@@</id>
+      <username>@@REPO_USERNAME@@</username>
+      <password>@@REPO_PASSWORD@@</password>
+    </server>
+    <server>
+      <id>mirror</id>
+      <username>@@REPO_USERNAME@@</username>
+      <password>@@REPO_PASSWORD@@</password>
+    </server>
+  </servers>
+</settings>

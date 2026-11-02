@@ -1,0 +1,44 @@
+{
+  "version": "2.12.0",
+  "description": "Multi-Platform Package Manager for Stable Diffusion",
+  "homepage": "https://lykos.ai",
+  "license": "AGPL-3.0-or-later",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/LykosAI/StabilityMatrix/releases/download/v2.12.0/StabilityMatrix-win-x64.zip",
+      "hash": "09671990c775d5aeb1149379eee1ec9d678e605ca9c2f44f99f33023f67a1845"
+    }
+  },
+  "post_install": [
+    "if (!(Test-Path \"$persist_dir\\Data\\.sm-portable\")) {",
+    "    New-Item \"$persist_dir\\Data\\.sm-portable\" | Out-Null",
+    "}"
+  ],
+  "bin": "StabilityMatrix.exe",
+  "shortcuts": [
+    [
+      "StabilityMatrix.exe",
+      "StabilityMatrix"
+    ]
+  ],
+  "persist": "Data",
+  "checkver": {
+    "github": "https://github.com/LykosAI/StabilityMatrix"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/LykosAI/StabilityMatrix/releases/download/v$version/StabilityMatrix-win-x64.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\stabilitymatrix.json",
+    "__sourceHash: 66520890faa0dcc784f45d2c09f2268eb2b1f2f4",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/stabilitymatrix.json"
+  ]
+}

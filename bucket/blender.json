@@ -1,0 +1,74 @@
+{
+  "version": "5.2.3",
+  "description": "3D creation suite",
+  "homepage": "https://www.blender.org",
+  "license": "GPL-3.0-or-later",
+  "architecture": {
+    "64bit": {
+      "url": "https://download.blender.org/release/Blender5.2/blender-5.2.3-windows-x64.zip",
+      "hash": "723f08a4401502561eb763cdeacf8745b31e5f3f154d287d3830d97cf75dc2fb",
+      "extract_dir": "blender-5.2.3-windows-x64"
+    },
+    "arm64": {
+      "url": "https://download.blender.org/release/Blender5.2/blender-5.2.3-windows-arm64.zip",
+      "hash": "a539e484b1200e4a2e463560eb1672b60de846850af0e867b52a08607b910698",
+      "extract_dir": "blender-5.2.3-windows-arm64"
+    }
+  },
+  "bin": [
+    "blender-launcher.exe",
+    "blender.exe"
+  ],
+  "shortcuts": [
+    [
+      "blender-launcher.exe",
+      "Blender"
+    ]
+  ],
+  "persist": "portable",
+  "checkver": {
+    "url": "https://download.blender.org/release/",
+    "script": [
+      "try {",
+      "    $baseVersion = [regex]::Matches($page, 'href=\"Blender(?<version>\\d+\\.\\d+)/\"') | ForEach-Object {",
+      "        [version]\"$($_.Groups['version'].Value)\"",
+      "    } | Sort-Object -Descending | Select-Object -First 1",
+      "    if (-not $baseVersion) { throw 'No base version found' }",
+      "    $latestVersion = (Invoke-WebRequest -Uri \"https://download.blender.org/release/Blender$($baseVersion.Major).$($baseVersion.Minor)/\" -UseBasicParsing).Links | ForEach-Object {",
+      "        if ($_.href -match '^blender-(?<version>\\d+\\.\\d+\\.\\d+)-windows-x64\\.zip$') {",
+      "            [version]$Matches['version']",
+      "        }",
+      "    } | Sort-Object -Descending | Select-Object -First 1",
+      "    Write-Output $latestVersion",
+      "}",
+      "catch {",
+      "    Write-Output ''",
+      "}"
+    ],
+    "regex": "(\\d+\\.\\d+\\.\\d+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://download.blender.org/release/Blender$majorVersion.$minorVersion/blender-$version-windows-x64.zip",
+        "extract_dir": "blender-$version-windows-x64"
+      },
+      "arm64": {
+        "url": "https://download.blender.org/release/Blender$majorVersion.$minorVersion/blender-$version-windows-arm64.zip",
+        "extract_dir": "blender-$version-windows-arm64"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/blender-$version.sha256"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\blender.json",
+    "__sourceHash: b31e39c1c7f37ae74f29629e851f377d53969e91",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261022 08:40:45",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/blender.json"
+  ]
+}

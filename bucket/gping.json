@@ -1,0 +1,33 @@
+{
+  "version": "1.21.0",
+  "description": "Ping, but with a graph",
+  "homepage": "https://github.com/orf/gping",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/orf/gping/releases/download/gping-v1.21.0/gping-Windows-msvc-x86_64.zip",
+      "hash": "0de92fab46f4de8ac63f6d3247e9426bf430fae08d231bb513987dc7ea5b331d"
+    }
+  },
+  "bin": "gping.exe",
+  "checkver": {
+    "github": "https://github.com/orf/gping",
+    "regex": "gping-v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/orf/gping/releases/download/gping-v$version/gping-Windows-msvc-x86_64.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\gping.json",
+    "__sourceHash: 348d20e59bb5694d1cb3ef2e39a8d9f2863f4810",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260831 20:28:29",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/gping.json"
+  ]
+}

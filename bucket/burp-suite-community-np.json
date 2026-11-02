@@ -1,0 +1,44 @@
+{
+  "version": "2026.1.2",
+  "homepage": "https://portswigger.net/burp",
+  "description": "An application that comes with set of tools used for penetration and security testing of web applications.",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://portswigger.net/legal"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://portswigger-cdn.net/burp/releases/download?product=community&version=2026.1.2&type=WindowsX64#/setup.exe",
+      "hash": "61d9db13f521372c44217a5c4fc67aa560cd29898be98290cb6ecaa7de9b67d9"
+    }
+  },
+  "post_install": [
+    "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+    "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList @('-q', '-dir', \"$dir\"); Remove-Item \"$dir\\setup.exe\""
+  ],
+  "pre_uninstall": [
+    "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+    "Start-Process \"$dir\\uninstall.exe\" -Wait -Verb 'RunAs' -ArgumentList '-q'; Start-Sleep -Seconds 4"
+  ],
+  "checkver": {
+    "url": "https://portswigger.net/burp/releases/data",
+    "jsonpath": "$.ResultSet.Results..version",
+    "regex": "([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://portswigger-cdn.net/burp/releases/download?product=community&version=$version&type=WindowsX64#/setup.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-nonportable\\bucket\\burp-suite-community-np.json",
+    "__sourceHash: 618489456ff05eb0aad51592e8b88bad87ba56d1",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261027 14:40:15",
+    "__sourceLicenceOpen: false",
+    "__sourceState: license-change-lock",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Nonportable/master/bucket/burp-suite-community-np.json"
+  ]
+}

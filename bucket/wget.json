@@ -1,0 +1,42 @@
+{
+  "version": "1.25.0",
+  "description": "A command-line utility for retrieving files using HTTP, HTTPS, FTP, and FTPS protocols.",
+  "homepage": "https://eternallybored.org/misc/wget/",
+  "license": "GPL-3.0-or-later",
+  "depends": "cacert",
+  "architecture": {
+    "64bit": {
+      "url": "https://eternallybored.org/misc/wget/releases/wget-1.25.0-win64.zip",
+      "hash": "7567cbc08a1616931162b1c05f1731316853c32c79a21af1e850ccb673d1620c"
+    },
+    "32bit": {
+      "url": "https://eternallybored.org/misc/wget/releases/wget-1.25.0-win32.zip",
+      "hash": "eecf22b30964f157734049a751b0a43f11523cc6f1c1a8299921ddbf250a1dfb"
+    }
+  },
+  "post_install": "\"ca_certificate=$(appdir cacert $global)\\current\\cacert.pem\" | out-file \"$dir\\wget.ini\" -encoding default",
+  "bin": "wget.exe",
+  "checkver": {
+    "url": "https://eternallybored.org/misc/wget/releases/?C=M;O=D",
+    "regex": ">wget-([\\d.-]+)-win64\\.zip"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://eternallybored.org/misc/wget/releases/wget-$version-win64.zip"
+      },
+      "32bit": {
+        "url": "https://eternallybored.org/misc/wget/releases/wget-$version-win32.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\wget.json",
+    "__sourceHash: 466563d1ef1b58c3647096ef18ba887c3d7ad9f5",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261016 18:56:28",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/wget.json"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "version": "0.23.0",
+  "description": "Refined Evernote desktop app",
+  "homepage": "https://klaussinani.tech/tusk/",
+  "license": "MIT",
+  "url": "https://github.com/klaussinani/tusk/releases/download/v0.23.0/tusk-0.23.0.exe#/dl.7z",
+  "hash": "838b087669b43c54220436e7007035a8c90b4bc94543e9bd9eb5de2961644b05",
+  "architecture": {
+    "64bit": {
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+    },
+    "32bit": {
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
+    }
+  },
+  "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse",
+  "bin": "Tusk.exe",
+  "shortcuts": [
+    [
+      "Tusk.exe",
+      "Tusk"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/klaussinani/tusk"
+  },
+  "autoupdate": {
+    "url": "https://github.com/klaussinani/tusk/releases/download/v$version/tusk-$version.exe#/dl.7z"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\tusk.json",
+    "__sourceHash: 3b4d96c680c1b092a3065c6878b71f9488e9af54",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 200829 23:13:24",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/tusk.json"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "version": "26.22.0",
+  "description": "Desktop app for itch.io, an indie game online store",
+  "homepage": "https://itch.io/app",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://broth.itch.zone/itch/windows-amd64/26.22.0/archive/default#/itch-windows-amd64.zip",
+      "hash": "4ea5944cb5f20020da23b5f4e49507460664ea4e6c3b01218cd00ed82a648c40"
+    }
+  },
+  "shortcuts": [
+    [
+      "itch.exe",
+      "itch"
+    ]
+  ],
+  "checkver": {
+    "url": "https://broth.itch.zone/itch/windows-amd64",
+    "regex": "windows-amd64/([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://broth.itch.zone/itch/windows-amd64/$version/archive/default#/itch-windows-amd64.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-games\\bucket\\itch.json",
+    "__sourceHash: 909c33d7e1145e7bbcf721090ab036d07bc4252e",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261006 23:51:53",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/Calinou/scoop-games/master/bucket/itch.json"
+  ]
+}

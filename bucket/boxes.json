@@ -1,0 +1,34 @@
+{
+  "version": "2.3.2",
+  "description": "A command line filter program that draws ASCII art boxes around your input text",
+  "homepage": "https://boxes.thomasjensen.com/",
+  "license": "GPL-2.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/ascii-boxes/boxes/releases/download/v2.3.2/boxes-2.3.2-intel-x64.zip",
+      "hash": "de13ec7e46ca1851e3e1a5ed9b6f8217edcda742ff614bce441ae0a46d2741a6"
+    }
+  },
+  "extract_dir": "boxes-2.3.2",
+  "bin": "boxes.exe",
+  "checkver": {
+    "github": "https://github.com/ascii-boxes/boxes"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/ascii-boxes/boxes/releases/download/v$version/boxes-$version-intel-x64.zip"
+      }
+    },
+    "extract_dir": "boxes-$version"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\boxes.json",
+    "__sourceHash: 43fa985883d05e3282d841b3e08fd23ea2ead826",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 260904 07:37:51",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/boxes.json"
+  ]
+}

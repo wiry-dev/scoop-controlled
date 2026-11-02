@@ -1,0 +1,30 @@
+{
+  "version": "0.8.1",
+  "description": "Securely transfer data between computers. Rust implementation of Magic Wormhole, with new features and enhancements",
+  "homepage": "https://github.com/magic-wormhole/magic-wormhole.rs",
+  "license": "EUPL-1.2",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/magic-wormhole/magic-wormhole.rs/releases/download/0.8.1/magic-wormhole-cli-x86_64-pc-windows-gnu.tgz",
+      "hash": "67898966c1d88778f04ab77b6bdedc98ec35de0b11c5410e32b85aaa47b08c66"
+    }
+  },
+  "bin": "wormhole-rs.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/magic-wormhole/magic-wormhole.rs/releases/download/$version/magic-wormhole-cli-x86_64-pc-windows-gnu.tgz"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\magic-wormhole-rs.json",
+    "__sourceHash: 9acd9e795cc217cd313316aafb0cf82162dbf6bb",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260507 01:16:54",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/magic-wormhole-rs.json"
+  ]
+}

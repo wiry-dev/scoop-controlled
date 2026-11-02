@@ -1,0 +1,43 @@
+{
+  "version": "2.0.0a2",
+  "description": "A free and open-source tool to visualize your keystrokes in real-time.",
+  "homepage": "https://mularahul.github.io/keyviz/",
+  "license": "GPL-3.0-only",
+  "suggest": {
+    "vcredist": "extras/vcredist2022"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/mulaRahul/keyviz/releases/download/v2.0.0a2/keyviz-2.0.0a2-windows.zip",
+      "hash": "624fe5b10846699fe52e24a0a2bb562b5fba217bf7441059d41bd224f8fd2a8c"
+    }
+  },
+  "shortcuts": [
+    [
+      "keyviz.exe",
+      "Keyviz"
+    ]
+  ],
+  "checkver": {
+    "url": "https://github.com/mulaRahul/keyviz/tags",
+    "regex": "tag/v([\\d.\\w]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/mulaRahul/keyviz/releases/download/v$version/keyviz-$version-windows.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\keyviz.json",
+    "__sourceComment: Default version checking attempting to revert to v1.6 so keeping on this version",
+    "__sourceDeferredUpdateFound: 260129 12:24:02",
+    "__sourceHash: 981ab4713ddcdf466bc655d5615ca2b55fd4f5d5",
+    "__sourceLastChangeFound: 250922 16:51:19",
+    "__sourceLastUpdated: 230423 16:43:04",
+    "__sourceLicenceOpen: true",
+    "__sourceState: frozen",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/keyviz.json"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "version": "26.1027.3384.0",
+  "description": "Desktop application for ChatGPT",
+  "homepage": "https://chatgpt.com/",
+  "license": {
+    "identifier": "Proprietary",
+    "url": "https://openai.com/policies/terms-of-use/"
+  },
+  "suggest": {
+    "vcredist": "extras/vcredist2022"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://persistent.oaistatic.com/codex-app-prod/releases/26.1027.3384.0/ChatGPT-x64.msix#/dl.zip",
+      "hash": "d442a3d7d5c229f45e5e11995711ac2619c8dbc89e3fa2bc185287dc8db8e76e"
+    },
+    "arm64": {
+      "url": "https://persistent.oaistatic.com/codex-app-prod/releases/26.1027.3384.0/ChatGPT-arm64.msix#/dl.zip",
+      "hash": "954bc64d87ee327e0b3a64d678a7d350ac971b65e62fbc59ffbc32587f40cea6"
+    }
+  },
+  "extract_dir": "app",
+  "post_install": [
+    "# MSIX stores names as OPC/AppX percent-encoded UTF-8 (e.g. %40 -> @); decode to the real name.",
+    "# Children are renamed before their parents to ensure each item's path is still valid when it's renamed.",
+    "Get-ChildItem -LiteralPath $dir -Recurse | Sort-Object { $_.FullName.Length } -Descending | ForEach-Object {",
+    "    $decodedName = [uri]::UnescapeDataString($_.Name)",
+    "    if ($decodedName -ne $_.Name) {",
+    "        Rename-Item -LiteralPath $_.FullName -NewName $decodedName",
+    "    }",
+    "}"
+  ],
+  "shortcuts": [
+    [
+      "ChatGPT.exe",
+      "ChatGPT"
+    ]
+  ],
+  "env_set": {
+    "CODEX_CLI_PATH": "$dir\\resources\\codex.exe",
+    "CODEX_SPARKLE_ENABLED": "false"
+  },
+  "checkver": {
+    "script": "(Invoke-WebRequest 'https://persistent.oaistatic.com/codex-app-prod/ChatGPT-x64.msix' -Method Head -UseBasicParsing).Headers['x-ms-meta-package_version']",
+    "regex": "([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://persistent.oaistatic.com/codex-app-prod/releases/$version/ChatGPT-x64.msix#/dl.zip"
+      },
+      "arm64": {
+        "url": "https://persistent.oaistatic.com/codex-app-prod/releases/$version/ChatGPT-arm64.msix#/dl.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\chatgpt.json",
+    "__sourceHash: df5c942f33d8b0f38c08f7f2b698cbe2e675631d",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261030 00:50:57",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/chatgpt.json"
+  ]
+}

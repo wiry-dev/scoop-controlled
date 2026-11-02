@@ -1,0 +1,32 @@
+{
+  "version": "1.1.0",
+  "description": "Intuitive find & replace CLI (sed alternative)",
+  "homepage": "https://github.com/chmln/sd",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/chmln/sd/releases/download/v1.1.0/sd-v1.1.0-x86_64-pc-windows-msvc.zip",
+      "hash": "59837c2e7c911099aca1cc46b663bcdc5a949fd3e9fbbaf34fc73e5d5d71007c",
+      "extract_dir": "sd-v1.1.0-x86_64-pc-windows-msvc"
+    }
+  },
+  "bin": "sd.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/chmln/sd/releases/download/v$version/sd-v$version-x86_64-pc-windows-msvc.zip",
+        "extract_dir": "sd-v$version-x86_64-pc-windows-msvc"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\sd.json",
+    "__sourceHash: a49527c3704c2a7633a7062d2006386d8c164e54",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260225 20:32:02",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/sd.json"
+  ]
+}

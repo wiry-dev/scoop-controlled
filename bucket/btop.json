@@ -1,0 +1,42 @@
+{
+  "version": "1.0.5",
+  "description": "Resource monitor that shows usage and stats for processor, memory, disks, network, processes and services.",
+  "homepage": "https://github.com/aristocratos/btop4win",
+  "license": "Apache-2.0",
+  "suggest": {
+    "vcredist": "extras/vcredist2022"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/aristocratos/btop4win/releases/download/v1.0.5/btop4win-x64.zip",
+      "hash": "8275899f02ddc82523f23356836a427c9bba996ca17ef24057a1020dbcd3e951"
+    }
+  },
+  "extract_dir": "btop4win",
+  "pre_install": [
+    "Get-ChildItem \"$dir\\btop4win.exe\" | Rename-Item -NewName { $_.name -Replace '4win', '' }",
+    "if (!(Test-Path \"$persist_dir\\btop.conf\")) { New-Item \"$dir\\btop.conf\" | Out-Null }"
+  ],
+  "persist": [
+    "themes",
+    "btop.conf"
+  ],
+  "bin": "btop.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/aristocratos/btop4win/releases/download/v$version/btop4win-x64.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\btop.json",
+    "__sourceHash: dc8d308c3e78dba90a992e15e18981992ca7b1d9",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260820 04:12:21",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/btop.json"
+  ]
+}

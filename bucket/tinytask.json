@@ -1,0 +1,29 @@
+{
+  "homepage": "https://www.tinytask.net",
+  "description": "Windows automation app for recording and repeating actions.",
+  "version": "1.77",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://www.tinytask.net/faq.php"
+  },
+  "url": "https://raw.githubusercontent.com/ScoopInstaller/Binary/master/tinytask/tinytask_177.exe#/TinyTask.exe",
+  "hash": "75e06ac5b7c1adb01ab994633466685e3dcef31d635eba1734fe16c7893ffe12",
+  "bin": "TinyTask.exe",
+  "shortcuts": [
+    [
+      "TinyTask.exe",
+      "TinyTask"
+    ]
+  ],
+  "pre_install": "if (!(Test-Path \"$persist_dir\\TinyTask.ini\")) { New-Item \"$dir\\TinyTask.ini\" -ItemType File | Out-Null }",
+  "persist": "TinyTask.ini",
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\tinytask.json",
+    "__sourceHash: 97910e7de5959f18a2feeebd273e187f95fadfac",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 220511 12:19:23",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/tinytask.json"
+  ]
+}

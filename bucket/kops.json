@@ -1,0 +1,36 @@
+{
+  "version": "1.36.2",
+  "description": "Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management.",
+  "homepage": "https://kops.sigs.k8s.io",
+  "license": "Apache-2.0",
+  "depends": "kubectl",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/kubernetes/kops/releases/download/v1.36.2/kops-windows-amd64#/kops.exe",
+      "hash": "96dbdfbfeff3ae499cc37c1f0846b540633b406e9e7caa84f82c17aff4120078"
+    }
+  },
+  "bin": "kops.exe",
+  "checkver": {
+    "github": "https://github.com/kubernetes/kops"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/kubernetes/kops/releases/download/v$version/kops-windows-amd64#/kops.exe"
+      }
+    },
+    "hash": {
+      "url": "$url.sha256"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\kops.json",
+    "__sourceHash: 8d42f3c620af02af557bbc55d863d27b58044c24",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260808 16:31:57",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/kops.json"
+  ]
+}

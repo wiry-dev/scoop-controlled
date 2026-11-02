@@ -1,0 +1,38 @@
+{
+  "version": "9.0.2",
+  "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+  "homepage": "https://ffmpeg.org",
+  "license": "GPL-3.0-or-later",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/GyanD/codexffmpeg/releases/download/9.0.2/ffmpeg-9.0.2-full_build-shared.7z",
+      "hash": "4d2060a8b34a940aa47d785142055bb92a63053781e55f2ace4546edd519a8f5"
+    }
+  },
+  "extract_dir": "ffmpeg-9.0.2-full_build-shared",
+  "env_add_path": "bin",
+  "env_set": {
+    "FFMPEG_DIR": "$dir"
+  },
+  "persist": "fonts",
+  "checkver": {
+    "github": "https://github.com/GyanD/codexffmpeg"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/GyanD/codexffmpeg/releases/download/$version/ffmpeg-$version-full_build-shared.7z"
+      }
+    },
+    "extract_dir": "ffmpeg-$version-full_build-shared"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\ffmpeg-shared.json",
+    "__sourceHash: 546f4f1bbdb4e899a934bc0214f481064ba56cef",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261002 15:34:58",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/ffmpeg-shared.json"
+  ]
+}

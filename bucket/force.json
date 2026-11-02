@@ -1,0 +1,42 @@
+{
+  "version": "1.16.0",
+  "description": "Force.com CLI tool",
+  "homepage": "https://force-cli.herokuapp.com/",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/ForceCLI/force/releases/download/v1.16.0/force_windows_amd64_v1.16.0.zip",
+      "hash": "620dc6ec83e45dc4385e097786dfa59a0f9c4780f71c4cf896487d6c1ca1be6c"
+    },
+    "arm64": {
+      "url": "https://github.com/ForceCLI/force/releases/download/v1.16.0/force_windows_arm64_v1.16.0.zip",
+      "hash": "84a5d0da0bcc3ad8da4af8ed35ba74b0e62ad7663bab4acd618a18056481c4f9"
+    }
+  },
+  "bin": "force.exe",
+  "checkver": {
+    "github": "https://github.com/ForceCLI/force"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/ForceCLI/force/releases/download/v$version/force_windows_amd64_v$version.zip"
+      },
+      "arm64": {
+        "url": "https://github.com/ForceCLI/force/releases/download/v$version/force_windows_arm64_v$version.zip"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/SHA256SUMS-v$version"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\force.json",
+    "__sourceHash: 8b0deaaeee9152498656f32097bcbbea0fdd770d",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261029 12:33:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/force.json"
+  ]
+}

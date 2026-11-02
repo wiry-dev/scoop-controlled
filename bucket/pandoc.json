@@ -1,0 +1,37 @@
+{
+  "version": "3.13",
+  "description": "Universal markup converter",
+  "homepage": "https://pandoc.org",
+  "license": "GPL-2.0-or-later",
+  "suggest": {
+    "MiKTeX": "latex"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/jgm/pandoc/releases/download/3.13/pandoc-3.13-windows-x86_64.zip",
+      "hash": "23e1f2e978a3df80db8bf65c9c59534f41a23140480cfb4f783a882ab7dc6a4e"
+    }
+  },
+  "extract_dir": "pandoc-3.13",
+  "bin": "pandoc.exe",
+  "checkver": {
+    "github": "https://github.com/jgm/pandoc"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/jgm/pandoc/releases/download/$version/pandoc-$version-windows-x86_64.zip"
+      }
+    },
+    "extract_dir": "pandoc-$version"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\pandoc.json",
+    "__sourceHash: 113b0cffa8a769b79fb1a66f7c7f90f95b781075",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261027 01:04:08",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/pandoc.json"
+  ]
+}

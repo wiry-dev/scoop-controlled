@@ -1,0 +1,29 @@
+{
+  "version": "2.0.5",
+  "description": "Visual Automation and Testing",
+  "homepage": "https://sikulix.github.io/",
+  "license": "MIT",
+  "suggest": {
+    "JDK17": "java/openjdk17",
+    "vcredist": "extras/vcredist2022"
+  },
+  "url": "https://launchpad.net/sikuli/sikulix/2.0.5/+download/sikulixide-2.0.5.jar#/sikulix.jar",
+  "hash": "f4b0b50c8e413094e78cd1d8fed02ae65f62f8c53ed00da0562fdedf4acff729",
+  "bin": "sikulix.jar",
+  "checkver": {
+    "url": "https://raiman.github.io/SikuliX1/downloads.html",
+    "regex": "Version ([\\d.]+) \\(latest stable version\\)"
+  },
+  "autoupdate": {
+    "url": "https://launchpad.net/sikuli/sikulix/$version/+download/sikulixide-$version.jar#/sikulix.jar"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\sikulix.json",
+    "__sourceHash: 9add54b5df3f1f17f7250f45a8884402763e4d50",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 230527 18:55:39",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/sikulix.json"
+  ]
+}

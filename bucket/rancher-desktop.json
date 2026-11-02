@@ -1,0 +1,52 @@
+{
+  "version": "1.24.0",
+  "description": "Kubernates container management tool that can build, push, and pull images and run containers.",
+  "homepage": "https://rancherdesktop.io/",
+  "license": "Apache-2.0",
+  "notes": [
+    "Rancher Desktop requires WSL (Windows Subsystem for Linux) to work properly.",
+    "Learn more about WSL: https://aka.ms/wsl2"
+  ],
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/rancher-sandbox/rancher-desktop/releases/download/v1.24.0/Rancher.Desktop.Setup.1.24.0.msi",
+      "hash": "sha512:6428f330cdf8dc9dbbc07bbde270046c9e86fb91e90392c0d25ac764e64eaa8f9d2b3e7faaffed669a48f7fd7445dadda18072dd51c905bf59df4787b70ed77e"
+    }
+  },
+  "extract_dir": "Rancher Desktop",
+  "env_add_path": [
+    "resources\\resources\\win32\\bin",
+    "resources\\resources\\linux\\bin"
+  ],
+  "post_install": [
+    "# Rancher Desktop can't be started from a symlinked directory. See: https://github.com/ScoopInstaller/Extras/issues/14691",
+    "startmenu_shortcut \"$original_dir\\Rancher Desktop.exe\" 'Rancher Desktop' $null $null $global"
+  ],
+  "post_uninstall": [
+    "# Remove shortcut",
+    "Write-Host \"Removing shortcut $(friendly_path \"$(shortcut_folder $global)\\Rancher Desktop.lnk\")\"",
+    "Remove-Item \"$(shortcut_folder $global)\\Rancher Desktop.lnk\" -Force -ErrorAction SilentlyContinue"
+  ],
+  "checkver": {
+    "github": "https://github.com/rancher-sandbox/rancher-desktop"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/rancher-sandbox/rancher-desktop/releases/download/v$version/Rancher.Desktop.Setup.$version.msi",
+        "hash": {
+          "url": "$url.sha512sum"
+        }
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\rancher-desktop.json",
+    "__sourceHash: 25229415f36dc7a7943eae39d494ac8e44701870",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 260730 00:53:15",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/rancher-desktop.json"
+  ]
+}

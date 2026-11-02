@@ -1,0 +1,41 @@
+{
+  "version": "2026.10.2",
+  "description": "Password management solutions for individuals, teams, and business organizations",
+  "homepage": "https://bitwarden.com",
+  "license": "GPL-3.0-or-later",
+  "url": "https://github.com/bitwarden/clients/releases/download/desktop-v2026.10.2/Bitwarden-Portable-2026.10.2.exe",
+  "hash": "6a6c5860e439e66f6312d3e2626d77296d1e47ca3c47878073d62dda315dfaf1",
+  "pre_install": [
+    "Rename-Item \"$dir\\Bitwarden-Portable-$version.exe\" 'Bitwarden.exe'",
+    "# copy config from non-portable version",
+    "if (!(Test-Path \"$dir\\bitwarden-appdata\\*\") -and (Test-Path \"$env:Appdata\\Bitwarden\")) {",
+    "    if (!(Test-Path \"$dir\\bitwarden-appdata\")) { New-Item \"$dir\\bitwarden-appdata\" -ItemType Directory | Out-Null }",
+    "    Copy-Item \"$env:Appdata\\Bitwarden\\*\" \"$dir\\bitwarden-appdata\\\" -Recurse -Force",
+    "}"
+  ],
+  "bin": "Bitwarden.exe",
+  "shortcuts": [
+    [
+      "Bitwarden.exe",
+      "Bitwarden"
+    ]
+  ],
+  "persist": "bitwarden-appdata",
+  "checkver": {
+    "github": "https://api.github.com/repos/bitwarden/clients/releases",
+    "jsonpath": "$[*].tag_name",
+    "regex": "desktop-v([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://github.com/bitwarden/clients/releases/download/desktop-v$version/Bitwarden-Portable-$version.exe"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\bitwarden.json",
+    "__sourceHash: 6a34d50f2a7cae9d86af27d9087fa3bcc511946f",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261029 16:28:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/bitwarden.json"
+  ]
+}

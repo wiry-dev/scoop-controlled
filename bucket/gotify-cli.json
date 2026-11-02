@@ -1,0 +1,39 @@
+{
+  "version": "2.4.0",
+  "description": "A command line interface for pushing messages to Gotify server",
+  "homepage": "https://gotify.net/",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/gotify/cli/releases/download/v2.4.0/gotify-cli-windows-amd64.exe#/gotify-cli.exe",
+      "hash": "42b6c44b04cc98146c7a897a153d70a83cc2cedbcc24dcf264219b32a8a6437c"
+    },
+    "32bit": {
+      "url": "https://github.com/gotify/cli/releases/download/v2.4.0/gotify-cli-windows-386.exe#/gotify-cli.exe",
+      "hash": "a485243a5460794da748ba6cde4a5b7d279585ddf760298d1a742d90bbbe657f"
+    }
+  },
+  "bin": "gotify-cli.exe",
+  "checkver": {
+    "github": "https://github.com/gotify/cli/"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/gotify/cli/releases/download/v$version/gotify-cli-windows-amd64.exe#/gotify-cli.exe"
+      },
+      "32bit": {
+        "url": "https://github.com/gotify/cli/releases/download/v$version/gotify-cli-windows-386.exe#/gotify-cli.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\gotify-cli.json",
+    "__sourceHash: e8ebd4e51ff13baf30d0f1ba64cfc5d8cf0c8985",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260721 20:46:10",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/gotify-cli.json"
+  ]
+}

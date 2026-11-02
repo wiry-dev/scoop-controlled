@@ -1,0 +1,90 @@
+{
+  "version": "4.6.9",
+  "description": "A network protocol analyzer that lets you see what's happening on your network at a microscopic level.",
+  "homepage": "https://www.wireshark.org/",
+  "license": "GPL-2.0-or-later",
+  "notes": [
+    "Wireshark requires the installation of Npcap. Do it manually from the 'wireshark' directory.",
+    "$dir\\npcap-installer.exe",
+    "",
+    "You can also install USBPcap from the 'wireshark' directory if you need the USB packets capture functionality.",
+    "$dir\\USBPcap-installer.exe",
+    "",
+    "If this is the first time you opted to install USBPcap, please restart and run: $dir\\enable-usbpcap.ps1"
+  ],
+  "architecture": {
+    "arm64": {
+      "url": "https://www.wireshark.org/download/win64/Wireshark-4.6.9-arm64.exe#/dl.7z",
+      "hash": "e25b68c0a7d8ccc03a325235d1734d71998af30a0136dc352f3ea5ce0eefafc4"
+    },
+    "64bit": {
+      "url": "https://www.wireshark.org/download/win64/Wireshark-4.6.9-x64.exe#/dl.7z",
+      "hash": "bf9b5ce8a89f244c376a9b1a946276eaa06463dde3e33069a34d7f102f5878cf"
+    }
+  },
+  "pre_install": [
+    "'$PLUGINSDIR', 'vc_redist*', 'uninstall-wireshark.exe' | ForEach-Object { \"$dir/$_\" } | Remove-Item -Recurse -ErrorAction Ignore",
+    "Get-ChildItem -Path \"$dir/npcap-*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'npcap-installer.exe'",
+    "Get-ChildItem -Path \"$dir/USBPcapSetup-*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'USBPcap-installer.exe'",
+    "$data = \"$persist_dir/Data\"",
+    "$preferences = \"$data/preferences\"",
+    "if (!(Test-Path $preferences)) {",
+    "    $null = New-Item -ItemType Directory $data -ErrorAction Ignore",
+    "    'gui.update.enabled: FALSE' | Out-File -Encoding utf8 $preferences",
+    "}"
+  ],
+  "post_install": [
+    "Copy-Item -Force \"$bucketsdir/extras/scripts/wireshark/*\" \"$dir\"",
+    "& \"$dir/enable-usbpcap.ps1\" 2>$null   # Attempt try to enable USBPcap if already installed"
+  ],
+  "bin": [
+    "capinfos.exe",
+    "dumpcap.exe",
+    "editcap.exe",
+    "mergecap.exe",
+    "randpkt.exe",
+    "rawshark.exe",
+    "reordercap.exe",
+    "text2pcap.exe",
+    "tshark.exe",
+    "Wireshark.exe"
+  ],
+  "shortcuts": [
+    [
+      "Wireshark.exe",
+      "Wireshark"
+    ]
+  ],
+  "env_set": {
+    "WIRESHARK_CONFIG_DIR": "$dir\\Data",
+    "WIRESHARK_DATA_DIR": "$dir\\Data"
+  },
+  "persist": "Data",
+  "checkver": {
+    "url": "https://www.wireshark.org/update/0/Wireshark/0.0.0/Windows/x86-64/en-US/stable.xml",
+    "regex": "Version ([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "arm64": {
+        "url": "https://www.wireshark.org/download/win64/Wireshark-$version-arm64.exe#/dl.7z"
+      },
+      "64bit": {
+        "url": "https://www.wireshark.org/download/win64/Wireshark-$version-x64.exe#/dl.7z"
+      }
+    },
+    "hash": {
+      "url": "https://www.wireshark.org/download/SIGNATURES-$version.txt",
+      "regex": "SHA256\\($basename\\)=$sha256"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\wireshark.json",
+    "__sourceHash: 276483a100e421abe7a08bd5183a3011c4ce7b64",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260924 01:04:31",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/wireshark.json"
+  ]
+}

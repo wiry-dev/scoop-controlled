@@ -1,0 +1,48 @@
+{
+  "version": "32.6.1",
+  "description": "Professional diagramming",
+  "homepage": "https://www.drawio.com/",
+  "license": "GPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/jgraph/drawio-desktop/releases/download/v32.6.1/draw.io-32.6.1-windows-installer.exe#/dl.7z",
+      "hash": "c6e11ca28b97946e8bbc797b0bf4635ca071c934f5d3727278b52075923733cb",
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+    },
+    "arm64": {
+      "url": "https://github.com/jgraph/drawio-desktop/releases/download/v32.6.1/draw.io-arm64-32.6.1-windows-arm64-installer.exe#/dl.7z",
+      "hash": "af22a2f6159540e32c0681a1ae613ae45560ac0f10665b107c53e5cfee760875",
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\""
+    }
+  },
+  "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse",
+  "bin": "draw.io.exe",
+  "shortcuts": [
+    [
+      "draw.io.exe",
+      "draw.io"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/jgraph/drawio-desktop"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/jgraph/drawio-desktop/releases/download/v$version/draw.io-$version-windows-installer.exe#/dl.7z"
+      },
+      "arm64": {
+        "url": "https://github.com/jgraph/drawio-desktop/releases/download/v$version/draw.io-arm64-$version-windows-arm64-installer.exe#/dl.7z"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\draw.io.json",
+    "__sourceHash: d16f686d2558c90fcd52b53e97de6ca780cc6fc7",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261023 20:33:43",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/draw.io.json"
+  ]
+}

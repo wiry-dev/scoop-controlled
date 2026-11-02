@@ -1,0 +1,31 @@
+{
+  "version": "0.4.50",
+  "description": "nitropy is a command-line interface for the Nitrokey FIDO2, Nitrokey Start, Nitrokey 3 and NetHSM.",
+  "homepage": "https://github.com/Nitrokey/pynitrokey",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/Nitrokey/pynitrokey/releases/download/v0.4.50/nitropy-v0.4.50-x64-windows-binary.zip",
+      "hash": "8dd4b61247be3f0a1f0c35739a5488e6406c9e42f79d8cd5e95fcca8200941cf"
+    }
+  },
+  "pre_install": "Rename-Item \"$dir\\nitropy-v$version-x64-windows-binary.exe\" 'nitropy.exe'",
+  "bin": "nitropy.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/Nitrokey/pynitrokey/releases/download/v$version/nitropy-v$version-x64-windows-binary.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\nitropy.json",
+    "__sourceHash: e6b97c358b7de12c65abf4884d93032d87befd56",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/nitropy.json"
+  ]
+}

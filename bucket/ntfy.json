@@ -1,0 +1,37 @@
+{
+  "version": "2.36.0",
+  "description": "Send push notifications to your phone or desktop via PUT/POST",
+  "homepage": "https://ntfy.sh",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/binwiederhier/ntfy/releases/download/v2.36.0/ntfy_2.36.0_windows_amd64.zip",
+      "hash": "99d8f2a0cf8ad975025a52d09b3479287e52f315a51fcd5e26d32a163f170567",
+      "extract_dir": "ntfy_2.36.0_windows_amd64"
+    }
+  },
+  "bin": "ntfy.exe",
+  "checkver": {
+    "github": "https://github.com/binwiederhier/ntfy"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/binwiederhier/ntfy/releases/download/v$version/ntfy_$version_windows_amd64.zip",
+        "extract_dir": "ntfy_$version_windows_amd64"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/checksums.txt"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\ntfy.json",
+    "__sourceHash: 14ca55f5844d1eaaafdb769f0849cc8e9807948d",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261031 20:22:31",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/ntfy.json"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "version": "1.0.9259-28",
+  "description": "Free Voice and Text Chat",
+  "homepage": "https://discord.com",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://discord.com/terms"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/portapps/discord-portable/releases/download/1.0.9259-28/discord-portable-win64-1.0.9259-28.7z",
+      "hash": "b6dd79ea0a99c87366e43bbef73eb139eae36459ade233288404fa8e0488cd84"
+    }
+  },
+  "shortcuts": [
+    [
+      "discord-portable.exe",
+      "Discord"
+    ]
+  ],
+  "persist": [
+    "data",
+    "log"
+  ],
+  "checkver": {
+    "github": "https://github.com/portapps/discord-portable"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/portapps/discord-portable/releases/download/$version/discord-portable-win64-$version.7z"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/checksums.txt"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\discord.json",
+    "__sourceDelayDays: 7",
+    "__sourceHash: e878e1167c8361eb2023c3a51e0502a73e6ccbf0",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 260928 01:12:19",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUpdateMinimumDays: 7",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/discord.json"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "version": "3222",
+  "description": "H.264/MPEG-4 AVC video encoder",
+  "homepage": "https://www.videolan.org/developers/x264.html",
+  "license": "GPL-2.0-or-later",
+  "architecture": {
+    "64bit": {
+      "url": "https://artifacts.videolan.org/x264/release-win64/x264-r3222-b35605a.exe#/x264.exe",
+      "hash": "ca622e7a1ed7efd0953d8dbb9eb08672ca45d80ce962d63d637b79462a7de3ed"
+    },
+    "32bit": {
+      "url": "https://artifacts.videolan.org/x264/release-win32/x264-r3222-b35605a.exe#/x264.exe",
+      "hash": "0beb11cc38b54bcc3c60b4c17e387dc53e384f7b17be32979955abe20e760638"
+    }
+  },
+  "bin": "x264.exe",
+  "checkver": {
+    "url": "https://artifacts.videolan.org/x264/release-win64/",
+    "regex": "x264-r([\\d]+)-(?<commit>[a-fA-F\\d]{7})\\.exe"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://artifacts.videolan.org/x264/release-win64/x264-r$version-$matchCommit.exe#/x264.exe"
+      },
+      "32bit": {
+        "url": "https://artifacts.videolan.org/x264/release-win32/x264-r$version-$matchCommit.exe#/x264.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\x264.json",
+    "__sourceHash: df9ed1c17129d6946b02d9ad4f5e98ec8afaf917",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 250608 20:28:47",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/x264.json"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "version": "7.9.0",
+  "description": "The package manager for .NET.",
+  "homepage": "https://www.nuget.org/",
+  "license": "Apache-2.0",
+  "url": "https://dist.nuget.org/win-x86-commandline/v7.9.0/NuGet.exe",
+  "hash": "992d70cac5b06c38efec91806caba64cdcc07e6d963a0959dbbbaf264d33b800",
+  "bin": "NuGet.exe",
+  "checkver": {
+    "url": "https://dist.nuget.org/index.json",
+    "jsonpath": "$..versions[?(@.displayName == 'nuget.exe - recommended latest')].version"
+  },
+  "autoupdate": {
+    "url": "https://dist.nuget.org/win-x86-commandline/v$version/NuGet.exe"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\nuget.json",
+    "__sourceHash: 47def8aa45f8d7d79bf46e5291c8f528c4ac6b08",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260811 20:33:19",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/nuget.json"
+  ]
+}

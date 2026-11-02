@@ -1,0 +1,37 @@
+{
+  "version": "4.1",
+  "description": "A full-fledged autoclicker with two modes of autoclicking, at your dynamic cursor location or at a prespecified location",
+  "homepage": "https://sourceforge.net/projects/orphamielautoclicker/",
+  "license": "CC-BY-NC-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://sourceforge.net/projects/orphamielautoclicker/files/4.1/AutoClicker.exe",
+      "hash": "sha1:449df612d0f02e868992faabfbf4d5d37c727936"
+    }
+  },
+  "pre_install": "$manifest.persist | ForEach-Object { if (-not (Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -Force -ItemType \"file\" | Out-Null } }",
+  "shortcuts": [
+    [
+      "AutoClicker.exe",
+      "OP Auto Clicker"
+    ]
+  ],
+  "persist": "ACLib\\ACA_conf.ini",
+  "checkver": "sourceforge",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://sourceforge.net/projects/orphamielautoclicker/files/$version/AutoClicker.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\autoclicker.json",
+    "__sourceHash: bc41932e4240a10da6d7cc2259212ebe00903b55",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261019 22:18:52",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/autoclicker.json"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "version": "4.53.276",
+  "description": "Collaboration software",
+  "homepage": "https://slack.com",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://slack.com/intl/en-nl/legal"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://downloads.slack-edge.com/desktop-releases/windows/x64/4.53.276/Slack.msix#/dl.zip",
+      "hash": "20a2f8c8a5e47d8fb91c0df38bc9b7e6ec9772ffeb0a5e3454740be6057d8a6d"
+    },
+    "arm64": {
+      "url": "https://downloads.slack-edge.com/desktop-releases/windows/arm64/4.53.276/Slack.msix#/dl.zip",
+      "hash": "1ca79e419e1438335f06045b43a70bda2367ce13c8076fdf6b1c5c8d110e6be7"
+    }
+  },
+  "extract_dir": "app",
+  "bin": "slack.exe",
+  "shortcuts": [
+    [
+      "slack.exe",
+      "Slack"
+    ]
+  ],
+  "checkver": {
+    "url": "https://slack.com/release-notes/windows",
+    "regex": "<h2 .+?>Slack ([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://downloads.slack-edge.com/desktop-releases/windows/x64/$version/Slack.msix#/dl.zip"
+      },
+      "arm64": {
+        "url": "https://downloads.slack-edge.com/desktop-releases/windows/arm64/$version/Slack.msix#/dl.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\slack.json",
+    "__sourceHash: dbde2ab0125db79db333011d17aeb28452535a44",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261030 00:51:01",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/slack.json"
+  ]
+}

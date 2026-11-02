@@ -1,0 +1,63 @@
+{
+  "##": [
+    "Please keep .exe instead of the .nupkg. The Update.exe extracted from .exe is needed to convert the persistent data to the latest version (#10938).",
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\postman.json",
+    "__sourceHash: 43e6826edb1e17bdde6766871334df3930c38114",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261030 04:27:19",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/postman.json"
+  ],
+  "version": "12.34.4",
+  "description": "Complete API development environment.",
+  "homepage": "https://www.getpostman.com/",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://www.getpostman.com/licenses/postman_eula"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://dl.pstmn.io/download/12.34.4/Postman%20v12.34.4%20(x64).exe#/dl.7z",
+      "hash": "sha1:9cff226f045050409da251fa05421a5fafb58bae"
+    },
+    "arm64": {
+      "url": "https://dl.pstmn.io/download/12.34.4/Postman%20v12.34.4%20(arm64).exe#/dl.7z",
+      "hash": "sha1:b433623cb4c53f74de5d92bcf5dc70b58ceb0dce"
+    }
+  },
+  "installer": {
+    "script": [
+      "Expand-7zipArchive \"$dir\\Postman-$version-full.nupkg\" \"$dir\\app\" -ExtractDir 'lib\\net45' -Removal",
+      "'background.gif', 'RELEASES', 'setupIcon.ico' | ForEach-Object { Remove-Item \"$dir\\$_\" }"
+    ]
+  },
+  "shortcuts": [
+    [
+      "app/Postman.exe",
+      "Postman"
+    ]
+  ],
+  "checkver": {
+    "url": "https://dl.pstmn.io/changelog?channel=stable&platform=win64",
+    "jsonpath": "$.changelog[0].name"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://dl.pstmn.io/download/$version/Postman%20v$version%20(x64).exe#/dl.7z",
+        "hash": {
+          "url": "https://dl.pstmn.io/RELEASES?platform=win64&from=$version",
+          "regex": "(?sm)$basename.*?$sha1"
+        }
+      },
+      "arm64": {
+        "url": "https://dl.pstmn.io/download/$version/Postman%20v$version%20(arm64).exe#/dl.7z",
+        "hash": {
+          "url": "https://dl.pstmn.io/RELEASES?platform=winarm64&from=$version",
+          "regex": "(?sm)$basename.*?$sha1"
+        }
+      }
+    }
+  }
+}

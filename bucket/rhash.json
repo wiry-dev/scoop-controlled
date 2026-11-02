@@ -1,0 +1,43 @@
+{
+  "version": "1.4.6",
+  "description": "A console utility for computing and verifying hash sums of files.",
+  "homepage": "https://rhash.sourceforge.net/",
+  "license": "0BSD",
+  "architecture": {
+    "64bit": {
+      "url": "https://downloads.sourceforge.net/project/rhash/rhash/1.4.6/rhash-1.4.6-win64.zip",
+      "hash": "sha1:b3f8ff5dc1426339b702affc2f5130e4d04beca5",
+      "extract_dir": "RHash-1.4.6-win64"
+    },
+    "32bit": {
+      "url": "https://downloads.sourceforge.net/project/rhash/rhash/1.4.6/rhash-1.4.6-win32.zip",
+      "hash": "sha1:8de4e5a77172764c2da930bf947dea8877bc2e38",
+      "extract_dir": "RHash-1.4.6-win32"
+    }
+  },
+  "bin": "rhash.exe",
+  "checkver": {
+    "sourceforge": "rhash/rhash"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://downloads.sourceforge.net/project/rhash/rhash/$version/rhash-$version-win64.zip",
+        "extract_dir": "RHash-$version-win64"
+      },
+      "32bit": {
+        "url": "https://downloads.sourceforge.net/project/rhash/rhash/$version/rhash-$version-win32.zip",
+        "extract_dir": "RHash-$version-win32"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\rhash.json",
+    "__sourceHash: 25021060053c31c657e1a3348e5019391bc15f7e",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 250514 00:39:10",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/rhash.json"
+  ]
+}

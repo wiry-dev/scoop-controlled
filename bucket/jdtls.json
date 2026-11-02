@@ -1,0 +1,38 @@
+{
+  "version": "1.64.0-202610301801",
+  "description": "Java language server",
+  "homepage": "https://projects.eclipse.org/projects/eclipse.jdt.ls",
+  "license": "EPL-2.0",
+  "suggest": {
+    "JDK": "java/openjdk",
+    "Python": "python"
+  },
+  "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-1.64.0-202610301801.tar.gz",
+  "hash": "3bff77299e7449ddec5466e1c600a5f221312b057240b06162b7d9326bb9ca5e",
+  "installer": {
+    "script": "shim (Get-Command 'python.exe').Source $global jdtls \"$dir\\bin\\jdtls\""
+  },
+  "uninstaller": {
+    "script": "rm_shim jdtls (shimdir $global) jdtls"
+  },
+  "checkver": {
+    "url": "https://download.eclipse.org/jdtls/snapshots/latest.txt",
+    "regex": "jdt-language-server-([\\d.]+)-(\\d+)",
+    "replace": "${1}-${2}"
+  },
+  "autoupdate": {
+    "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-$match1-$match2.tar.gz",
+    "hash": {
+      "url": "$url.sha256"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\jdtls.json",
+    "__sourceHash: 9c757e002d2176857d1629cca5b00b976d0cea32",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261030 20:22:45",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/jdtls.json"
+  ]
+}

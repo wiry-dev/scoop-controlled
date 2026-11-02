@@ -1,0 +1,36 @@
+{
+  "version": "125.0",
+  "description": "Transport management simulation game",
+  "homepage": "https://www.simutrans.com/",
+  "license": "Artistic-1.0",
+  "url": "https://downloads.sourceforge.net/project/simutrans/simutrans/125-0/simuwin-sdl-125-0.zip",
+  "hash": "sha1:2228f1aa6f7e4e2083f2d831c9595852352fd310",
+  "extract_dir": "simutrans",
+  "bin": "simutrans.exe",
+  "shortcuts": [
+    [
+      "simutrans.exe",
+      "Simutrans"
+    ],
+    [
+      "download-paksets.exe",
+      "Download Simutrans Paksets"
+    ]
+  ],
+  "checkver": {
+    "url": "https://www.simutrans.com/en/",
+    "regex": "([0-9]+(\\.[0-9]+)+)"
+  },
+  "autoupdate": {
+    "url": "https://downloads.sourceforge.net/project/simutrans/simutrans/$dashVersion/simuwin-sdl-$dashVersion.zip"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-games\\bucket\\simutrans.json",
+    "__sourceHash: b721cb68e0b6e053d6107eabafdbd41517cc4bc6",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261002 05:45:13",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/Calinou/scoop-games/master/bucket/simutrans.json"
+  ]
+}

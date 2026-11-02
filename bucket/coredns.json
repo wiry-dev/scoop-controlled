@@ -1,0 +1,35 @@
+{
+  "version": "1.15.0",
+  "description": "A DNS server/forwarder, that chains plugins.",
+  "homepage": "https://coredns.io",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/coredns/coredns/releases/download/v1.15.0/coredns_1.15.0_windows_amd64.tgz",
+      "hash": "94d21843a17d13d32e8eb122b4410ef5c68c549a623cf9340896759252f940bd"
+    }
+  },
+  "bin": "coredns.exe",
+  "checkver": {
+    "github": "https://github.com/coredns/coredns"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/coredns/coredns/releases/download/v$version/coredns_$version_windows_amd64.tgz"
+      }
+    },
+    "hash": {
+      "url": "$url.sha256"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\coredns.json",
+    "__sourceHash: 689a53bee3ce739ebfdd76f2039d1464b8aa402c",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261021 04:34:35",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/coredns.json"
+  ]
+}

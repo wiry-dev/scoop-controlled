@@ -1,0 +1,33 @@
+{
+  "version": "2.580.2",
+  "description": "An automation server which enables developers around the world to reliably build, test, and deploy their software. (Long Term Support)",
+  "homepage": "https://www.jenkins.io",
+  "license": "MIT",
+  "suggest": {
+    "Java 11": "java/openjdk11",
+    "Java 17": "java/openjdk17"
+  },
+  "url": "https://get.jenkins.io/war-stable/2.580.2/jenkins.war#/jenkins.jar",
+  "hash": "d98032d2401c540a35613a82ed358921fcf3166d5e6eaaaf60a7941845be3251",
+  "bin": "jenkins.jar",
+  "checkver": {
+    "url": "https://www.jenkins.io/changelog-stable/rss.xml",
+    "xpath": "/rss/channel/item/title",
+    "regex": "Jenkins ([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://get.jenkins.io/war-stable/$version/jenkins.war#/jenkins.jar",
+    "hash": {
+      "url": "$url.sha256"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\jenkins-lts.json",
+    "__sourceHash: b3deb44fe39d17979244455302310d34ff80dd44",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261028 16:26:53",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/jenkins-lts.json"
+  ]
+}

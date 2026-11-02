@@ -1,0 +1,42 @@
+{
+  "version": "3.7.3",
+  "description": "Wait4X allows you to wait for a port or a service to enter the requested state",
+  "homepage": "https://wait4x.dev/",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/wait4x/wait4x/releases/download/v3.7.3/wait4x-windows-amd64.tar.gz",
+      "hash": "a1ca904616a0ef05ed624465203854eca0c0175c9ec8b798d5be604105df491d"
+    },
+    "arm64": {
+      "url": "https://github.com/wait4x/wait4x/releases/download/v3.7.3/wait4x-windows-arm64.tar.gz",
+      "hash": "d1e6615005c911da226fe71f94dc388f9f911703eac0ef3b86b52337f3ee00a7"
+    }
+  },
+  "bin": "wait4x.exe",
+  "checkver": {
+    "github": "https://github.com/wait4x/wait4x"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/wait4x/wait4x/releases/download/v$version/wait4x-windows-amd64.tar.gz"
+      },
+      "arm64": {
+        "url": "https://github.com/wait4x/wait4x/releases/download/v$version/wait4x-windows-arm64.tar.gz"
+      }
+    },
+    "hash": {
+      "url": "$url.sha256sum"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\wait4x.json",
+    "__sourceHash: 9e2f871a1f5c9de413bcba70918b2efde7924fa9",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261023 20:33:53",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/wait4x.json"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "version": "1.66.4",
+  "description": "A load testing library, command line tool, advanced echo server and web UI written in Go",
+  "homepage": "https://github.com/fortio/fortio",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/fortio/fortio/releases/download/v1.66.4/fortio_win_1.66.4.zip",
+      "hash": "a9e1a31e9512183a39a4bed27cb384a94d5c25290326cba97e9f6221bb2928d8"
+    }
+  },
+  "bin": "fortio.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/fortio/fortio/releases/download/v$version/fortio_win_$version.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\fortio.json",
+    "__sourceHash: 773e980cc5e004672ad7e69ed50225a8c3e7237d",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/fortio.json"
+  ]
+}

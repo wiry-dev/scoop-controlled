@@ -1,0 +1,44 @@
+{
+  "version": "4.4.1",
+  "description": "USB device tree viewer",
+  "homepage": "https://www.uwe-sieber.de/usbtreeview_e.html",
+  "license": "Freeware",
+  "architecture": {
+    "32bit": {
+      "url": "https://www.uwe-sieber.de/files/UsbTreeView_Win32.zip",
+      "hash": "f435ec47471411af40ed7e4a84c06d33e512fdb314f23df36e2bdc1c2445bc3e"
+    },
+    "64bit": {
+      "url": "https://www.uwe-sieber.de/files/UsbTreeView_x64.zip",
+      "hash": "90c59e7ca1c837adc8ef0a5236ada16977750d6c49785d80753688f5a039f171"
+    }
+  },
+  "bin": "UsbTreeView.exe",
+  "shortcuts": [
+    [
+      "UsbTreeView.exe",
+      "UsbTreeView - USB Device Tree Viewer"
+    ]
+  ],
+  "checkver": "USB Device Tree Viewer V([\\d.]+)",
+  "autoupdate": {
+    "architecture": {
+      "32bit": {
+        "url": "https://www.uwe-sieber.de/files/UsbTreeView_Win32.zip"
+      },
+      "64bit": {
+        "url": "https://www.uwe-sieber.de/files/UsbTreeView_x64.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\UsbTreeView.json",
+    "__sourceComment: URL now 404s so freezing",
+    "__sourceHash: b0f20ae10e37cfdeebf0c4e838436dba44e1841f",
+    "__sourceLastChangeFound: 260129 13:20:42",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/UsbTreeView.json"
+  ]
+}

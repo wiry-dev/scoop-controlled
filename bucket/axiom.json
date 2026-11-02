@@ -1,0 +1,31 @@
+{
+  "version": "1.9.6.1-alpha",
+  "description": "GUI for FFmpeg",
+  "homepage": "https://axiomui.github.io/",
+  "license": "GPL-3.0-only",
+  "suggest": {
+    "ffmpeg": "ffmpeg"
+  },
+  "url": "https://github.com/MattMcManis/Axiom/releases/download/v1.9.6.1-alpha/Axiom.zip",
+  "hash": "71cdffd2722da8b4602705e6ee84adc6eee8dd177fc5c6238e4637997e70a513",
+  "bin": "Axiom.exe",
+  "shortcuts": [
+    [
+      "Axiom.exe",
+      "Axiom"
+    ]
+  ],
+  "checkver": "/releases/download/v([\\w.-]+)/Axiom\\.zip",
+  "autoupdate": {
+    "url": "https://github.com/MattMcManis/Axiom/releases/download/v$version/Axiom.zip"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\axiom.json",
+    "__sourceHash: b905866b0e908e98e120d60e04155829bfd913ed",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 230423 14:24:16",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/axiom.json"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "version": "1.6.1",
+  "description": "Transform, query, validate, and edit XML files.",
+  "homepage": "https://xmlstar.sourceforge.net/",
+  "license": "MIT",
+  "url": "https://downloads.sourceforge.net/project/xmlstar/xmlstarlet/1.6.1/xmlstarlet-1.6.1-win32.zip",
+  "hash": "sha1:cc5f5cd17a1f81740e5185a70408ffd6fa2f862d",
+  "extract_dir": "xmlstarlet-1.6.1",
+  "bin": [
+    "xml.exe",
+    [
+      "xml.exe",
+      "xmlstarlet"
+    ]
+  ],
+  "checkver": {
+    "url": "https://sourceforge.net/projects/xmlstar/files/",
+    "regex": "xmlstarlet-([\\d.]+)-win"
+  },
+  "autoupdate": {
+    "url": "https://downloads.sourceforge.net/project/xmlstar/xmlstarlet/$version/xmlstarlet-$version-win32.zip",
+    "extract_dir": "xmlstarlet-$version"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\xmlstarlet.json",
+    "__sourceHash: 088ce858aeaeb420507c59d0c76f07e20f983f11",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 230309 18:33:29",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/xmlstarlet.json"
+  ]
+}

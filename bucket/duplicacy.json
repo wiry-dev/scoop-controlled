@@ -1,0 +1,42 @@
+{
+  "version": "3.3.0",
+  "description": "A lock-free deduplication cloud backup tool",
+  "homepage": "https://duplicacy.com/",
+  "license": {
+    "identifier": "Shareware",
+    "url": "https://github.com/gilbertchen/duplicacy/blob/master/LICENSE.md"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/gilbertchen/duplicacy/releases/download/v3.3.0/duplicacy_win_x64_3.3.0.exe#/duplicacy.exe",
+      "hash": "702b6a49cc8ae599ed7215759c8599563ffdf4099d0728f8c6a1bff2ad63cb46"
+    },
+    "32bit": {
+      "url": "https://github.com/gilbertchen/duplicacy/releases/download/v3.3.0/duplicacy_win_i386_3.3.0.exe#/duplicacy.exe",
+      "hash": "dc736164a060243a3691c0604dc9b58ff6f8e9f59b3eaecc0659d27d772d4e3c"
+    }
+  },
+  "bin": "duplicacy.exe",
+  "checkver": {
+    "github": "https://github.com/gilbertchen/duplicacy"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/gilbertchen/duplicacy/releases/download/v$version/duplicacy_win_x64_$version.exe#/duplicacy.exe"
+      },
+      "32bit": {
+        "url": "https://github.com/gilbertchen/duplicacy/releases/download/v$version/duplicacy_win_i386_$version.exe#/duplicacy.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\duplicacy.json",
+    "__sourceHash: fc9f15d0d1c63f4c30eb42ccf455c52115426147",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261027 01:04:04",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/duplicacy.json"
+  ]
+}

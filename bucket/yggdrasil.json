@@ -1,0 +1,77 @@
+{
+  "version": "0.5.8",
+  "description": "An experiment in scalable routing as an encrypted IPv6 overlay network",
+  "homepage": "https://yggdrasil-network.github.io",
+  "license": "LGPL-3.0-or-later",
+  "notes": "Use add-service.ps1 to add Yggdrasil service and remove-service.ps1 to remove Yggdrasil service",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/yggdrasil-network/yggdrasil-go/releases/download/v0.5.8/yggdrasil-0.5.8-x64.msi",
+      "hash": "e91b2e3b0ec0cf2410feeddcb29290a65f5442129f057f34a7df73c6477fc4f1"
+    },
+    "32bit": {
+      "url": "https://github.com/yggdrasil-network/yggdrasil-go/releases/download/v0.5.8/yggdrasil-0.5.8-x86.msi",
+      "hash": "3645165f3135683e0d0a0bb93e972df325dc2fbdc9f916d10f765ed1c2f5e77a"
+    },
+    "arm64": {
+      "url": "https://github.com/yggdrasil-network/yggdrasil-go/releases/download/v0.5.8/yggdrasil-0.5.8-arm64.msi",
+      "hash": "67dc8c755f960eb4711cc32cb80a87149c9611933defecc3470a55cd360bffc7"
+    }
+  },
+  "extract_dir": "PFiles\\Yggdrasil",
+  "pre_install": [
+    "$manifest.persist | ForEach-Object {",
+    "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
+    "}"
+  ],
+  "post_install": [
+    "if (!(Get-Content -Path \"$dir\\yggdrasil.conf\")) {",
+    "    yggdrasil.exe -genconf > \"$dir\\yggdrasil.conf\"",
+    "}",
+    "New-Item \"$dir\\add-service.ps1\" -Value @\"",
+    "sc.exe create 'Yggdrasil' binpath= \"$dir\\yggdrasil.exe -useconffile $dir\\yggdrasil.conf -logto $dir\\yggdrasil.log\" start= auto group= NetworkProvider displayname= 'Yggdrasil Service'",
+    "sc.exe description 'Yggdrasil' 'Yggdrasil Network router process'",
+    "\"@ | Out-Null",
+    "New-Item \"$dir\\remove-service.ps1\" -Value \"sc.exe delete 'Yggdrasil'\" | Out-Null"
+  ],
+  "pre_uninstall": [
+    "if (Get-Service -Name 'Yggdrasil' -ErrorAction 'SilentlyContinue') {",
+    "   if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
+    "   Stop-Service -Name 'Yggdrasil' -Verbose -ErrorAction 'SilentlyContinue' -Force",
+    "   sc.exe delete 'Yggdrasil'",
+    "}"
+  ],
+  "bin": [
+    "yggdrasil.exe",
+    "yggdrasilctl.exe"
+  ],
+  "persist": [
+    "yggdrasil.conf",
+    "yggdrasil.log"
+  ],
+  "checkver": {
+    "github": "https://github.com/yggdrasil-network/yggdrasil-go"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/yggdrasil-network/yggdrasil-go/releases/download/v$version/yggdrasil-$version-x64.msi"
+      },
+      "32bit": {
+        "url": "https://github.com/yggdrasil-network/yggdrasil-go/releases/download/v$version/yggdrasil-$version-x86.msi"
+      },
+      "arm64": {
+        "url": "https://github.com/yggdrasil-network/yggdrasil-go/releases/download/v$version/yggdrasil-$version-arm64.msi"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\yggdrasil.json",
+    "__sourceHash: 7361efe61df427e054e152fb8a72630818ed78f9",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/yggdrasil.json"
+  ]
+}

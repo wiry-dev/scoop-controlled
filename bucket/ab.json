@@ -1,0 +1,42 @@
+{
+  "version": "2.4.69",
+  "description": "Apache HTTP server benchmarking tool ('ab')",
+  "homepage": "https://www.apachelounge.com",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://fossies.org/windows/www/httpd-2.4.69-261002-Win64-VS18.zip",
+      "hash": "9b47a2363a71fef6209c88e79743db81311e1753c4564e007141934123132c10"
+    }
+  },
+  "extract_dir": "Apache24",
+  "pre_install": "Remove-Item \"$dir\\*\" -Exclude ab.exe,abs.exe,libcrypto*.dll,libssl*.dll,NOTICE.txt,LICENSE.txt -Recurse -Force",
+  "bin": [
+    "bin\\ab.exe",
+    "bin\\abs.exe"
+  ],
+  "checkver": {
+    "url": "https://fossies.org/windows/www/",
+    "regex": "httpd-([\\d.]+)-(?<date>[\\d]+)-(?<arch>(w|W)in64)-(?<vs>VS\\d+)\\.zip"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://fossies.org/windows/www/httpd-$version-$matchDate-$matchArch-$matchVs.zip"
+      }
+    },
+    "hash": {
+      "url": "$url_fossies.sha256"
+    },
+    "extract_dir": "Apache$majorVersion$minorVersion"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\ab.json",
+    "__sourceHash: eef385ddaf607a1da4be5be271769b28f52108b1",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261003 01:05:40",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/ab.json"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "version": "2.12.0",
+  "description": "Command-line interface for WordPress",
+  "homepage": "https://wp-cli.org",
+  "license": "MIT",
+  "notes": "'wp cli update' is aliased to 'scoop update wp-cli'",
+  "suggest": {
+    "PHP": [
+      "php",
+      "php-nts"
+    ]
+  },
+  "url": "https://github.com/wp-cli/wp-cli/releases/download/v2.12.0/wp-cli-2.12.0.phar#/wp-cli.phar",
+  "hash": "sha512:be928f6b8ca1e8dfb9d2f4b75a13aa4aee0896f8a9a0a1c45cd5d2c98605e6172e6d014dda2e27f88c98befc16c040cbb2bd1bfa121510ea5cdf5f6a30fe8832",
+  "pre_install": [
+    "echo 'if($args.length -eq 2 -and ($args[0] -eq \"cli\" -and $args[1] -eq \"update\")) { & scoop update wp-cli }' | out-file \"$dir\\wp.ps1\"",
+    "echo 'else { & php (join-path $PSScriptRoot \"wp-cli.phar\") @args }' | out-file \"$dir\\wp.ps1\" -append"
+  ],
+  "bin": "wp.ps1",
+  "checkver": {
+    "github": "https://github.com/wp-cli/wp-cli"
+  },
+  "autoupdate": {
+    "url": "https://github.com/wp-cli/wp-cli/releases/download/v$version/wp-cli-$version.phar#/wp-cli.phar",
+    "hash": {
+      "url": "$url.sha512"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\wp-cli.json",
+    "__sourceHash: acd3c3a8107c443f9ffb99933c95cf0a8d286299",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 250507 04:29:39",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/wp-cli.json"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "version": "1.16",
+  "description": "Simple command line utility for converting .doc & .xls files to any supported format.",
+  "homepage": "https://github.com/tobya/DocTo",
+  "license": "MIT",
+  "notes": "Must have Microsoft Word, Excel or PowerPoint installed on host machine.",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/tobya/DocTo/releases/download/v1.16/docto_64.zip",
+      "hash": "03f36e72a8d3de98dcdc031603fc5208a9887478b1fcbdb154dd7e632dda424f"
+    },
+    "32bit": {
+      "url": "https://github.com/tobya/DocTo/releases/download/v1.16/docto_32.zip",
+      "hash": "0b971c10d258d49d74ea26546164019ca2aace223364641d3a593c94b4e51b93"
+    }
+  },
+  "bin": "docto.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/tobya/DocTo/releases/download/v$version/docto_64.zip"
+      },
+      "32bit": {
+        "url": "https://github.com/tobya/DocTo/releases/download/v$version/docto_32.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\docto.json",
+    "__sourceHash: f222a70f6569b80ee792385a2127a93edaa05cbd",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261009 19:45:57",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/docto.json"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "version": "2026-02-08",
+  "homepage": "https://github.com/artempyanykh/marksman",
+  "description": "Write Markdown with code assist and intelligence in the comfort of your favourite editor.",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/artempyanykh/marksman/releases/download/2026-02-08/marksman.exe",
+      "hash": "a6d05beb08ebe41b0a9f09c98a438540421436fa5531424c22e0bb1d22529705"
+    }
+  },
+  "bin": "marksman.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/artempyanykh/marksman/releases/download/$version/marksman.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\marksman.json",
+    "__sourceHash: b0c5afce12e497ad01bf73e2a306cf79151afaf7",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 260509 12:03:50",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/marksman.json"
+  ]
+}

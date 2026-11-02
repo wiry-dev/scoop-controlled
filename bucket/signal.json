@@ -1,0 +1,52 @@
+{
+  "version": "8.33.0",
+  "description": "A cross-platform encrypted messaging service.",
+  "homepage": "https://signal.org",
+  "license": "GPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://updates.signal.org/desktop/signal-desktop-win-x64-8.33.0.exe#/dl.7z",
+      "hash": "sha512:593b551dfd45f26568bdc2e3593840adccf051474de9348ce37aa7a0809dffff8c63d4b19f5bd37dd17278008fe36acb7ec42f676d8dc5360bf082f53637f290",
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+    },
+    "arm64": {
+      "url": "https://updates.signal.org/desktop/signal-desktop-win-arm64-8.33.0.exe#/dl.7z",
+      "hash": "sha512:a933b703fbf23914b12754fcf3082878b847417cf2d41409700394927d3cf6ffb55378de2c48cad4f30a8d1ceafa204f35919ffada3824d653fb88c087d97199",
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\""
+    }
+  },
+  "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*.exe\" -Recurse -Force",
+  "shortcuts": [
+    [
+      "Signal.exe",
+      "Signal"
+    ]
+  ],
+  "checkver": {
+    "url": "https://updates.signal.org/desktop/latest.yml",
+    "regex": "version:\\s([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://updates.signal.org/desktop/signal-desktop-win-x64-$version.exe#/dl.7z"
+      },
+      "arm64": {
+        "url": "https://updates.signal.org/desktop/signal-desktop-win-arm64-$version.exe#/dl.7z"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/latest.yml",
+      "regex": "$basename\\s+sha512:\\s$base64"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\signal.json",
+    "__sourceHash: c9ee76b7bb19fb3fa43fe5104d752c275d02a47a",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261029 00:49:50",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/signal.json"
+  ]
+}

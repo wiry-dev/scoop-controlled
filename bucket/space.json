@@ -1,0 +1,33 @@
+{
+  "version": "2.0.1",
+  "description": "A fast disk space analyzer and cleaner powered by Rust!",
+  "homepage": "https://github.com/emilevr/space",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/emilevr/space/releases/download/2.0.1/space-x86_64-pc-windows-msvc.zip",
+      "hash": "1dc04bac8fd4f436ee337fb4a2e3b1b944e73154e8dedc9b953570f8a058e75e"
+    }
+  },
+  "bin": "space.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/emilevr/space/releases/download/$version/space-x86_64-pc-windows-msvc.zip",
+        "hash": {
+          "url": "$url.sha256"
+        }
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\space.json",
+    "__sourceHash: f924ba69f20dc1875a109d609ba3df2f08129795",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260416 01:06:44",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/space.json"
+  ]
+}

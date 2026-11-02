@@ -1,0 +1,31 @@
+{
+  "homepage": "https://github.com/dmtrKovalenko/odiff",
+  "description": "A fast pixel-by-pixel image comparison tool",
+  "license": "MIT",
+  "version": "3.1.1",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/dmtrKovalenko/odiff/releases/download/v3.1.1/odiff-windows-x64.exe#/odiff.exe",
+      "hash": "999ada54fe1e0f2a79c241b12525b3cf452628b425ee0ff5e5ea620c8c9f0af5",
+      "extract_dir": "odiff-19e787c8"
+    }
+  },
+  "bin": "odiff.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/dmtrKovalenko/odiff/releases/download/v$version/odiff-windows-x64.exe#/odiff.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\odiff.json",
+    "__sourceHash: ac4cd22a10b311d16b65069b9d68815566923112",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/odiff.json"
+  ]
+}

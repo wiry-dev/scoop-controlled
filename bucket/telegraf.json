@@ -1,0 +1,58 @@
+{
+  "version": "1.40.2",
+  "description": "The plugin-driven server agent for collecting & reporting metrics.",
+  "homepage": "https://www.influxdata.com/time-series-platform/telegraf/",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://dl.influxdata.com/telegraf/releases/telegraf-1.40.2_windows_amd64.zip",
+      "hash": "062b33ee7e2400cdcee1fcd0601ede6b7ba7a1613d3f95b702abe176e1deee2c"
+    },
+    "32bit": {
+      "url": "https://dl.influxdata.com/telegraf/releases/telegraf-1.40.2_windows_i386.zip",
+      "hash": "1ebb67ed7980cf9fe234c555d2a0fefdb2a934fcb8bf0dca888842e52cc3b7f5"
+    },
+    "arm64": {
+      "url": "https://dl.influxdata.com/telegraf/releases/telegraf-1.40.2_windows_arm64.zip",
+      "hash": "a9242256d94087c8a89a816a87ad966c2f04fbd6f722dedcf431820103f0dfe4"
+    }
+  },
+  "extract_dir": "telegraf-1.40.2",
+  "bin": "telegraf.exe",
+  "persist": "telegraf.conf",
+  "env_set": {
+    "TELEGRAF_CONFIG_PATH": "$persist_dir/telegraf.conf"
+  },
+  "checkver": {
+    "github": "https://github.com/influxdata/telegraf"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://dl.influxdata.com/telegraf/releases/telegraf-$version_windows_amd64.zip"
+      },
+      "32bit": {
+        "url": "https://dl.influxdata.com/telegraf/releases/telegraf-$version_windows_i386.zip"
+      },
+      "arm64": {
+        "url": "https://dl.influxdata.com/telegraf/releases/telegraf-$version_windows_arm64.zip"
+      }
+    },
+    "hash": {
+      "url": "https://github.com/influxdata/telegraf/releases/tag/v$version",
+      "regex": "(?s)$basename</.*?<\\w+>$sha256</"
+    },
+    "extract_dir": "telegraf-$version"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\telegraf.json",
+    "__sourceDelayDays: 7",
+    "__sourceHash: 66b01111732da35a8e671c764d938ebaadde0d33",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261012 16:34:59",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUpdateMinimumDays: 21",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/telegraf.json"
+  ]
+}

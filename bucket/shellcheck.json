@@ -1,0 +1,25 @@
+{
+  "version": "0.11.0",
+  "description": "Static analysis tool for shell scripts",
+  "homepage": "https://shellcheck.net/",
+  "license": "GPL-3.0-only",
+  "url": "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.zip",
+  "hash": "8a4e35ab0b331c85d73567b12f2a444df187f483e5079ceffa6bda1faa2e740e",
+  "pre_install": "Get-ChildItem \"$dir\\shellcheck-*.exe\" | Rename-Item -NewName 'shellcheck.exe'",
+  "bin": "shellcheck.exe",
+  "checkver": {
+    "github": "https://github.com/koalaman/shellcheck"
+  },
+  "autoupdate": {
+    "url": "https://github.com/koalaman/shellcheck/releases/download/v$version/shellcheck-v$version.zip"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\shellcheck.json",
+    "__sourceHash: 80c5d31db08ad86cfb20a33aa213a23a9f0a9ee4",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 250804 00:47:50",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/shellcheck.json"
+  ]
+}

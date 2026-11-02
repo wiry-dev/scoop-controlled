@@ -1,0 +1,44 @@
+{
+  "version": "2.4.2",
+  "description": "An open and reliable container runtime",
+  "homepage": "https://containerd.io",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/containerd/containerd/releases/download/v2.4.2/containerd-2.4.2-windows-amd64.tar.gz",
+      "hash": "cae2a5caf41b32ebb9b741461c163e36ebfa1a9afea8d47c66b66a27b1eb2303"
+    }
+  },
+  "bin": [
+    "bin\\containerd.exe",
+    "bin\\containerd-shim-runhcs-v1.exe",
+    "bin\\ctr.exe"
+  ],
+  "checkver": {
+    "github": "https://github.com/containerd/containerd"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/containerd/containerd/releases/download/v$version/containerd-$version-windows-amd64.tar.gz"
+      }
+    },
+    "hash": {
+      "url": "$url.sha256sum"
+    }
+  },
+  "notes": [
+    "To register containerd as a service, run `containerd --register-service` as an elevated user",
+    "To start the containerd service, run `Start-Service containerd` in PowerShell",
+    "or `sc start containerd` in Cmd."
+  ],
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\containerd.json",
+    "__sourceHash: 623404fc176aabaaf4db6d49038701ae75f5c113",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261014 01:00:58",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/containerd.json"
+  ]
+}

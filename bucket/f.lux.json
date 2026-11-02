@@ -1,0 +1,36 @@
+{
+  "##": [
+    "Duplicate of 'extras/flux'. Related: https://github.com/ScoopInstaller/Scoop/issues/5405",
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\f.lux.json",
+    "__sourceHash: af1f36197f1eaa8122285f790d4ba76668c89bb2",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261029 20:26:39",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/f.lux.json"
+  ],
+  "version": "4.148",
+  "description": "Makes the color of your computer's display adapt to the time of day, warm at night and like sunlight during the day.",
+  "homepage": "https://justgetflux.com",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://justgetflux.com/news/pages/eula/"
+  },
+  "url": "https://justgetflux.com/flux-setup4-148.exe#/dl.7z",
+  "hash": "c5bfc86f82a4e47c41c0ff2ab70cd49c7365a496cb9079766e1d7ea40d65ea54",
+  "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
+  "bin": "flux.exe",
+  "shortcuts": [
+    [
+      "flux.exe",
+      "f.lux"
+    ]
+  ],
+  "checkver": {
+    "url": "https://justgetflux.com/update/v4/windows-download.json",
+    "regex": "([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://justgetflux.com/flux-setup$dashVersion.exe#/dl.7z"
+  }
+}

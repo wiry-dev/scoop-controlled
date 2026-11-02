@@ -1,0 +1,40 @@
+{
+  "version": "0.6.0",
+  "description": "Lorien is an infinite canvas drawing/note-taking app that is focused on performance, small savefiles and simplicity",
+  "homepage": "https://github.com/mbrlabs/Lorien",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/mbrlabs/Lorien/releases/download/v0.6.0/Lorien_v0.6.0_Windows.zip",
+      "hash": "9402a0ed46968e7156be7bf17f5e8e0fc635f79865e4f58e52fc089aecf4b3a6",
+      "extract_dir": "Lorien_v0.6.0_Windows"
+    }
+  },
+  "bin": "Lorien.exe",
+  "shortcuts": [
+    [
+      "Lorien.exe",
+      "Lorien"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/mbrlabs/Lorien"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/mbrlabs/Lorien/releases/download/v$version/Lorien_v$version_Windows.zip",
+        "extract_dir": "Lorien_v$version_Windows"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\lorien.json",
+    "__sourceHash: 94cadde611dc7c6c21e8401e87416b64faaf2f0b",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240110 15:59:55",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/lorien.json"
+  ]
+}

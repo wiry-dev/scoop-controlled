@@ -1,0 +1,37 @@
+{
+  "version": "4.0.0",
+  "description": "a non-caching web proxy with advanced filtering capabilities for enhancing privacy, modifying web page data and HTTP headers, controlling access, and removing ads and other obnoxious Internet junk.",
+  "homepage": "https://www.privoxy.org",
+  "license": "GPL-2.0-only",
+  "url": "https://downloads.sourceforge.net/project/ijbswa/Win32/4.0.0%20%28stable%29/privoxy_setup_4.0.0.exe#/dl.7z",
+  "hash": "sha1:40c705e2cb6954a0deaa9ca6a08a4c1126847862",
+  "bin": "privoxy.exe",
+  "shortcuts": [
+    [
+      "privoxy.exe",
+      "Privoxy"
+    ]
+  ],
+  "persist": [
+    "config.txt",
+    "trust.txt",
+    "user.action",
+    "user.filter"
+  ],
+  "checkver": {
+    "url": "https://www.privoxy.org/announce.txt",
+    "regex": "Announcing Privoxy ([\\d.]+) stable"
+  },
+  "autoupdate": {
+    "url": "https://downloads.sourceforge.net/project/ijbswa/Win32/$version%20%28stable%29/privoxy_setup_$version.exe#/dl.7z"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\privoxy.json",
+    "__sourceHash: fbb7e8fc241976d37418dc24558bd8cb086ca059",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 250122 08:32:17",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/privoxy.json"
+  ]
+}

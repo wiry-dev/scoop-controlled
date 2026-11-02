@@ -1,0 +1,30 @@
+{
+  "version": "1.7.7",
+  "homepage": "https://github.com/tsl0922/ttyd",
+  "description": "A cli appication for sharing your terminal all over the web.",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.win32.exe#/ttyd.exe",
+      "hash": "e33a27501b10b96981335bcba938b1145c7f52551a343e72160f00ab71832b37"
+    }
+  },
+  "bin": "ttyd.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/tsl0922/ttyd/releases/download/$version/ttyd.win32.exe#/ttyd.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\ttyd.json",
+    "__sourceHash: 69875f376b431ca16e8b9401297ec21c7ca86999",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261009 19:45:57",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/ttyd.json"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "version": "5.8.3",
+  "description": "Customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is.",
+  "homepage": "https://github.com/kubernetes-sigs/kustomize",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v5.8.3/kustomize_v5.8.3_windows_amd64.zip",
+      "hash": "763c4040ff01435bfce39661072452ebdf1cf2808bb91f5708ab4420834fbd42"
+    },
+    "arm64": {
+      "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v5.8.3/kustomize_v5.8.3_windows_arm64.zip",
+      "hash": "b86236917e649e2f9531899c519f333e554cd1fc0c87132b86b885bf315735dc"
+    }
+  },
+  "bin": "kustomize.exe",
+  "checkver": {
+    "github": "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/latest",
+    "jsonpath": "$..name",
+    "regex": "kustomize/v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v$version/kustomize_v$version_windows_amd64.zip"
+      },
+      "arm64": {
+        "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v$version/kustomize_v$version_windows_arm64.zip"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/checksums.txt"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\kustomize.json",
+    "__sourceHash: f64082c5cd365215ec296f8d40d097d6ef058f7b",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261008 12:46:23",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/kustomize.json"
+  ]
+}

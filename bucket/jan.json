@@ -1,0 +1,43 @@
+{
+  "version": "0.5.4",
+  "description": "An open source alternative to ChatGPT that runs 100% offline on your computer.",
+  "homepage": "https://github.com/janhq/jan",
+  "license": "https://jan.ai/",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/janhq/jan/releases/download/v0.5.4/jan-win-x64-0.5.4.exe#/dl.7z",
+      "hash": "sha512:d3452e1524bfb9802108ff873b9875dbdcefcf0af3f927c2280e0957d70805412d898f55b44f1b07b4bb4b954d38519c3cf752fd79d9283d3dd90790fd93d757",
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+    }
+  },
+  "shortcuts": [
+    [
+      "Jan.exe",
+      "Jan"
+    ]
+  ],
+  "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\resources\\app-update.yml\"  -Force -Recurse",
+  "checkver": {
+    "github": "https://github.com/janhq/jan"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/janhq/jan/releases/download/v$version/jan-win-x64-$version.exe#/dl.7z",
+        "hash": {
+          "url": "$baseurl/latest.yml",
+          "regex": "sha512:\\s*$base64"
+        }
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\jan.json",
+    "__sourceHash: eef43f5b59006df0bde2f7153d3f305c1d9de3ec",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/jan.json"
+  ]
+}

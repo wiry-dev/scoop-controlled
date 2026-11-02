@@ -1,0 +1,28 @@
+{
+  "version": "3.9.4",
+  "description": "A utility that manages a Registry key that allows Windows to remap one key to any other key.",
+  "homepage": "https://github.com/randyrants/sharpkeys",
+  "license": "MS-PL",
+  "url": "https://github.com/randyrants/sharpkeys/releases/download/v3.9.4/sharpkeys394.msi",
+  "hash": "059ad91921008299f76729f2d6eb0092ebaa11ae31b1871ca638c787544f8a07",
+  "bin": "SharpKeys.exe",
+  "shortcuts": [
+    [
+      "SharpKeys.exe",
+      "SharpKeys"
+    ]
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "url": "https://github.com/randyrants/sharpkeys/releases/download/v$version/sharpkeys$cleanVersion.msi"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\sharpkeys.json",
+    "__sourceHash: 27a3bedde03603139d69e7e11cb52640952bfaf8",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 220404 20:26:48",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/sharpkeys.json"
+  ]
+}

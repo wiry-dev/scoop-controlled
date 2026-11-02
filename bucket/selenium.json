@@ -1,0 +1,28 @@
+{
+  "version": "4.52.0",
+  "description": "A smart proxy server that allows Selenium tests to route commands to remote web browser instances",
+  "homepage": "https://selenium.dev",
+  "license": "Apache-2.0",
+  "suggest": {
+    "JDK": "java/openjdk"
+  },
+  "url": "https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.52.0/selenium-server-4.52.0.jar#/selenium.jar",
+  "hash": "cd167b9a5d405e8e59fa316f949f7af256834545d0631d72224500dafbc79d0f",
+  "bin": "selenium.jar",
+  "checkver": {
+    "github": "https://github.com/SeleniumHQ/selenium",
+    "regex": "selenium-([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://github.com/SeleniumHQ/selenium/releases/download/selenium-$version/selenium-server-$version.jar#/selenium.jar"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\selenium.json",
+    "__sourceHash: 34faec72f3e7da64f1f15d15f67d2b8272bb01cb",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261029 16:27:14",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/selenium.json"
+  ]
+}

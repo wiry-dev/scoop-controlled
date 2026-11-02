@@ -1,0 +1,36 @@
+{
+  "version": "0.26.3",
+  "description": "Friendly and fast tool for sending HTTP requests",
+  "homepage": "https://github.com/ducaale/xh/",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/ducaale/xh/releases/download/v0.26.3/xh-v0.26.3-x86_64-pc-windows-msvc.zip",
+      "hash": "23d92fd78ff6a93c4e1c4de3a6b614bb8a31999acb441793630bcc37f9cd6c45",
+      "extract_dir": "xh-v0.26.3-x86_64-pc-windows-msvc"
+    }
+  },
+  "bin": [
+    "xh.exe",
+    "xhs.exe"
+  ],
+  "pre_install": "Copy-Item \"$dir\\xh.exe\" \"$dir\\xhs.exe\"",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/ducaale/xh/releases/download/v$version/xh-v$version-x86_64-pc-windows-msvc.zip",
+        "extract_dir": "xh-v$version-x86_64-pc-windows-msvc"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\xh.json",
+    "__sourceHash: 5c87ac6bc3edb71c7df1ac433622d95d3b5fcdd0",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261021 08:38:56",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/xh.json"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": "3.32.1",
+  "description": "Educational drag-and-drop programming environment",
+  "homepage": "https://scratch.mit.edu/about",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://scratch.mit.edu/info/faq"
+  },
+  "url": "https://downloads.scratch.mit.edu/desktop/Scratch%203.32.1%20Setup.exe#/dl.7z",
+  "hash": "7099efbcf059f880c4f48a5b2238f6f30482a8e75d0aa0c5424dda95f4a61924",
+  "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\"-Force -Recurse"
+  ],
+  "shortcuts": [
+    [
+      "Scratch 3.exe",
+      "Scratch 3"
+    ]
+  ],
+  "checkver": {
+    "script": [
+      "$req = [System.Net.HttpWebRequest]::Create('https://downloads.scratch.mit.edu/desktop/Scratch%20Setup.exe')",
+      "$req.Method = 'head'",
+      "$req.GetResponse().ResponseUri.Segments[-1]"
+    ],
+    "regex": "\\AScratch%20([\\d.]+)%20Setup.exe\\Z"
+  },
+  "autoupdate": {
+    "url": "https://downloads.scratch.mit.edu/desktop/Scratch%20$version%20Setup.exe#/dl.7z"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\scratch.json",
+    "__sourceHash: d970f133e583eee113b24838f5b2f4b2e223c672",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260812 16:38:05",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/scratch.json"
+  ]
+}

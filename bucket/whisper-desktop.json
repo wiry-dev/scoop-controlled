@@ -1,0 +1,39 @@
+{
+  "version": "1.12.0",
+  "description": "(GUI Version) High-performance GPGPU inference of OpenAI's Whisper automatic speech recognition (ASR) model.",
+  "homepage": "https://github.com/Const-me/Whisper",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/Const-me/Whisper/releases/download/1.12.0/WhisperDesktop.zip",
+      "hash": "483a82cc93e89c7e8a0187e4809a026d7b797e051bf4f9e54b6268e1fc574c62"
+    }
+  },
+  "shortcuts": [
+    [
+      "WhisperDesktop.exe",
+      "Whisper Desktop"
+    ]
+  ],
+  "notes": [
+    "The Whisper model 'medium' is recommended.",
+    "Run 'scoop install whisper-model-ggml-medium' to download it."
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/Const-me/Whisper/releases/download/$version/WhisperDesktop.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\whisper-desktop.json",
+    "__sourceHash: a74d72aac0ab2cf15de939140c36a44b9bacd706",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 230722 15:32:56",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/whisper-desktop.json"
+  ]
+}

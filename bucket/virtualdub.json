@@ -1,0 +1,46 @@
+{
+  "version": "1.10.4.35491",
+  "description": "Video capture/processing utility",
+  "homepage": "http://www.virtualdub.org",
+  "license": "GPL-2.0-or-later",
+  "architecture": {
+    "64bit": {
+      "url": "https://downloads.sourceforge.net/project/virtualdub/virtualdub-win/1.10.4.35491/VirtualDub-1.10.4-AMD64.zip",
+      "hash": "sha1:af324c94e6d8b95b06e327ebe2ca9d90623332ce",
+      "bin": [
+        "vdub64.exe",
+        "Veedub64.exe"
+      ],
+      "shortcuts": [
+        [
+          "Veedub64.exe",
+          "VirtualDub"
+        ]
+      ]
+    },
+    "32bit": {
+      "url": "https://downloads.sourceforge.net/project/virtualdub/virtualdub-win/1.10.4.35491/VirtualDub-1.10.4.zip",
+      "hash": "sha1:ea14a0f331f6fb94c735633bc6be1da3db13ed7b",
+      "bin": [
+        "auxsetup.exe",
+        "vdub.exe",
+        "VirtualDub.exe"
+      ],
+      "shortcuts": [
+        [
+          "VirtualDub.exe",
+          "VirtualDub"
+        ]
+      ]
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\virtualdub.json",
+    "__sourceHash: ac87dbc498d5ceee8d0e4aca5f0337e1037637f9",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 200823 21:38:14",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/virtualdub.json"
+  ]
+}

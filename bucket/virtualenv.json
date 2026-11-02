@@ -1,0 +1,31 @@
+{
+  "homepage": "https://github.com/pypa/virtualenv",
+  "description": "Virtual Python Environment builder",
+  "license": "MIT",
+  "version": "20.26.5",
+  "url": "https://bootstrap.pypa.io/virtualenv/virtualenv.pyz",
+  "hash": "71eb078938e9a7662d5ee2ad716aaa1873c21d85656a8ced3b90d62af868b070",
+  "bin": [
+    [
+      "py.exe",
+      "virtualenv",
+      "$dir\\virtualenv.pyz"
+    ]
+  ],
+  "checkver": {
+    "url": "https://bootstrap.pypa.io/virtualenv/version.txt",
+    "regex": "([0-9.]+)"
+  },
+  "autoupdate": {
+    "url": "https://bootstrap.pypa.io/virtualenv/virtualenv.pyz"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\virtualenv.json",
+    "__sourceHash: 9f722334ab5972199f5d19a1495847bdf6f54293",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/virtualenv.json"
+  ]
+}

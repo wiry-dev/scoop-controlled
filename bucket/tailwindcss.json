@@ -1,0 +1,32 @@
+{
+  "version": "4.3.3",
+  "description": "TailwindCSS framework CLI for rapid UI development",
+  "homepage": "https://tailwindcss.com/",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/tailwindlabs/tailwindcss/releases/download/v4.3.3/tailwindcss-windows-x64.exe#/tailwindcss.exe",
+      "hash": "e0e260ce048014e9268f6237ff18f8ccf02cef521cbd0ae04e82c2cdf7aa3955"
+    }
+  },
+  "bin": "tailwindcss.exe",
+  "checkver": {
+    "github": "https://github.com/tailwindlabs/tailwindcss"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/tailwindlabs/tailwindcss/releases/download/v$version/tailwindcss-windows-x64.exe#/tailwindcss.exe"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\tailwindcss.json",
+    "__sourceHash: ab13e05fdac4df4accd2589d278235604f51a5aa",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261009 19:45:57",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/tailwindcss.json"
+  ]
+}

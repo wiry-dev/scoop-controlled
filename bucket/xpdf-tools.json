@@ -1,0 +1,54 @@
+{
+  "version": "4.06",
+  "description": "Several command-line utilities to read and extract data from PDF files",
+  "homepage": "https://www.xpdfreader.com",
+  "license": {
+    "identifier": "GPL-2.0-only|GPL-3.0-only",
+    "url": "https://www.xpdfreader.com/opensource.html"
+  },
+  "url": "https://dl.xpdfreader.com/xpdf-tools-win-4.06.zip",
+  "hash": "2b6ca45da794e7854a6468fd6c8063fde62701f001ce03fa4f603eab7e15a0b6",
+  "architecture": {
+    "64bit": {
+      "extract_dir": "xpdf-tools-win-4.06\\bin64"
+    },
+    "32bit": {
+      "extract_dir": "xpdf-tools-win-4.06\\bin32"
+    }
+  },
+  "bin": [
+    "pdftopng.exe",
+    "pdftoppm.exe",
+    "pdfimages.exe",
+    "pdftohtml.exe",
+    "pdffonts.exe",
+    "pdfdetach.exe",
+    "pdftotext.exe",
+    "pdfinfo.exe",
+    "pdftops.exe"
+  ],
+  "checkver": {
+    "url": "https://www.xpdfreader.com/download.html",
+    "regex": "Current version:\\s*([^\\s<]+)"
+  },
+  "autoupdate": {
+    "url": "https://dl.xpdfreader.com/xpdf-tools-win-$version.zip",
+    "architecture": {
+      "64bit": {
+        "extract_dir": "xpdf-tools-win-$version\\bin64"
+      },
+      "32bit": {
+        "extract_dir": "xpdf-tools-win-$version\\bin32"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\xpdf-tools.json",
+    "__sourceHash: a4345ce70ca243ce6de8ed7198438f310d4f1017",
+    "__sourceLastChangeFound: 260128 15:51:35",
+    "__sourceLastUpdated: 251115 00:39:25",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/xpdf-tools.json"
+  ]
+}

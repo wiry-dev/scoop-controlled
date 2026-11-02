@@ -1,0 +1,30 @@
+{
+  "version": "2.5",
+  "description": "Use the Windows SSH agent from inside WSL",
+  "homepage": "https://github.com/rupor-github/ssh-agent-wsl",
+  "license": "GPL-3.0-only",
+  "notes": "Please add the line echoed above to your ~/.bashrc inside WSL",
+  "url": "https://github.com/rupor-github/ssh-agent-wsl/releases/download/v2.5/ssh-agent-wsl.7z",
+  "hash": "fba9c2811e98da4a8024eb8b3d582fb347fb01141759d4d6f6513eb046ff83a0",
+  "post_install": [
+    "echo =============",
+    "echo ''",
+    "$agentpath=bash -c \"wslpath -a '$dir/ssh-agent-wsl'\"",
+    "echo \"Add this to your ~/.bashrc inside WSL: eval `$($agentpath -r)\"",
+    "echo ''",
+    "echo ============="
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "url": "https://github.com/rupor-github/ssh-agent-wsl/releases/download/v$version/ssh-agent-wsl.7z"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\ssh-agent-wsl.json",
+    "__sourceHash: 422ef1f3ad80f6d7add05ab7aa9016856227617d",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 201022 15:29:44",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/ssh-agent-wsl.json"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "version": "1.9.3",
+  "description": "Backup & export all Evernote notes and notebooks.",
+  "homepage": "https://github.com/vzhd1701/evernote-backup",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/vzhd1701/evernote-backup/releases/download/v1.9.3/bin_evernote_backup_1.9.3_win_x64.zip",
+      "hash": "8113650dfdcc4150c7ddc8b486518380a62eeec8046d1a8159b8b113b2f730f6"
+    }
+  },
+  "bin": "evernote-backup.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/vzhd1701/evernote-backup/releases/download/v$version/bin_evernote_backup_$version_win_x64.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\evernote-backup.json",
+    "__sourceHash: 937e8776b0ba734d45c56aeac17edb82aada632c",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 231027 14:03:23",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/evernote-backup.json"
+  ]
+}

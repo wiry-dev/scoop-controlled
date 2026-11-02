@@ -1,0 +1,39 @@
+{
+  "version": "0.5.20",
+  "description": "Open Source Dev-Environments-As-Code",
+  "homepage": "https://devpod.sh",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/loft-sh/devpod/releases/download/v0.5.20/DevPod_windows_x64_en-US.msi",
+      "hash": "f54a73d42d531d42fd72554ff3c3dd5ca267e00316889d10f35fa70fbfa4062b"
+    }
+  },
+  "extract_dir": "PFiles\\DevPod",
+  "bin": "devpod-cli.exe",
+  "shortcuts": [
+    [
+      "DevPod.exe",
+      "DevPod"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/loft-sh/devpod"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/loft-sh/devpod/releases/download/v$version/DevPod_windows_x64_en-US.msi"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\devpod.json",
+    "__sourceHash: edc84ec7bf7f629de70604ab10d5ede0345172d2",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/devpod.json"
+  ]
+}

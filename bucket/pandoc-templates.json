@@ -1,0 +1,31 @@
+{
+  "version": "1712504561",
+  "description": "Templates for pandoc, tagged to release",
+  "homepage": "https://github.com/jgm/pandoc-templates",
+  "license": "GPL-2.0-or-later,BSD-3-Clause",
+  "url": "https://codeload.github.com/jgm/pandoc-templates/zip/refs/heads/master#/_.zip",
+  "hash": "e00c6e5f8c27142531d67f8c938c224eb737384d82336afc313b44cea07b1d2b",
+  "pre_install": [
+    "$templates = \"$dir/templates\"",
+    "Rename-Item \"$dir/pandoc-templates-master\" $templates",
+    "$installPath = \"$env:APPDATA/pandoc/templates\"",
+    "$null = New-Item -ItemType SymbolicLink -Path $installPath -Target $templates -ErrorAction Ignore"
+  ],
+  "post_uninstall": "Remove-Item -Recurse -ErrorAction Ignore \"$env:APPDATA/pandoc/templates\"",
+  "checkver": {
+    "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/115543137/commits).commit.committer.date -UFormat %s } catch { '' }",
+    "regex": "\\A(\\d+)\\Z"
+  },
+  "autoupdate": {
+    "url": "https://codeload.github.com/jgm/pandoc-templates/zip/refs/heads/master#/_.zip"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\pandoc-templates.json",
+    "__sourceHash: 13f492fda22dd776ff7d2ba368d13aaeb54be902",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/pandoc-templates.json"
+  ]
+}

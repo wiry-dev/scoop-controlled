@@ -1,0 +1,37 @@
+{
+  "version": "8.128.0.207",
+  "description": "Communication tool for free calls and chat.",
+  "homepage": "https://www.skype.com/",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://www.microsoft.com/en-us/servicesagreement/"
+  },
+  "url": "http://download.skype.com/s4l/download/win/Skype-8.128.0.207.exe",
+  "hash": "293ef5378c274f3a1aa06290c739da664a2f8da2b45f5d57cc1a3d669bbfe4bc",
+  "innosetup": true,
+  "shortcuts": [
+    [
+      "Skype.exe",
+      "Skype"
+    ]
+  ],
+  "checkver": {
+    "script": [
+      "$resp = [System.Net.WebRequest]::Create('http://get.skype.com/go/getskype-skypeforwindows').GetResponse()",
+      "Write-Output = $resp.ResponseUri.LocalPath"
+    ],
+    "regex": "Skype-([\\d.]+)\\.exe"
+  },
+  "autoupdate": {
+    "url": "http://download.skype.com/s4l/download/win/Skype-$version.exe"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\skype.json",
+    "__sourceHash: e6e7a6763dd118c548bc8bfe8ddd4084538959b2",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/skype.json"
+  ]
+}

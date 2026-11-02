@@ -1,0 +1,30 @@
+{
+  "version": "0.14.12",
+  "description": "A modern replacement for ps(1)",
+  "homepage": "https://github.com/dalance/procs",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/dalance/procs/releases/download/v0.14.12/procs-v0.14.12-x86_64-windows.zip",
+      "hash": "4928c399ae78ee82f99139a5629077b8d90a58599d834584dd4e613cb60c83d0"
+    }
+  },
+  "bin": "procs.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/dalance/procs/releases/download/v$version/procs-v$version-x86_64-windows.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\procs.json",
+    "__sourceHash: e3d2c2d5bb928ce8ee7fc7b076a798f7d6d94c31",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 260625 13:08:24",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/procs.json"
+  ]
+}

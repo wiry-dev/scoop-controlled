@@ -1,0 +1,44 @@
+{
+  "version": "13.6.5",
+  "description": "S3 Browser is a freeware Windows client for Amazon S3 and Amazon CloudFront.",
+  "homepage": "https://s3browser.com/",
+  "license": "Freeware",
+  "architecture": {
+    "64bit": {
+      "url": "https://s3browser.com/download/s3browser-13-6-5.zip",
+      "hash": "f708c19759b55d3528f039182dea85a923d1ecce8982f99df18c7a2e88363c7c"
+    }
+  },
+  "extract_dir": "CS Browser",
+  "bin": "s3browser-cli.exe",
+  "shortcuts": [
+    [
+      "s3browser-ui.exe",
+      "S3Browser"
+    ]
+  ],
+  "checkver": {
+    "url": "https://s3browser.com/download.aspx",
+    "regex": "CS Browser Version (?<version>[\\d\\.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://s3browser.com/download/s3browser-$dashVersion.zip",
+        "hash": {
+          "url": "https://s3browser.com/download.aspx",
+          "find": "$url[\\S\\s]*SHA256.*>$sha256"
+        }
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\s3browser.json",
+    "__sourceHash: c2da94e21b478b1827cf261e2570892aefc57297",
+    "__sourceLastChangeFound: 261102 14:07:16",
+    "__sourceLastUpdated: 261028 00:49:55",
+    "__sourceLicenceOpen: false",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/s3browser.json"
+  ]
+}

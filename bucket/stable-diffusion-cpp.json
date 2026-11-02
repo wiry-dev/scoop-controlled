@@ -1,0 +1,33 @@
+{
+  "version": "snapshot-e410aeb",
+  "description": "Stable Diffusion in pure C/C++ (AVX2)",
+  "homepage": "https://github.com/leejet/stable-diffusion.cpp",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/leejet/stable-diffusion.cpp/releases/download/master-e410aeb/sd-master-e410aeb-bin-win-avx2-x64.zip",
+      "hash": "5536f35e5c8e41d8135104b92dfe7a462fefb4db7ec9993ac4e4049eaf8a5b87"
+    }
+  },
+  "bin": "sd.exe",
+  "checkver": {
+    "regex": "master-(?<commit>[0-9a-f]{7})",
+    "replace": "snapshot-$1"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/leejet/stable-diffusion.cpp/releases/download/master-$matchCommit/sd-master-$matchCommit-bin-win-avx2-x64.zip"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\ScoopMaster\\bucket\\stable-diffusion-cpp.json",
+    "__sourceHash: c4cb16fa06a5cac777d8658bf7f662d77b5c3d98",
+    "__sourceLastChangeFound: 250922 14:23:50",
+    "__sourceLastUpdated: 240918 23:57:20",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/okibcn/ScoopMaster/master/bucket/stable-diffusion-cpp.json"
+  ]
+}

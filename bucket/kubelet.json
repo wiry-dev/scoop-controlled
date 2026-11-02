@@ -1,0 +1,36 @@
+{
+  "version": "1.37.2",
+  "description": "Kubernetes node agent",
+  "homepage": "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://dl.k8s.io/v1.37.2/bin/windows/amd64/kubelet.exe",
+      "hash": "97619490fcda53a7cdc33e410f68a82aa658ba6229690d7feee8d1707d55ff5d"
+    }
+  },
+  "bin": "kubelet.exe",
+  "checkver": {
+    "url": "https://dl.k8s.io/release/stable.txt",
+    "regex": "v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://dl.k8s.io/v$version/bin/windows/amd64/kubelet.exe"
+      }
+    },
+    "hash": {
+      "url": "$url.sha256"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\kubelet.json",
+    "__sourceHash: 3ab3b210216880c3eeeab8d699c8f27b2036ae32",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261028 08:29:19",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/kubelet.json"
+  ]
+}

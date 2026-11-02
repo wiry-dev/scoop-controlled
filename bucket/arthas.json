@@ -1,0 +1,25 @@
+{
+  "version": "4.3.5",
+  "description": "Arthas is a Java Diagnostic tool open sourced by Alibaba.",
+  "homepage": "https://arthas.aliyun.com/",
+  "license": "Apache-2.0",
+  "url": "https://github.com/alibaba/arthas/releases/download/arthas-all-4.3.5/arthas-bin.zip",
+  "hash": "f4ea8e4ab4bb20a9925c21780bfb91331e73968eae881fd89b855cccaad21f1c",
+  "bin": "arthas-boot.jar",
+  "checkver": {
+    "github": "https://github.com/alibaba/arthas",
+    "regex": "arthas-all-([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://github.com/alibaba/arthas/releases/download/arthas-all-$version/arthas-bin.zip"
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-main\\bucket\\arthas.json",
+    "__sourceHash: 914a3396ae9fc236e53e042fc9b540805f95de03",
+    "__sourceLastChangeFound: 261102 14:27:09",
+    "__sourceLastUpdated: 261009 19:45:57",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/arthas.json"
+  ]
+}

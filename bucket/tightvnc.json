@@ -1,0 +1,54 @@
+{
+  "version": "2.8.90",
+  "description": "VNC-Compatible Remote Control / Remote Desktop",
+  "homepage": "https://tightvnc.com",
+  "license": "GPL-2.0-or-later",
+  "architecture": {
+    "64bit": {
+      "url": "https://www.tightvnc.com/download/2.8.90/tightvnc-2.8.90-gpl-setup-64bit.msi",
+      "hash": "9693cb4cdc2e7e482e8e3f5890415b57ef87de3369fa5c337db516218a1170ce"
+    },
+    "32bit": {
+      "url": "https://www.tightvnc.com/download/2.8.90/tightvnc-2.8.90-gpl-setup-32bit.msi",
+      "hash": "669bcf5796c2655fb1a8b556cad8decf25d3008a650ef495b1ed3882aa918211"
+    }
+  },
+  "extract_dir": "PFiles\\TightVNC",
+  "bin": [
+    "tvnviewer.exe",
+    "tvnserver.exe"
+  ],
+  "shortcuts": [
+    [
+      "tvnviewer.exe",
+      "TightVNC Viewer"
+    ],
+    [
+      "tvnserver.exe",
+      "TightVNC Server"
+    ]
+  ],
+  "checkver": {
+    "url": "https://www.tightvnc.com/download.php",
+    "regex": "\\(Version ([\\d.]+)\\)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://www.tightvnc.com/download/$version/tightvnc-$version-gpl-setup-64bit.msi"
+      },
+      "32bit": {
+        "url": "https://www.tightvnc.com/download/$version/tightvnc-$version-gpl-setup-32bit.msi"
+      }
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\tightvnc.json",
+    "__sourceHash: f74bc8300a3a73e500da3337e591eaf27d1a8421",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261005 12:48:22",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/tightvnc.json"
+  ]
+}

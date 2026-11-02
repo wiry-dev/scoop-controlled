@@ -1,0 +1,42 @@
+{
+  "version": "4.0.0",
+  "description": "GUI prototyping tool",
+  "homepage": "https://pencil.evolus.vn",
+  "license": "GPL-2.0-only",
+  "url": "https://pencil.evolus.vn/dl/V4.0.0.ga/Pencil-4.0.0.ga.exe#/dl.7z",
+  "hash": "19dd56fbcdeecf66def18ec6766f4796127aedf2342798c48cde2e74bef498f0",
+  "architecture": {
+    "64bit": {
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+    },
+    "32bit": {
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
+    }
+  },
+  "post_install": "Remove-Item \"$dir\\`$*\" -Force -Recurse",
+  "bin": "Pencil.exe",
+  "shortcuts": [
+    [
+      "Pencil.exe",
+      "Pencil"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/evolus/pencil"
+  },
+  "autoupdate": {
+    "url": "https://pencil.evolus.vn/dl/V$version.ga/Pencil-$version.ga.exe#/dl.7z",
+    "hash": {
+      "url": "$baseurl/CHECKSUM"
+    }
+  },
+  "##": [
+    "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\pencil.json",
+    "__sourceHash: 0f84292068c2fe6fc110ad70834b7bb490d9792b",
+    "__sourceLastChangeFound: 261102 13:53:17",
+    "__sourceLastUpdated: 261024 04:37:24",
+    "__sourceLicenceOpen: true",
+    "__sourceState: active",
+    "__sourceUrl: https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/pencil.json"
+  ]
+}
