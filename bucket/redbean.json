@@ -11,8 +11,7 @@
     "regex": "redbean-([\\d.]+).com"
   },
   "autoupdate": {
-    "url": "https://redbean.dev/redbean-$version.com#/redbean.com",
-    "hash": "$url.sha256"
+    "url": "https://redbean.dev/redbean-$version.com#/redbean.com"
   },
   "##": [
     "__source: MANUAL",

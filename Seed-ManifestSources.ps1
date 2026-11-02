@@ -144,7 +144,7 @@ Function Set-CustomMetadata($JSONObject, $MetadataToWrite) {
 # Corrective/Migration Modes (These run exclusively)
 # =================================================================================
 if ($SeedStates) {
-    Write-Host "🌱 Seeding 'sourceState' for all manifests..." -ForegroundColor Cyan
+    Write-Host "Seeding 'sourceState' for all manifests..." -ForegroundColor Cyan
     $seededCount = 0
     foreach ($manifestFile in $bucketManifests) {
         $json = Get-Content -Path $manifestFile.FullName -Raw | ConvertFrom-Json
@@ -158,12 +158,12 @@ if ($SeedStates) {
             $seededCount++
         }
     }
-    Write-Host "✨ State seeding complete. Updated $seededCount manifest(s)." -ForegroundColor Green
+    Write-Host "State seeding complete. Updated $seededCount manifest(s)." -ForegroundColor Green
     return
 }
 
 if ($RefreshAllFoundChangeTimestamps) {
-    Write-Host "🔄 Refreshing all 'sourceLastChangeFound' timestamps..." -ForegroundColor Cyan
+    Write-Host "Refreshing all 'sourceLastChangeFound' timestamps..." -ForegroundColor Cyan
     $runTimestamp = (Get-Date).ToString("yyMMdd HH:mm:ss")
     $refreshedCount = 0
     foreach ($manifestFile in $bucketManifests) {
@@ -176,12 +176,12 @@ if ($RefreshAllFoundChangeTimestamps) {
             $refreshedCount++
         }
     }
-    Write-Host "✨ Refresh complete. Updated $refreshedCount manifest(s)." -ForegroundColor Green
+    Write-Host "Refresh complete. Updated $refreshedCount manifest(s)." -ForegroundColor Green
     return
 }
 
 if ($MigrateTimestampFormat) {
-    Write-Host "🕰️  Migrating timestamp formats in manifest comments..." -ForegroundColor Cyan
+    Write-Host "Migrating timestamp formats in manifest comments..." -ForegroundColor Cyan
     $migratedCount = 0; $oldFormat = "MM/dd/yyyy HH:mm:ss"; $newFormat = "yyMMdd HH:mm:ss"
     foreach ($manifestFile in $bucketManifests) {
         $json = Get-Content -Path $manifestFile.FullName -Raw | ConvertFrom-Json; $metadata = Get-CustomMetadata -JSONObject $json; $wasModified = $false
@@ -199,11 +199,11 @@ if ($MigrateTimestampFormat) {
             $json | ConvertTo-Json -Depth 10 | Set-Content -Path $manifestFile.FullName -Encoding UTF8; $migratedCount++
         }
     }
-    Write-Host "✨ Timestamp migration complete. Updated $migratedCount manifest(s)." -ForegroundColor Green; return
+    Write-Host "Timestamp migration complete. Updated $migratedCount manifest(s)." -ForegroundColor Green; return
 }
 
 if ($CleanComments) {
-    Write-Host "🧹 Cleaning duplicate standalone keys from manifest comments..." -ForegroundColor Cyan; $cleanedCount = 0; $keySet = [System.Collections.Generic.HashSet[string]]$MetadataKeys
+    Write-Host "Cleaning duplicate standalone keys from manifest comments..." -ForegroundColor Cyan; $cleanedCount = 0; $keySet = [System.Collections.Generic.HashSet[string]]$MetadataKeys
     foreach ($manifestFile in $bucketManifests) {
         $json = Get-Content -Path $manifestFile.FullName -Raw | ConvertFrom-Json
         if ($json.PSObject.Properties['##'] -and $json.'##' -is [array]) {
@@ -215,11 +215,11 @@ if ($CleanComments) {
             }
         }
     }
-    Write-Host "✨ Cleaning complete. Cleaned $cleanedCount manifest(s)." -ForegroundColor Green; return
+    Write-Host "Cleaning complete. Cleaned $cleanedCount manifest(s)." -ForegroundColor Green; return
 }
 
 if ($FixUnsplitComments) {
-    Write-Host "🔧 Repairing manifests with unsplit comment strings..." -ForegroundColor Cyan; $repairedCount = 0; $splitKeys = 'sourceUrl|sourceLastUpdated|sourceLastChangeFound|source|sourceState'
+    Write-Host "Repairing manifests with unsplit comment strings..." -ForegroundColor Cyan; $repairedCount = 0; $splitKeys = 'sourceUrl|sourceLastUpdated|sourceLastChangeFound|source|sourceState'
     foreach ($manifestFile in $bucketManifests) {
         $json = Get-Content -Path $manifestFile.FullName -Raw | ConvertFrom-Json
         if ($json.PSObject.Properties['##'] -and $json.'##' -is [string]) {
@@ -231,11 +231,11 @@ if ($FixUnsplitComments) {
             else { Write-Warning "    - Could not parse '$($manifestFile.Name)'. Skipping." }
         }
     }
-    Write-Host "✨ Repair complete. Repaired $repairedCount manifest(s)." -ForegroundColor Green; return
+    Write-Host "Repair complete. Repaired $repairedCount manifest(s)." -ForegroundColor Green; return
 }
 
 if ($MigrateFormat) {
-    Write-Host "🚀 Migrating manifest formats to use the '##' property..." -ForegroundColor Cyan; $migratedCount = 0
+    Write-Host "Migrating manifest formats to use the '##' property..." -ForegroundColor Cyan; $migratedCount = 0
     foreach ($manifestFile in $bucketManifests) {
         $json = Get-Content -Path $manifestFile.FullName -Raw | ConvertFrom-Json; $oldKeys = $json.PSObject.Properties.Name | Where-Object { $MetadataKeys -contains $_ }
         if ($oldKeys.Count -gt 0) {
@@ -244,16 +244,16 @@ if ($MigrateFormat) {
             $json | ConvertTo-Json -Depth 10 | Set-Content -Path $manifestFile.FullName -Encoding UTF8; $migratedCount++
         }
     }
-    Write-Host "✨ Migration complete. Migrated $migratedCount manifest(s)." -ForegroundColor Green; return
+    Write-Host "Migration complete. Migrated $migratedCount manifest(s)." -ForegroundColor Green; return
 }
 
 if ($ListManual) {
-    Write-Host "📜 Listing applications marked as MANUAL..." -ForegroundColor Cyan; $manualApps = @()
+    Write-Host "Listing applications marked as MANUAL..." -ForegroundColor Cyan; $manualApps = @()
     foreach ($manifestFile in $bucketManifests) {
         $json = Get-Content -Path $manifestFile.FullName -Raw | ConvertFrom-Json -ErrorAction SilentlyContinue
         if ($null -ne $json) { $metadata = Get-CustomMetadata -JSONObject $json; if ($metadata.source -eq 'MANUAL') { $manualApps += $manifestFile.Name } }
     }
-    if ($manualApps.Count -gt 0) { $manualApps | ForEach-Object { Write-Host "  - $_" } } else { Write-Host "  ✅ No applications are marked as MANUAL." }; return
+    if ($manualApps.Count -gt 0) { $manualApps | ForEach-Object { Write-Host "  - $_" } } else { Write-Host "  No applications are marked as MANUAL." }; return
 }
 
 # =================================================================================
@@ -261,13 +261,13 @@ if ($ListManual) {
 # =================================================================================
 $configFilePath = Join-Path -Path $scriptDir -ChildPath $ConfigFile
 if (-not (Test-Path $configFilePath)) { Write-Error "Config file not found: $configFilePath"; return }
-Write-Host "🔍 Reading and verifying repository configuration from '$configFilePath'..."
+Write-Host "Reading and verifying repository configuration from '$configFilePath'..."
 Assert-SourcesRoot
 $repos = Get-LocalRepoEntries -ConfigPath $configFilePath -BaseDir $scriptDir
 
 $runTimestamp = (Get-Date).ToString("yyMMdd HH:mm:ss")
 $modifiedFileCount = 0
-Write-Host "`n🌱 Seeding source information for manifests in '$BucketPath'..."
+Write-Host "`nSeeding source information for manifests in '$BucketPath'..."
 if ($Force) { Write-Host "  -Force switch detected. All existing source values will be recalculated." -ForegroundColor Yellow }
 if ($RecalculateManual) { Write-Host "  -RecalculateManual switch detected. Only 'MANUAL' entries will be recalculated." -ForegroundColor Yellow }
 if ($ReprocessIncomplete) { Write-Host "  -ReprocessIncomplete switch detected. Incomplete manifests will be corrected." -ForegroundColor Yellow }
@@ -351,4 +351,4 @@ foreach ($manifestFile in $bucketManifests) {
         $modifiedFileCount++
     }
 }
-Write-Host "`n✨ Seeding process complete. Modified $modifiedFileCount file(s)"
+Write-Host "`nSeeding process complete. Modified $modifiedFileCount file(s)"

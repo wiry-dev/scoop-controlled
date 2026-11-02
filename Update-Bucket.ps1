@@ -289,7 +289,7 @@ Function Invoke-PullSourceRepos {
         return
     }
 
-    Write-Log "🔄 Pulling source repositories listed in '$ConfigPath'..."
+    Write-Log "Pulling source repositories listed in '$ConfigPath'..."
     foreach ($entry in $entries) {
         $repoPath = $entry.Path
         if ([string]::IsNullOrWhiteSpace($repoPath)) { continue }
@@ -320,7 +320,7 @@ Function Invoke-PullSourceRepos {
                 Write-LogWarning "Pull failed for '$repoPath' (exit code $LASTEXITCODE)"
             }
             elseif ($VerboseOutput) {
-                Write-Log "  ✅ Pulled '$repoPath'" "Green"
+                Write-Log "  Pulled '$repoPath'" "Green"
             }
         }
         catch {
@@ -374,11 +374,11 @@ Function Invoke-ChangeDecision {
             $newJson = Set-CustomMetadata -JSONObject $RemoteJson -MetadataToWrite $newMetadata
             Write-Log "    -> Writing accepted changes to '$($Data.File.Name)'..."
             Write-Manifest -MetadataToWrite $newJson -FilePath $Data.File.FullName
-            Write-Log "  ✅ Accepted. Manifest '$($Data.File.Name)' has been updated" Green
+            Write-Log "  Accepted. Manifest '$($Data.File.Name)' has been updated" Green
             return $true
         }
         'f' {
-            Write-Log "  -> ❄️ Freezing package '$($Data.File.Name)' at current version"
+            Write-Log "  -> Freezing package '$($Data.File.Name)' at current version"
             $newMetadata = $Data.Metadata.Clone()
             $newMetadata.sourceState = 'frozen'
             $newMetadata.sourceLastUpdated = $SourceInfo.Date
@@ -393,18 +393,18 @@ Function Invoke-ChangeDecision {
             return $true
         }
         's' {
-            Write-Log "  ⏩ Skipped '$($Data.File.Name)'"
+            Write-Log "  Skipped '$($Data.File.Name)'"
             if ($RecordDeferredOnSkipOrFreeze) {
                 Set-DeferredUpdateFound -Data $Data -RunTimestamp $RunTimestamp | Out-Null
             }
             return $true
         }
         'q' {
-            Write-Log "🛑 Aborting update run"
+            Write-Log "Aborting update run"
             return $false
         }
         default {
-            Write-Log "  ⏩ Invalid choice. Skipping '$($Data.File.Name)'"
+            Write-Log "  Invalid choice. Skipping '$($Data.File.Name)'"
             return $true
         }
     }
@@ -543,6 +543,12 @@ Function Resolve-MissingSource {
     )
 
     $deprecatedPath = Find-DeprecatedManifestPath -SourcePath $Data.Metadata.source
+    # Already recorded: rewriting would only append another dated comment on every run
+    $targetState = if ($deprecatedPath) { 'deprecated' } else { 'missing-source-lock' }
+    if ($Data.Metadata.sourceState -eq $targetState) {
+        Write-LogVerbose "    -> '$($Data.File.Name)' is already marked '$targetState'"
+        return $false
+    }
     $newMetadata = $Data.Metadata.Clone()
     $newMetadata.sourceLastChangeFound = $RunTimestamp
 
@@ -1034,12 +1040,12 @@ $allManifestData = @()
 # --- Mode: Normalise Metadata ---
 if ($NormaliseMetadata) {
     Write-Host
-    Write-Log "🏷️  Normalising metadata (prefix '$MetadataPrefix', sourceLicenceOpen) on manifests in '$BucketPath'..."
+    Write-Log "Normalising metadata (prefix '$MetadataPrefix', sourceLicenceOpen) on manifests in '$BucketPath'..."
     $changedCount = 0
     foreach ($file in $manifests) {
         if ($file.BaseName -Notmatch $Scope) { continue }
         try { $json = Get-Content -Path $file.FullName -Raw | ConvertFrom-Json } catch {
-            Write-LogWarning "  ⚠️ Could not parse '$($file.Name)': $($_.Exception.Message)"
+            Write-LogWarning "  Could not parse '$($file.Name)': $($_.Exception.Message)"
             continue
         }
         $metadata = Get-CustomMetadata $json
@@ -1051,7 +1057,7 @@ if ($NormaliseMetadata) {
         Write-Manifest -MetadataToWrite $json -FilePath $file.FullName
         $changedCount++
     }
-    Write-Log "✨ Normalised metadata on $changedCount manifest(s)"
+    Write-Log "Normalised metadata on $changedCount manifest(s)"
     return
 }
 
@@ -1071,7 +1077,7 @@ if ($effectivePullSources) {
 }
 
 # This iterates through all the manifests and gathers their metadata and pending status.
-Write-Log "🔍 Gathering manifest data from '$BucketPath'..."
+Write-Log "Gathering manifest data from '$BucketPath'..."
 foreach ($localManifestFile in $manifests) {
     # Scope filter
     if ($localManifestFile.BaseName -Notmatch $Scope) {
@@ -1139,13 +1145,13 @@ foreach ($localManifestFile in $manifests) {
 # --- Mode: List Manual ---
 if ($ListManual) {
     Write-Host
-    Write-LogAttention "📜 Listing manifests marked as MANUAL..."
+    Write-LogAttention "Listing manifests marked as MANUAL..."
     $manualFiles = $allManifestData | Where-Object { $_.Metadata.sourceState -eq 'manual' -Or $_.Metadata.source -eq 'MANUAL' }
     if ($manualFiles) {
         $manualFiles | ForEach-Object { Write-Log "  - $($_.File.Name)" }
     }
     else {
-        Write-Log "  ✅ No manifests are marked as MANUAL"
+        Write-Log "  No manifests are marked as MANUAL"
     }
     return
 }
@@ -1153,13 +1159,13 @@ if ($ListManual) {
 # --- Mode: List Locks ---
 if ($ListLocks) {
     Write-Host
-    Write-LogAttention "📜 Listing manifests marked as locks (frozen or explicit lock states)..."
+    Write-LogAttention "Listing manifests marked as locks (frozen or explicit lock states)..."
     $lockFiles = $allManifestData | Where-Object { $_.Metadata.sourceState -in @('frozen', 'domain-change-lock', 'license-change-lock', 'version-check-lock', 'missing-source-lock') }
     if ($lockFiles) {
         $lockFiles | ForEach-Object { Write-Log "  - $($_.File.Name) [$($_.Metadata.sourceState)]" }
     }
     else {
-        Write-Log "  ✅ No manifests are marked as locks"
+        Write-Log "  No manifests are marked as locks"
     }
     return
 }
@@ -1169,7 +1175,7 @@ $updateableManifests = $allManifestData | Where-Object { $_.Metadata.sourceState
 # --- Mode: List Pending ---
 if ($ListPending) {
     Write-Host
-    Write-LogAttention "📜 Listing manifests with pending changes..."
+    Write-LogAttention "Listing manifests with pending changes..."
     $pendingCount = 0
     foreach ($data in $updateableManifests) {
         if ($data.IsPending) {
@@ -1181,14 +1187,14 @@ if ($ListPending) {
             Write-Log "  - $($data.File.Name) (authentic source date is $updateDate, skipping)"
         }
     }
-    if ($pendingCount -eq 0) { Write-Log "  ✅ No non-manual manifests have pending changes" }
+    if ($pendingCount -eq 0) { Write-Log "  No non-manual manifests have pending changes" }
     return
 }
 
 # --- Mode: Process Locks ---
 if ($ProcessLocks) {
     Write-Host
-    Write-LogAttention "🔒 Starting locked manifest processing..."
+    Write-LogAttention "Starting locked manifest processing..."
 
     $lockedStates = @('frozen', 'domain-change-lock', 'license-change-lock', 'version-check-lock', 'missing-source-lock')
     $lockedManifests = $allManifestData | Where-Object { $_.Metadata.sourceState -in $lockedStates }
@@ -1197,7 +1203,7 @@ if ($ProcessLocks) {
     }
 
     if (-Not $lockedManifests -or $lockedManifests.Count -eq 0) {
-        Write-Log "  ✅ No locked manifests found to process"
+        Write-Log "  No locked manifests found to process"
         return
     }
 
@@ -1212,7 +1218,7 @@ if ($ProcessLocks) {
         Write-Log "- Checking locked manifest '$($data.File.Name)' [$($data.Metadata.sourceState)]..."
         $remoteJson = $null
         try { $remoteJson = Invoke-WebRequest -Uri $sourceUrl -UseBasicParsing | ConvertFrom-Json } catch {
-            Write-LogWarning "  ⚠️ Failed to download source for '$($data.File.Name)': $($_.Exception.Message)"
+            Write-LogWarning "  Failed to download source for '$($data.File.Name)': $($_.Exception.Message)"
             Resolve-MissingSource -Data $data -RunTimestamp $runTimestamp | Out-Null
             continue
         }
@@ -1222,7 +1228,7 @@ if ($ProcessLocks) {
 
         $hasUpdate = $deepChanged -or ($data.Local.version -ne $remoteJson.version)
         if (-Not $hasUpdate -And -Not $data.IsPending) {
-            Write-Log "  ✅ No update found for '$($data.File.Name)'; keeping lock state" DarkYellow
+            Write-Log "  No update found for '$($data.File.Name)'; keeping lock state" DarkYellow
             continue
         }
 
@@ -1254,7 +1260,7 @@ if ($ProcessLocks) {
         if ($domainChanged) { $concerns += 'domain change' }
         if ($versionConcern) { $concerns += 'version regression/pre-release' }
         if ($lockState -ne 'frozen') {
-            if ($concerns.Count -eq 0) { Write-LogHighlight "    -> 🔓 The '$lockState' condition is no longer detected for this update" }
+            if ($concerns.Count -eq 0) { Write-LogHighlight "    -> The '$lockState' condition is no longer detected for this update" }
             else { Write-LogConcern "    -> Still detected: $($concerns -join ', ')" }
         }
 
@@ -1268,7 +1274,7 @@ if ($ProcessLocks) {
         if ($licenceChanged -and $lockState -ne 'frozen') { $defaultChoice = 'f' }
 
         :lockPrompt while ($true) {
-            $choice = Get-ChangeDecision -Prompt "-> 🔒 This package is locked ($lockState). Process and unlock? (A)ccept / (F)reeze / (S)kip / (D)isplay / (Q)uit" -Default $defaultChoice -Allowed @('a', 'f', 's', 'd', 'q')
+            $choice = Get-ChangeDecision -Prompt "-> This package is locked ($lockState). Process and unlock? (A)ccept / (F)reeze / (S)kip / (D)isplay / (Q)uit" -Default $defaultChoice -Allowed @('a', 'f', 's', 'd', 'q')
             switch ($choice) {
                 'd' {
                     Show-ManifestCurrent -Json $data.Local
@@ -1300,11 +1306,11 @@ if ($ProcessLocks) {
                     $updatedJson = Set-CustomMetadata -JSONObject $remoteJson -MetadataToWrite $newMetadata
                     Write-Log "    -> Writing updated state to manifest..."
                     Write-Manifest -MetadataToWrite $updatedJson -FilePath $data.File.FullName
-                    Write-Log "  ✅ Accepted and unlocked '$($data.File.Name)'" Green
+                    Write-Log "  Accepted and unlocked '$($data.File.Name)'" Green
                     break lockPrompt
                 }
                 'f' {
-                    $commentInput = Read-Host "-> ❄️ Enter freeze comment (default: $defaultFreezeComment)"
+                    $commentInput = Read-Host "-> Enter freeze comment (default: $defaultFreezeComment)"
                     if ([string]::IsNullOrWhiteSpace($commentInput)) {
                         $commentInput = $defaultFreezeComment
                     }
@@ -1331,15 +1337,15 @@ if ($ProcessLocks) {
                     $updatedJson = Set-CustomMetadata -JSONObject $data.Local -MetadataToWrite $newMetadata
                     Write-Log "    -> Writing updated freeze state to manifest..."
                     Write-Manifest -MetadataToWrite $updatedJson -FilePath $data.File.FullName
-                    Write-Log "  ❄️ Frozen '$($data.File.Name)'" Yellow
+                    Write-Log "  Frozen '$($data.File.Name)'" Yellow
                     break lockPrompt
                 }
                 'q' {
-                    Write-Log "🛑 Aborting lock processing session"
+                    Write-Log "Aborting lock processing session"
                     return
                 }
                 's' {
-                    Write-LogWarning "  ⏩ Skipped '$($data.File.Name)'; keeping lock state"
+                    Write-LogWarning "  Skipped '$($data.File.Name)'; keeping lock state"
                     break lockPrompt
                 }
             }
@@ -1347,14 +1353,14 @@ if ($ProcessLocks) {
     }
 
     Write-Host
-    Write-Log "✨ Locked manifest processing complete"
+    Write-Log "Locked manifest processing complete"
     return
 }
 
 # --- Mode: Interactive ---
 if ($Interactive) {
     Write-Host
-    Write-LogAttention "👋 Starting interactive update session..."
+    Write-LogAttention "Starting interactive update session..."
     $updateCandidates = 0
     foreach ($data in $updateableManifests) {
         # Exclude frozen if requested
@@ -1368,7 +1374,7 @@ if ($Interactive) {
         Write-Log "- Checking '$($data.File.Name)'..."
         $remoteJson = $null
         try { $remoteJson = Invoke-WebRequest -Uri $sourceUrl -UseBasicParsing | ConvertFrom-Json } catch {
-            Write-LogWarning "  ⚠️ Failed to download source for '$($data.File.Name)': $($_.Exception.Message)"
+            Write-LogWarning "  Failed to download source for '$($data.File.Name)': $($_.Exception.Message)"
             Resolve-MissingSource -Data $data -RunTimestamp $runTimestamp | Out-Null
             continue
         }
@@ -1379,7 +1385,7 @@ if ($Interactive) {
         }
 
         if (Test-VersionCheckLock -LocalVersion $data.Local.version -RemoteVersion $remoteJson.version) {
-            Write-LogConcern "    🔒 Version change requires manual review; locking package (version-check-lock)"
+            Write-LogConcern "    Version change requires manual review; locking package (version-check-lock)"
             $sourceInfo = Get-GitCommitDate -FilePath $data.Metadata.source -StoredHash $data.Metadata.sourceHash -StoredDate $data.Metadata.sourceLastUpdated
             $newMetadata = $data.Metadata.Clone()
             $newMetadata.sourceState = 'version-check-lock'
@@ -1399,30 +1405,30 @@ if ($Interactive) {
 
         $proceedToStandardPrompt = $false
         if ($data.Metadata.sourceState -eq 'domain-change-lock') {
-            Write-LogAttention "  -> 🔒 Skipping package due to domain-change-lock"
+            Write-LogAttention "  -> Skipping package due to domain-change-lock"
             continue
         }
         if ($data.Metadata.sourceState -eq 'license-change-lock') {
-            Write-LogAttention "  -> 🔒 Skipping package due to license-change-lock"
+            Write-LogAttention "  -> Skipping package due to license-change-lock"
             continue
         }
         if ($data.Metadata.sourceState -eq 'version-check-lock') {
-            Write-LogAttention "  -> 🔒 Skipping package due to version-check-lock"
+            Write-LogAttention "  -> Skipping package due to version-check-lock"
             continue
         }
         if ($data.Metadata.sourceState -eq 'missing-source-lock') {
-            Write-LogAttention "  -> 🔒 Skipping package due to missing-source-lock"
+            Write-LogAttention "  -> Skipping package due to missing-source-lock"
             continue
         }
         if ($data.Metadata.sourceState -eq 'frozen') {
             Show-ManifestDiff -LocalJson $data.Local -RemoteJson $remoteJson
-            $frozenChoice = Read-Host "-> ❄️ This package is FROZEN. Skip this update? (Y)es / (N)o [Enter = Yes, leave frozen]"
+            $frozenChoice = Read-Host "-> This package is FROZEN. Skip this update? (Y)es / (N)o [Enter = Yes, leave frozen]"
             if ([string]::IsNullOrWhiteSpace($frozenChoice)) { $frozenChoice = 'y' }
             if ($frozenChoice.ToLower() -eq 'n') {
                 $proceedToStandardPrompt = $true
             }
             else {
-                Write-LogAttention "  -> ❄️ Skipping frozen package as requested"
+                Write-LogAttention "  -> Skipping frozen package as requested"
                 Set-DeferredUpdateFound -Data $data -RunTimestamp $runTimestamp | Out-Null
                 continue
             }
@@ -1438,7 +1444,7 @@ if ($Interactive) {
             }
 
             if (Test-LicenseChange -LocalJson $data.Local -RemoteJson $remoteJson) {
-                Write-LogConcern "    🔒 License change concern detected. Locking package for manual review (license-change-lock)"
+                Write-LogConcern "    License change concern detected. Locking package for manual review (license-change-lock)"
                 $sourceInfo = Get-GitCommitDate -FilePath $data.Metadata.source -StoredHash $data.Metadata.sourceHash -StoredDate $data.Metadata.sourceLastUpdated
                 $newMetadata = $data.Metadata.Clone()
                 $newMetadata.sourceState = 'license-change-lock'
@@ -1455,7 +1461,7 @@ if ($Interactive) {
             }
 
             if (Test-UrlDomainChange -LocalJson $data.Local -RemoteJson $remoteJson) {
-                Write-LogConcern "    🔒 URL domain change detected. Locking package for manual review (domain-change-lock)"
+                Write-LogConcern "    URL domain change detected. Locking package for manual review (domain-change-lock)"
                 $sourceInfo = Get-GitCommitDate -FilePath $data.Metadata.source -StoredHash $data.Metadata.sourceHash -StoredDate $data.Metadata.sourceLastUpdated
                 $newMetadata = $data.Metadata.Clone()
                 $newMetadata.sourceState = 'domain-change-lock'
@@ -1517,16 +1523,16 @@ if ($Interactive) {
     }
     if ($updateCandidates -eq 0) {
         Write-Host
-        Write-Log "  ✅ No manifests have pending changes to review"
+        Write-Log "  No manifests have pending changes to review"
     }
     Write-Host
-    Write-Log "✨ Interactive session complete"
+    Write-Log "Interactive session complete"
     return
 }
 
 # --- Mode: Default Automatic Update ---
 Write-Host
-Write-Log "🔄 Checking for updates in '$BucketPath'..."
+Write-Log "Checking for updates in '$BucketPath'..."
 foreach ($data in $updateableManifests) {
     $sourceUrl = $data.Metadata.sourceUrl
     if (([string]::IsNullOrWhiteSpace($sourceUrl)) -Or ($sourceUrl -Notlike 'http*')) { continue }
@@ -1535,7 +1541,7 @@ foreach ($data in $updateableManifests) {
         if (-Not $ChangesOnly) {
             Write-Host
             Write-Log "  - Checking '$($data.File.Name)'..."
-            Write-LogAttention "    -> ❄️ Package is frozen; skipping all processing"
+            Write-LogAttention "    -> Package is frozen; skipping all processing"
         }
         continue
     }
@@ -1550,7 +1556,7 @@ foreach ($data in $updateableManifests) {
         if (-Not $ChangesOnly) {
             Write-Host
             Write-Log "  - Checking '$($data.File.Name)'..."
-            Write-LogWarning "    ⚠️ Failed to download source. Error: $($_.Exception.Message)"
+            Write-LogWarning "    Failed to download source. Error: $($_.Exception.Message)"
         }
         Resolve-MissingSource -Data $data -RunTimestamp $runTimestamp | Out-Null
         continue
@@ -1562,7 +1568,7 @@ foreach ($data in $updateableManifests) {
     }
 
     if (Test-VersionCheckLock -LocalVersion $data.Local.version -RemoteVersion $remoteJson.version) {
-        Write-LogConcern "    🔒 Version change requires manual review; locking package (version-check-lock)"
+        Write-LogConcern "    Version change requires manual review; locking package (version-check-lock)"
         $newMetadata = $data.Metadata.Clone()
         $newMetadata.sourceState = 'version-check-lock'
         $newMetadata.sourceLastUpdated = $authenticSourceDate
@@ -1582,7 +1588,7 @@ foreach ($data in $updateableManifests) {
         if (-Not $ChangesOnly) {
             Write-Host
             Write-Log "  - Checking '$($data.File.Name)'..."
-            Write-Log "    👍 Already up to date (version $($data.Local.version))"
+            Write-Log "    Already up to date (version $($data.Local.version))"
         }
         continue
     }
@@ -1591,7 +1597,7 @@ foreach ($data in $updateableManifests) {
     Write-Log "  - Checking '$($data.File.Name)'..."
 
     if (-Not $hasUpdate -And $sourceFileChanged) {
-        Write-Log "    👍 Already up to date (version $($data.Local.version))"
+        Write-Log "    Already up to date (version $($data.Local.version))"
         $newMetadata = $data.Metadata.Clone();
         $newMetadata.sourceLastUpdated = $authenticSourceDate
         $newMetadata.sourceHash = $currentHash
@@ -1614,14 +1620,14 @@ foreach ($data in $updateableManifests) {
     # (A version-check concern was handled above, before reaching here.)
     if ($data.Metadata.sourceState -in @('domain-change-lock', 'license-change-lock', 'version-check-lock')) {
         if (-Not (Test-LicenseChange -LocalJson $data.Local -RemoteJson $remoteJson) -And -Not (Test-UrlDomainChange -LocalJson $data.Local -RemoteJson $remoteJson)) {
-            Write-LogHighlight "    -> 🔓 '$($data.Metadata.sourceState)' condition no longer detected; releasing lock"
+            Write-LogHighlight "    -> '$($data.Metadata.sourceState)' condition no longer detected; releasing lock"
             $data.Metadata.sourceState = 'active'
         }
     }
 
     if ($data.Metadata.sourceState -in @('frozen', 'domain-change-lock', 'license-change-lock', 'version-check-lock', 'missing-source-lock')) {
         $stateLabel = $data.Metadata.sourceState
-        Write-LogAttention "    -> ❄️ Update found for locked package (${stateLabel}); no action will be taken"
+        Write-LogAttention "    -> Update found for locked package (${stateLabel}); no action will be taken"
         if (-Not $SkipFrozen) {
             Show-ManifestDiff -LocalJson $data.Local -RemoteJson $remoteJson
         }
@@ -1637,7 +1643,7 @@ foreach ($data in $updateableManifests) {
             $changeDate = [datetime]::ParseExact($data.Metadata.sourceLastChangeFound, $timestampFormat, $null)
             $lastChangeAge = (Get-Now) - $changeDate
             if ($lastChangeAge.TotalDays -lt $minDays) {
-                Write-LogConcern "    -> 🕰️  Update found, but logging only; manifest was updated $($lastChangeAge.TotalDays.ToString('F0')) day(s) ago (minimum is $($minDays))"
+                Write-LogConcern "    -> Update found, but logging only; manifest was updated $($lastChangeAge.TotalDays.ToString('F0')) day(s) ago (minimum is $($minDays))"
                 Show-ManifestDiff -LocalJson $data.Local -RemoteJson $remoteJson
                 continue
             }
@@ -1658,7 +1664,7 @@ foreach ($data in $updateableManifests) {
                     Write-LogVerbose "    -> Deferred update exceeds delay window; proceeding with update"
                 }
                 else {
-                    Write-LogConcern "    -> 🕰️  Update found, but source change is too recent to apply (within $($delayDays)-day delay period); skipping..."
+                    Write-LogConcern "    -> Update found, but source change is too recent to apply (within $($delayDays)-day delay period); skipping..."
                     Set-DeferredUpdateFound -Data $data -RunTimestamp $runTimestamp | Out-Null
                     continue
                 }
@@ -1668,7 +1674,7 @@ foreach ($data in $updateableManifests) {
     }
 
     if (Test-LicenseChange -LocalJson $data.Local -RemoteJson $remoteJson) {
-        Write-LogConcern "    🔒 License change detected. Locking package for manual review (license-change-lock)"
+        Write-LogConcern "    License change detected. Locking package for manual review (license-change-lock)"
         $newMetadata = $data.Metadata.Clone()
         $newMetadata.sourceState = 'license-change-lock'
         $newMetadata.sourceLastUpdated = $authenticSourceDate
@@ -1681,7 +1687,7 @@ foreach ($data in $updateableManifests) {
     }
 
     if (Test-UrlDomainChange -LocalJson $data.Local -RemoteJson $remoteJson) {
-        Write-LogConcern "    🔒 URL domain change detected. Locking package for manual review (domain-change-lock)"
+        Write-LogConcern "    URL domain change detected. Locking package for manual review (domain-change-lock)"
         $newMetadata = $data.Metadata.Clone()
         $newMetadata.sourceState = 'domain-change-lock'
         $newMetadata.sourceLastUpdated = $authenticSourceDate
@@ -1694,7 +1700,7 @@ foreach ($data in $updateableManifests) {
     }
 
     if (Compare-ManifestObjects -ReferenceObject $data.Local -DifferenceObject $remoteJson) {
-        Write-Log "    ✅ Simple version change detected in $($data.File.Name); auto-updating..."
+        Write-Log "    Simple version change detected in $($data.File.Name); auto-updating..."
         $data.Local.version = $remoteJson.version
         # These fields may or may not exist; update or remove as needed
         if ($remoteJson.PSObject.Properties['url']) { $data.Local.url = $remoteJson.url } elseif ($data.Local.PSObject.Properties['url']) { $data.Local.PSObject.Properties.Remove('url') }
@@ -1718,7 +1724,7 @@ foreach ($data in $updateableManifests) {
     else {
 
         if ($InteractiveComplex) {
-            Write-LogConcern "    ⚠️ Manifest $($data.File.Name) has complex changes; interactive review enabled"
+            Write-LogConcern "    Manifest $($data.File.Name) has complex changes; interactive review enabled"
             Show-ManifestDiff -LocalJson $data.Local -RemoteJson $remoteJson
             # Licence changes have already locked and moved on above, so accepting is the default here
             $choice = Get-ChangeDecision -Default 'a'
@@ -1728,7 +1734,7 @@ foreach ($data in $updateableManifests) {
             }
         }
         elseif ($effectiveAutoComplex) {
-            Write-LogConcern "    ⚠️ Manifest $($data.File.Name) has complex changes. AutoComplex enabled; applying changes"
+            Write-LogConcern "    Manifest $($data.File.Name) has complex changes. AutoComplex enabled; applying changes"
             Show-ManifestDiff -LocalJson $data.Local -RemoteJson $remoteJson
             $newMetadata = $data.Metadata.Clone()
             $newMetadata.sourceLastUpdated = $authenticSourceDate
@@ -1742,10 +1748,10 @@ foreach ($data in $updateableManifests) {
             Write-Manifest -MetadataToWrite $newJson -FilePath $data.File.FullName
         }
         else {
-            Write-LogConcern "    ⚠️ Manifest $($data.File.Name) has complex changes; manual review required"
+            Write-LogConcern "    Manifest $($data.File.Name) has complex changes; manual review required"
             Show-ManifestDiff -LocalJson $data.Local -RemoteJson $remoteJson
         }
     }
 }
 Write-Host
-Write-Log "✨ Update check complete"
+Write-Log "Update check complete"

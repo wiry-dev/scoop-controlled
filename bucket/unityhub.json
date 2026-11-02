@@ -1,6 +1,6 @@
 {
   "homepage": "https://unity.com/unity-hub",
-  "description": "The world???s most popular development platform for creating 2D and 3D multiplatform games",
+  "description": "The world's most popular development platform for creating 2D and 3D multiplatform games",
   "license": {
     "identifier": "Freeware",
     "url": "https://unity3d.com/legal/terms-of-service"
@@ -41,8 +41,10 @@
     "regex": "class=\"active\">([\\d.]+)</a>"
   },
   "autoupdate": {
-    "64bit": {
-      "url": "https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe#/dl.7z"
+    "architecture": {
+      "64bit": {
+        "url": "https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe#/dl.7z"
+      }
     }
   },
   "##": [

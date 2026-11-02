@@ -32,6 +32,8 @@ scoop install scoop-controlled/freeorion
 | `Seed-ManifestSources.ps1` | Finds and records the upstream source of existing manifests; also has one-off repair and migration modes. |
 | `ManifestMetadata.ps1` | Settings shared by the scripts above: the metadata prefix, the metadata keys and the sources root variable. |
 | `scripts/update-installers.sh`, `scripts/migrate-installers.sh` | Optional mirroring of installers into an artifact repository. |
+| `.github/workflows/update.yml` | Runs `Update-Bucket.ps1` daily on GitHub Actions (see [Automated updates](#automated-updates)). |
+| `.github/workflows/ci.yml`, `Scoop-Bucket.Tests.ps1` | Tests on every push: PowerShell syntax of the scripts and schema validation of changed manifests. |
 
 ## Setting up
 
@@ -116,6 +118,21 @@ Prompts show what pressing Enter will do:
 | Any licence concern | Freeze, then prompt for a comment |
 
 In `-ProcessLocks`, **D**isplay shows the current manifest and the diff, then asks again about the same manifest.
+
+### Automated updates
+
+The `Update bucket` workflow (`.github/workflows/update.yml`) does the normal run on GitHub Actions every day, so routine updates don't need a local clone:
+
+1. It clones the upstream buckets from `local-repos.cfg` over HTTPS, without file history (`--filter=blob:none`), into the runner's temporary folder, and points `SCOOP_CONTROLLED_SOURCES` at it.
+2. It runs `Update-Bucket.ps1` with no arguments, so only the changes a local normal run would apply are applied, under the same delay periods and checks. The log is kept as a run artifact for 30 days.
+3. It commits the changed manifests through the GitHub API rather than `git push`, so the commit is signed by GitHub and shows as Verified.
+4. It keeps one open issue, *Update review: locks and complex changes*, listing the manifests that need a decision. The issue is closed when nothing is left.
+
+Locks and complex changes are still reviewed locally (`-ProcessLocks`, `-Interactive`) and pushed as usual. The workflow can also be started by hand from the Actions tab, with an optional scope and a dry-run option.
+
+Scoop's usual *Excavator* workflow and its `auto-pr` script are deliberately not used: they take new versions straight from vendors' sites and commit them immediately, which bypasses everything this bucket checks.
+
+On a public repository, GitHub-hosted runners are free. A run takes around 10 minutes. GitHub disables scheduled workflows after 60 days without repository activity; the update commits normally prevent that.
 
 ## Metadata
 

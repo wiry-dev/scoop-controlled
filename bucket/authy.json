@@ -43,7 +43,7 @@
   },
   "##": [
     "__source: %SCOOP_CONTROLLED_SOURCES%\\scoop-extras\\bucket\\authy.json",
-    "__sourceComment: Deprecated (found in deprecated folder) on 261102 13:53:17; Deprecated (found in deprecated folder) on 261102 14:07:16; Deprecated (found in deprecated folder) on 261102 14:24:56",
+    "__sourceComment: Deprecated (found in deprecated folder) on 261102 13:53:17",
     "__sourceLastChangeFound: 261102 14:24:56",
     "__sourceLastUpdated: 250211 10:38:45",
     "__sourceLicenceOpen: false",

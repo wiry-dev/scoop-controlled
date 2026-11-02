@@ -1,0 +1,82 @@
+name: Update bucket
+
+# Runs Update-Bucket.ps1 against fresh clones of the upstream buckets, commits what it applied
+# (through the GitHub API, so the commit is signed and Verified), and keeps a review issue
+# listing locks and complex changes that need a decision.
+
+on:
+  schedule:
+    - cron: '23 5 * * *'   # daily, 05:23 UTC
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: 'Regex limiting the manifests processed (default: all)'
+        required: false
+        default: '.*'
+      commit:
+        description: 'Commit the changes (untick for a dry run; the log and diff are still produced)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: update-bucket
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: Update
+    runs-on: windows-latest
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout bucket
+        uses: actions/checkout@v4
+
+      - name: Clone upstream buckets
+        shell: pwsh
+        run: |
+          # A clean absolute path: __source values under it are stored as %SCOOP_CONTROLLED_SOURCES%\...
+          $env:SCOOP_CONTROLLED_SOURCES = Join-Path $env:RUNNER_TEMP 'sources'
+          "SCOOP_CONTROLLED_SOURCES=$env:SCOOP_CONTROLLED_SOURCES" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          ./.github/scripts/Initialize-Sources.ps1
+
+      - name: Run Update-Bucket
+        shell: pwsh
+        env:
+          SCOPE: ${{ inputs.scope || '.*' }}
+        run: |
+          ./Update-Bucket.ps1 -Scope $env:SCOPE *>&1 | Tee-Object -FilePath update.log
+          git add --all -- bucket
+          git diff --cached --stat -- bucket
+
+      - name: Upload log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: update-log
+          path: update.log
+          retention-days: 30
+
+      - name: Commit changes
+        if: github.event_name == 'schedule' || inputs.commit
+        shell: pwsh
+        run: >
+          ./.github/scripts/Publish-Changes.ps1
+          -Repository '${{ github.repository }}'
+          -Branch '${{ github.ref_name }}'
+          -Headline 'Apply upstream manifest updates'
+          -Body "Automated run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: Update review issue
+        if: github.event_name == 'schedule' || inputs.commit
+        shell: pwsh
+        run: >
+          ./.github/scripts/Update-ReviewIssue.ps1
+          -Repository '${{ github.repository }}'
+          -LogPath update.log
+          -RunUrl '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'

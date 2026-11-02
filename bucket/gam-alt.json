@@ -5,13 +5,10 @@
   "license": "Apache-2.0",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/GAM-team/GAM/releases/download/v$version/gam-$version-windows-x86_64.zip",
+      "url": "https://github.com/GAM-team/GAM/releases/download/v6.58/gam-6.58-windows-x86_64.zip",
       "hash": "c21dd7c0ce35a04720e73e0ee46a34224944bbc5aace1912476dec2cd6a19b3a"
     }
   },
-  "pre_install": [],
-  "post_install": [],
-  "pre_uninstall": [],
   "checkver": {
     "github": "https://github.com/GAM-team/GAM",
     "regex": "gam-([\\d.]+)-windows-x86_64\\.zip"
@@ -19,7 +16,7 @@
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://github.com/GAM-team/GAM/releases/download/$version/gam-$version-windows-x86_64.zip"
+        "url": "https://github.com/GAM-team/GAM/releases/download/v$version/gam-$version-windows-x86_64.zip"
       }
     }
   },
